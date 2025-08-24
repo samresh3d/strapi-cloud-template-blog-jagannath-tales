@@ -35,22 +35,10 @@
       "repeatable": false,
       "component": "author.social"
     },
-    "devotions": {
+    "contents": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::devotion.devotion",
-      "mappedBy": "author"
-    },
-    "miracles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::miracle.miracle",
-      "mappedBy": "author"
-    },
-    "festivals": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::festival.festival",
+      "target": "api::content.content",
       "mappedBy": "author"
     }
   }

@@ -29,7 +29,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "miracles"
+      "inversedBy": "contents"
     },
     "publishedDate": {
       "type": "date"
