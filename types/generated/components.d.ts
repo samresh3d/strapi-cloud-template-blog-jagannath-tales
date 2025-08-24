@@ -48,6 +48,31 @@ export interface FestivalUpcomingDate extends Struct.ComponentSchema {
   };
 }
 
+export interface FormsContactForm extends Struct.ComponentSchema {
+  collectionName: 'components_forms_contact_forms';
+  info: {
+    description: 'Configuration for contact form';
+    displayName: 'Contact Form';
+  };
+  attributes: {
+    emailLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Your Email'>;
+    errorMessage: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'There was an error sending your message. Please try again later.'>;
+    messageLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Your Message'>;
+    nameLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Your Name'>;
+    subjectLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Subject'>;
+    submitButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Send Message'>;
+    successMessage: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Thank you for your message. We will get back to you soon.'>;
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Contact Us'>;
+  };
+}
+
 export interface SharedHeading extends Struct.ComponentSchema {
   collectionName: 'components_shared_headings';
   info: {
@@ -261,6 +286,7 @@ declare module '@strapi/strapi' {
       'festival.calendar-season': FestivalCalendarSeason;
       'festival.ritual': FestivalRitual;
       'festival.upcoming-date': FestivalUpcomingDate;
+      'forms.contact-form': FormsContactForm;
       'shared.heading': SharedHeading;
       'shared.image': SharedImage;
       'shared.list': SharedList;
