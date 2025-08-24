@@ -1,82 +1,151 @@
 {
-  "devotions": {
-    "pageTitle": "Daily Devotions - Jagannath Tales",
-    "description": "Daily devotional readings inspired by Lord Jagannath to encourage your spiritual journey.",
-    "title": "Daily Devotions",
-    "filterLabels": {
-      "viewLabel": "View:",
-      "allDevotions": "All Devotions",
-      "recent": "Recent"
-    },
-    "noDevotionsMessage": "No devotions found. Please check back later.",
-    "itemsCountText": "devotions",
-    "pagination": {
-      "previous": "&lt;",
-      "next": "&gt;"
-    }
-  },
-  "miracles": {
-    "pageTitle": "Miracles of Lord Jagannath - Divine Phenomena at Puri Temple",
-    "description": "Explore the inexplicable divine miracles associated with Lord Jagannath's temple in Puri that have amazed devotees for centuries.",
-    "title": "Divine Miracles of Lord Jagannath",
-    "intro": "For centuries, the Jagannath Temple in Puri has been a site of numerous inexplicable divine phenomena. These miracles continue to amaze devotees and skeptics alike, standing as testimony to Lord Jagannath's divine presence.",
-    "sectionTitle": "Temple Miracles",
-    "noMiraclesMessage": "No miracles found. Please check back later.",
-    "beliefSection": {
-      "title": "Faith Beyond Understanding",
+  "data": [
+    {
+      "title": "Devotions Page",
+      "slug": "devotions",
+      "description": "Daily devotional readings inspired by Lord Jagannath to encourage your spiritual journey.",
       "content": [
-        "These divine miracles associated with Lord Jagannath challenge our understanding of natural laws. While scientific minds seek explanations, devotees see them as manifestations of the Lord's divine power that transcends human comprehension.",
-        "Whether you approach these phenomena as a believer or a curious observer, they invite us to contemplate the mysteries that exist beyond the realm of ordinary explanation."
-      ]
+        {
+          "__component": "shared.rich-text",
+          "body": "<h1>Daily Devotions</h1><p>Browse through our collection of devotional readings inspired by Lord Jagannath.</p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "Daily Devotions - Jagannath Tales",
+        "metaDescription": "Daily devotional readings inspired by Lord Jagannath to encourage your spiritual journey.",
+        "keywords": "devotions, jagannath, bhakti, spiritual"
+      }
+    },
+    {
+      "title": "Miracles Page",
+      "slug": "miracles",
+      "description": "Explore the inexplicable divine miracles associated with Lord Jagannath's temple in Puri that have amazed devotees for centuries.",
+      "content": [
+        {
+          "__component": "shared.heading",
+          "text": "Divine Miracles of Lord Jagannath",
+          "level": 1
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>For centuries, the Jagannath Temple in Puri has been a site of numerous inexplicable divine phenomena. These miracles continue to amaze devotees and skeptics alike, standing as testimony to Lord Jagannath's divine presence.</p>"
+        },
+        {
+          "__component": "shared.heading",
+          "text": "Temple Miracles",
+          "level": 2
+        },
+        {
+          "__component": "shared.heading",
+          "text": "Faith Beyond Understanding",
+          "level": 2
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>These divine miracles associated with Lord Jagannath challenge our understanding of natural laws. While scientific minds seek explanations, devotees see them as manifestations of the Lord's divine power that transcends human comprehension.</p><p>Whether you approach these phenomena as a believer or a curious observer, they invite us to contemplate the mysteries that exist beyond the realm of ordinary explanation.</p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "Miracles of Lord Jagannath - Divine Phenomena at Puri Temple",
+        "metaDescription": "Explore the inexplicable divine miracles associated with Lord Jagannath's temple in Puri that have amazed devotees for centuries."
+      }
+    },
+    {
+      "title": "Festivals Page",
+      "slug": "festivals",
+      "description": "Explore the vibrant festivals and sacred celebrations associated with Lord Jagannath's temple in Puri that mark the religious calendar throughout the year.",
+      "content": [
+        {
+          "__component": "shared.heading",
+          "text": "Sacred Festivals",
+          "level": 1
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>Discover the vibrant festivals that bring Lord Jagannath's divine presence into the lives of devotees throughout the year.</p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "Festivals of Lord Jagannath - Sacred Celebrations at Puri Temple",
+        "metaDescription": "Explore the vibrant festivals and sacred celebrations associated with Lord Jagannath's temple in Puri that mark the religious calendar throughout the year."
+      }
+    },
+    {
+      "title": "About Jagannath Tales",
+      "slug": "about",
+      "description": "Learn about our mission to preserve and share the divine stories, miracles, and cultural heritage associated with Lord Jagannath's temple in Puri.",
+      "content": [
+        {
+          "__component": "shared.rich-text",
+          "body": "<h1>Welcome to Jagannath Tales</h1><p>A project dedicated to sharing the divine stories of Lord Jagannath from Puri, Odisha, India.</p><p>Lord Jagannath, the \"Lord of the Universe,\" is worshipped in the famous Jagannath Temple in Puri, Odisha. The distinctive wooden idols of Lord Jagannath, his brother Balabhadra, and sister Subhadra are revered by millions of devotees worldwide.</p><p>This website aims to collect and present devotional stories related to Lord Jagannath and his leelas (divine plays) to make these treasures accessible to people across the globe.</p>"
+        },
+        {
+          "__component": "shared.heading",
+          "text": "Our Mission",
+          "level": 2
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>To preserve and promote the rich spiritual heritage associated with Lord Jagannath through storytelling, making these divine tales accessible to devotees.</p>"
+        },
+        {
+          "__component": "shared.heading",
+          "text": "Technical Details",
+          "level": 2
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>This site is built using Next.js with TypeScript and is statically generated. It fetches content from JSON data files.</p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "About Jagannath Tales - Preserving Divine Stories",
+        "metaDescription": "Learn about our mission to preserve and share the divine stories, miracles, and cultural heritage associated with Lord Jagannath's temple in Puri."
+      }
+    },
+    {
+      "title": "Contact Us",
+      "slug": "contact",
+      "description": "Have questions, suggestions, or want to contribute stories? Get in touch with us using the form below.",
+      "content": [
+        {
+          "__component": "shared.heading",
+          "text": "Contact Us",
+          "level": 1
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>Have questions, suggestions, or want to contribute stories? Get in touch with us using the contact information below.</p>"
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<h2>Visit Us</h2><p>Our office is located near the sacred Jagannath Temple in Puri, Odisha, India.</p><h2>Email</h2><p>For general inquiries: <a href=\"mailto:info@jagannath-tales.com\">info@jagannath-tales.com</a></p><p>For content contributions: <a href=\"mailto:stories@jagannath-tales.com\">stories@jagannath-tales.com</a></p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "Contact Us - Jagannath Tales",
+        "metaDescription": "Have questions, suggestions, or want to contribute stories? Get in touch with us using the form below."
+      }
+    },
+    {
+      "title": "Our Authors",
+      "slug": "authors",
+      "description": "Meet the writers who share divine stories and knowledge about Lord Jagannath at Jagannath Tales.",
+      "content": [
+        {
+          "__component": "shared.heading",
+          "text": "Our Authors",
+          "level": 1
+        },
+        {
+          "__component": "shared.rich-text",
+          "body": "<p>Meet the devoted writers who bring Lord Jagannath's divine stories and teachings to life.</p>"
+        }
+      ],
+      "seo": {
+        "metaTitle": "Authors - Jagannath Tales",
+        "metaDescription": "Meet the writers who share divine stories and knowledge about Lord Jagannath at Jagannath Tales."
+      }
     }
-  },
-  "festivals": {
-    "pageTitle": "Festivals of Lord Jagannath - Sacred Celebrations at Puri Temple",
-    "description": "Explore the vibrant festivals and sacred celebrations associated with Lord Jagannath's temple in Puri that mark the religious calendar throughout the year.",
-    "title": "Sacred Festivals",
-    "intro": "Discover the vibrant festivals that bring Lord Jagannath's divine presence into the lives of devotees throughout the year.",
-    "featuredLabel": "Featured Festival",
-    "readMoreLabel": "Read the full story",
-    "allLabel": "All Festivals",
-    "noFestivalsMessage": "No festivals found. Please check back later.",
-    "upcomingTitle": "Upcoming Festivals",
-    "pastTitle": "Past Festivals"
-  },
-  "about": {
-    "title": "About Jagannath Tales - Preserving Divine Stories",
-    "description": "Learn about our mission to preserve and share the divine stories, miracles, and cultural heritage associated with Lord Jagannath's temple in Puri.",
-    "intro": "Welcome to Jagannath Tales, a project dedicated to sharing the divine stories of Lord Jagannath from Puri, Odisha, India.",
-    "about": "<p>Lord Jagannath, the \"Lord of the Universe,\" is worshipped in the famous Jagannath Temple in Puri, Odisha. The distinctive wooden idols of Lord Jagannath, his brother Balabhadra, and sister Subhadra are revered by millions of devotees worldwide.</p><p>This website aims to collect and present devotional stories related to Lord Jagannath and his leelas (divine plays) to make these treasures accessible to people across the globe.</p>",
-    "mission": "Our Mission",
-    "missionText": "To preserve and promote the rich spiritual heritage associated with Lord Jagannath through storytelling, making these divine tales accessible to devotees.",
-    "technologies": "Technical Details",
-    "techText": "This site is built using Next.js with TypeScript and is statically generated. It fetches content from JSON data files."
-  },
-  "contact": {
-    "title": "Contact Us",
-    "description": "Have questions, suggestions, or want to contribute stories? Get in touch with us using the form below.",
-    "name": "Your Name",
-    "email": "Email Address",
-    "subject": "Subject",
-    "message": "Your Message",
-    "submit": "Send Message",
-    "required": "Required",
-    "success": "Thank you for your message! We will get back to you soon."
-  },
-  "errors": {
-    "notFound": {
-      "title": "404 - Page Not Found",
-      "message": "The page you were looking for does not exist.",
-      "homeButton": "Return Home",
-      "aboutButton": "About Us",
-      "footer": "Jagannath Tales - Ancient stories shared with devotion"
-    }
-  },
-  "common": {
-    "readMore": "Read More",
-    "viewAll": "View All",
-    "backToAll": "Back to All",
-    "loading": "Loading...",
-    "noResultsFound": "No results found"
-  }
+  ]
 }

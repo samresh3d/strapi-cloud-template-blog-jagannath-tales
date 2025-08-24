@@ -1,43 +1,22 @@
 {
-  "authors": [
+  "data": [
     {
-      "id": 1,
       "name": "Samresh Pathak",
       "slug": "samresh-pathak",
       "bio": "Engineering Manager & Devotional Writer, passionate about Jagannath stories.",
-      "image": "/images/authors/samresh.jpg",
+      "image": {
+        "name": "samresh.jpg",
+        "alternativeText": "Samresh Pathak",
+        "caption": "Samresh Pathak - Author at Jagannath Tales",
+        "hash": "samresh_jpg",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "url": "/uploads/samresh.jpg"
+      },
       "social": {
         "twitter": "https://twitter.com/xyz",
         "linkedin": "https://linkedin.com/in/xyz"
       }
-    },
-    {
-      "id": 2,
-      "name": "Deepika Sharma",
-      "slug": "deepika-sharma",
-      "bio": "Spiritual writer and researcher with a focus on Jagannath's teachings and miracles.",
-      "image": "/images/authors/deepika.jpg",
-      "social": {
-        "twitter": "https://twitter.com/deepika",
-        "linkedin": "https://linkedin.com/in/deepika"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Rajesh Mishra",
-      "slug": "rajesh-mishra",
-      "bio": "Temple historian and devotee documenting the cultural significance of Lord Jagannath.",
-      "image": "/images/authors/rajesh.jpg",
-      "social": {
-        "twitter": "https://twitter.com/rajesh",
-        "linkedin": "https://linkedin.com/in/rajesh"
-      }
     }
-  ],
-  "pageContent": {
-    "pageTitle": "Authors - Jagannath Tales",
-    "pageDescription": "Meet the writers who share divine stories and knowledge about Lord Jagannath at Jagannath Tales.",
-    "headerTitle": "Our Authors",
-    "headerSubtitle": "Meet the devoted writers who bring Lord Jagannath's divine stories and teachings to life."
-  }
+  ]
 }
