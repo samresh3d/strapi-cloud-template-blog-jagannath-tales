@@ -35,12 +35,6 @@
       "repeatable": false,
       "component": "author.social"
     },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "author"
-    },
     "devotions": {
       "type": "relation",
       "relation": "oneToMany",
