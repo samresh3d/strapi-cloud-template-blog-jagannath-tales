@@ -1,0 +1,135 @@
+{
+  "siteInfo": {
+    "title": "Jagannath Tales",
+    "tagline": "Divine Stories of Lord Jagannath",
+    "description": "Explore the divine tales, miracles, and festivals of Lord Jagannath from the ancient temple city of Puri, Odisha.",
+    "contactEmail": "info@jagannathtales.com",
+    "copyright": "© 2025 Jagannath Tales. All rights reserved."
+  },
+  "navigation": {
+    "main": [
+      {
+        "id": "home",
+        "label": "Home",
+        "path": "/",
+        "ariaLabel": "Go to home page"
+      },
+      {
+        "id": "devotions",
+        "label": "Devotional Stories",
+        "path": "/devotions",
+        "ariaLabel": "Read devotional stories of Lord Jagannath"
+      },
+      {
+        "id": "miracles",
+        "label": "Divine Miracles",
+        "path": "/miracles",
+        "ariaLabel": "Explore miraculous events associated with Lord Jagannath"
+      },
+      {
+        "id": "festivals",
+        "label": "Sacred Festivals",
+        "path": "/festivals",
+        "ariaLabel": "Learn about the festivals celebrated at Jagannath Temple"
+      },
+      {
+        "id": "about",
+        "label": "About",
+        "path": "/about",
+        "ariaLabel": "About Jagannath Tales"
+      },
+      {
+        "id": "contact",
+        "label": "Contact",
+        "path": "/contact",
+        "ariaLabel": "Contact us"
+      }
+    ],
+    "footer": [
+      {
+        "id": "privacy",
+        "label": "Privacy Policy",
+        "path": "/privacy",
+        "ariaLabel": "Read our privacy policy"
+      },
+      {
+        "id": "terms",
+        "label": "Terms of Use",
+        "path": "/terms",
+        "ariaLabel": "Read our terms of use"
+      },
+      {
+        "id": "sitemap",
+        "label": "Sitemap",
+        "path": "/sitemap.xml",
+        "ariaLabel": "View site map"
+      }
+    ]
+  },
+  "socialLinks": [
+    {
+      "id": "twitter",
+      "label": "Twitter",
+      "url": "https://twitter.com/jagannathtales",
+      "icon": "twitter"
+    },
+    {
+      "id": "facebook",
+      "label": "Facebook",
+      "url": "https://facebook.com/jagannathtales",
+      "icon": "facebook"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "url": "https://instagram.com/jagannathtales",
+      "icon": "instagram"
+    },
+    {
+      "id": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/jagannathtales",
+      "icon": "youtube"
+    }
+  ],
+  "subscriptionForm": {
+    "title": "Join Our Newsletter",
+    "description": "Receive updates on new stories, upcoming festivals, and exclusive content.",
+    "buttonText": "Subscribe",
+    "placeholderText": "Your email address",
+    "successMessage": "Thank you for subscribing! Please check your email to confirm.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "callToAction": {
+    "primary": {
+      "text": "Explore Stories",
+      "path": "/devotions"
+    },
+    "secondary": {
+      "text": "Learn About Festivals",
+      "path": "/festivals"
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "flag": "🇬🇧"
+    },
+    {
+      "code": "hi",
+      "name": "हिन्दी (Hindi)",
+      "flag": "🇮🇳"
+    },
+    {
+      "code": "or",
+      "name": "ଓଡ଼ିଆ (Odia)",
+      "flag": "🇮🇳"
+    }
+  ],
+  "scriptureOfDay": {
+    "text": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत। अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥",
+    "reference": "Bhagavad Gita 4.7",
+    "translation": "Whenever there is a decline in righteousness and an increase in unrighteousness, at that time I manifest myself."
+  }
+}

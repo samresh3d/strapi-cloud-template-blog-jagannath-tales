@@ -1,0 +1,303 @@
+{
+  "festivals": [
+    {
+      "id": "rath-yatra",
+      "slug": "rath-yatra",
+      "title": "Rath Yatra: The Chariot Festival",
+      "description": "The grandest and most significant festival of Lord Jagannath, where the deities travel to their aunt's temple in massive wooden chariots.",
+      "monthCelebrated": "June-July (Ashadha)",
+      "duration": "9 days",
+      "significance": "Commemorates Lord Jagannath's annual visit to Gundicha Temple, considered his birthplace.",
+      "author": "Jagannath Tales Team",
+      "authorId": 2,
+      "publishedDate": "2023-07-01",
+      "updatedDate": "2023-07-10",
+      "readingTime": "12 min",
+      "featured": true,
+      "featuredImage": "/images/festivals/rath-yatra/featured.png",
+      "imageAlt": "Massive chariots of Lord Jagannath, Lord Balabhadra, and Goddess Subhadra during Rath Yatra",
+      "tags": ["chariot festival", "rath yatra", "puri", "major festival"],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Rath Yatra, also known as the Chariot Festival, is the most significant and elaborate festival associated with Lord Jagannath. This grand event takes place in the Hindu month of Ashadha (June-July) and attracts millions of devotees from across the globe."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Three Majestic Chariots"
+        },
+        {
+          "type": "paragraph",
+          "text": "The festival centers around three enormous wooden chariots that carry Lord Jagannath, Lord Balabhadra, and Goddess Subhadra from the main temple to the Gundicha Temple, about two kilometers away. Each chariot is meticulously crafted anew every year, following ancient architectural principles."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Nandighosha: Lord Jagannath's chariot, has 16 wheels and stands 45 feet tall",
+            "Taladhwaja: Lord Balabhadra's chariot, has 14 wheels and stands 44 feet tall",
+            "Darpadalana: Goddess Subhadra's chariot, has 12 wheels and stands 43 feet tall"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/images/festivals/rath-yatra/three-chariots.png",
+          "alt": "The three chariots of the Holy Trinity",
+          "caption": "The three chariots standing majestically before the beginning of the journey"
+        },
+        {
+          "type": "paragraph",
+          "text": "The chariots are pulled by thousands of devotees using thick ropes, a service considered highly auspicious. It is believed that pulling the chariot rope grants one freedom from the cycle of birth and death."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Spiritual Significance"
+        },
+        {
+          "type": "paragraph",
+          "text": "The journey of the deities from the main temple to the Gundicha Temple symbolizes Lord Jagannath's visit to his birthplace and his aunt's house. The return journey, known as Bahuda Yatra, takes place on the ninth day."
+        },
+        {
+          "type": "quote",
+          "text": "In this cosmic play, Lord Jagannath makes himself accessible to all, regardless of caste, creed, or religion. Even those who cannot enter the temple can have darshan of the Lord during this festival.",
+          "source": "Ancient Scriptures"
+        },
+        {
+          "type": "paragraph",
+          "text": "On a deeper philosophical level, the journey represents the soul's quest to return to its spiritual source, leaving behind the material temple (body) and traveling to the spiritual abode."
+        }
+      ],
+      "rituals": [
+        {
+          "name": "Snana Purnima",
+          "description": "The bathing ceremony that takes place 15 days before Rath Yatra"
+        },
+        {
+          "name": "Pahandi",
+          "description": "The ceremonial procession where deities are carried to their chariots"
+        },
+        {
+          "name": "Chhera Pahara",
+          "description": "The sweeping of the chariot platforms by the Gajapati King of Puri"
+        },
+        {
+          "name": "Bahuda Yatra",
+          "description": "The return journey to the main temple after 9 days"
+        },
+        {
+          "name": "Suna Besha",
+          "description": "The gold adornment ceremony on the chariots during return journey"
+        }
+      ],
+      "upcomingDates": [
+        {
+          "year": 2024,
+          "date": "July 7"
+        },
+        {
+          "year": 2025,
+          "date": "June 27"
+        },
+        {
+          "year": 2026,
+          "date": "July 16"
+        }
+      ],
+      "relatedStories": ["snana-purnima", "chandan-yatra", "netrotsava"]
+    },
+    {
+      "id": "snana-purnima",
+      "slug": "snana-purnima",
+      "title": "Snana Purnima: The Sacred Bath",
+      "description": "The ceremonial bathing festival of Lord Jagannath that precedes the grand Rath Yatra.",
+      "monthCelebrated": "May-June (Jyeshtha)",
+      "duration": "1 day",
+      "significance": "Commemorates the appearance day of Lord Jagannath and prepares the deities for Rath Yatra.",
+      "author": "Jagannath Tales Team",
+      "publishedDate": "2023-06-05",
+      "updatedDate": null,
+      "readingTime": "8 min",
+      "featured": false,
+      "featuredImage": "/images/festivals/snana-purnima/featured.png",
+      "imageAlt": "Deities receiving ceremonial bath during Snana Purnima",
+      "tags": ["bathing festival", "snana purnima", "pre-rath yatra", "full moon"],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Snana Purnima, observed on the full moon day of the Hindu month of Jyeshtha (May-June), is an important ritual that marks the preparation for the grand Rath Yatra festival. On this sacred day, the deities of Lord Jagannath, Lord Balabhadra, and Goddess Subhadra are ceremonially bathed with 108 pitchers of perfumed water."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the only day in the year when devotees can see the deities outside the sanctum sanctorum, as they are placed on a special bathing platform called the Snana Mandap, visible to the public."
+        }
+      ],
+      "rituals": [
+        {
+          "name": "Pahandi",
+          "description": "The ceremonial procession to bring deities to the bathing platform"
+        },
+        {
+          "name": "Jalabhisheka",
+          "description": "The ritual bathing with 108 pitchers of sacred water"
+        },
+        {
+          "name": "Hati Besha",
+          "description": "The elephant attire adorned by the deities after the bath"
+        }
+      ],
+      "upcomingDates": [
+        {
+          "year": 2024,
+          "date": "June 22"
+        },
+        {
+          "year": 2025,
+          "date": "June 11"
+        }
+      ],
+      "relatedStories": ["rath-yatra", "chandan-yatra"]
+    },
+    {
+      "id": "chandan-yatra",
+      "slug": "chandan-yatra",
+      "title": "Chandan Yatra: The Sandalwood Festival",
+      "description": "The longest festival in the Jagannath Temple calendar, celebrating the cooling and fragrant properties of sandalwood in the summer heat.",
+      "monthCelebrated": "April-May (Vaishakha)",
+      "duration": "21 days",
+      "significance": "Provides relief to the deities during summer through the cooling properties of sandalwood paste.",
+      "author": "Jagannath Tales Team",
+      "publishedDate": "2023-05-10",
+      "updatedDate": "2023-05-15",
+      "readingTime": "9 min",
+      "featured": false,
+      "featuredImage": "/images/festivals/chandan-yatra/featured.png",
+      "imageAlt": "Representative deities being rowed in boats during Chandan Yatra",
+      "tags": ["sandalwood festival", "boat festival", "summer festival", "water ritual"],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Chandan Yatra, the Sandalwood Festival, is the longest festival celebrated in the Jagannath Temple tradition, lasting for 21 consecutive days. Beginning on the auspicious day of Akshaya Tritiya in the month of Vaishakha (April-May), this festival provides a cooling respite during the peak of summer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Unlike other festivals where the main deities participate, in Chandan Yatra, representative deities known as Madana Mohana and Rama-Krishna are taken out in ceremonial procession."
+        }
+      ],
+      "rituals": [
+        {
+          "name": "Bahara Chandan",
+          "description": "The outer sandalwood ritual lasting for the first 21 days"
+        },
+        {
+          "name": "Bhitara Chandan",
+          "description": "The inner sandalwood ritual performed during the final 8 days"
+        },
+        {
+          "name": "Nava Youvana Darshana",
+          "description": "Special viewing of the deities at the conclusion of the festival"
+        }
+      ],
+      "upcomingDates": [
+        {
+          "year": 2024,
+          "date": "May 10 - May 30"
+        },
+        {
+          "year": 2025,
+          "date": "April 30 - May 20"
+        }
+      ],
+      "relatedStories": ["rath-yatra", "snana-purnima"]
+    }
+  ],
+  "festivalCalendar": [
+    {
+      "month": "January-February (Magha)",
+      "festivals": [
+        {
+          "name": "Makara Sankranti",
+          "description": "Harvest festival with special offerings to the deities"
+        },
+        {
+          "name": "Sripanchami",
+          "description": "Celebration of Goddess Saraswati within the temple"
+        }
+      ]
+    },
+    {
+      "month": "February-March (Phalguna)",
+      "festivals": [
+        {
+          "name": "Dola Purnima",
+          "description": "Swing festival of Lord Jagannath"
+        },
+        {
+          "name": "Holi",
+          "description": "Festival of colors celebrated with special rituals"
+        }
+      ]
+    },
+    {
+      "month": "April-May (Vaishakha)",
+      "festivals": [
+        {
+          "id": "chandan-yatra",
+          "name": "Chandan Yatra",
+          "description": "21-day sandalwood festival"
+        },
+        {
+          "name": "Akshaya Tritiya",
+          "description": "Beginning of chariot construction for Rath Yatra"
+        }
+      ]
+    },
+    {
+      "month": "May-June (Jyeshtha)",
+      "festivals": [
+        {
+          "id": "snana-purnima",
+          "name": "Snana Purnima",
+          "description": "Ceremonial bathing of the deities"
+        },
+        {
+          "id": "netrotsava",
+          "name": "Netrotsava",
+          "description": "Opening of the eyes of the deities after isolation"
+        }
+      ]
+    },
+    {
+      "month": "June-July (Ashadha)",
+      "festivals": [
+        {
+          "id": "rath-yatra",
+          "name": "Rath Yatra",
+          "description": "The grand chariot festival"
+        },
+        {
+          "name": "Bahuda Yatra",
+          "description": "Return journey of the deities"
+        },
+        {
+          "name": "Suna Besha",
+          "description": "Golden attire of the deities"
+        }
+      ]
+    },
+    {
+      "month": "December (Margashirsha)",
+      "festivals": [
+        {
+          "name": "Dhanu Sankranti",
+          "description": "Winter solstice celebrations"
+        },
+        {
+          "name": "Prathamastami",
+          "description": "Celebration for firstborn children"
+        }
+      ]
+    }
+  ],
+  "featuredFestivals": ["rath-yatra", "chandan-yatra"]
+}
