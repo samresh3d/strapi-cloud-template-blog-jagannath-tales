@@ -11,6 +11,7 @@
     "develop": "strapi develop",
     "dev": "npm run clean && npm run develop",
     "seed:example": "node ./scripts/seed.js",
+    "seed:import": "node ./config/scripts/import-data.js",
     "start": "strapi start",
     "strapi": "strapi"
   },
