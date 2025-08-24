@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * festival-calendar router
+ * content router
  * @typedef {import('@strapi/strapi').factories}
  */
 
 // @ts-ignore
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::festival-calendar.festival-calendar');
+module.exports = createCoreRouter('api::content.content');
