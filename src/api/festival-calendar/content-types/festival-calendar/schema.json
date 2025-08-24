@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "festival_calendars",
+  "info": {
+    "singularName": "festival-calendar",
+    "pluralName": "festival-calendars",
+    "displayName": "Festival Calendar",
+    "description": "Annual calendar of festivals"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "seasons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "festival.calendar-season"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

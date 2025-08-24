@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_site_social_links",
+  "info": {
+    "displayName": "Social Link",
+    "description": "Social media links for the site"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}

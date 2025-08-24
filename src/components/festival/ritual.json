@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_festival_rituals",
+  "info": {
+    "displayName": "Ritual",
+    "description": "Festival ritual details"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

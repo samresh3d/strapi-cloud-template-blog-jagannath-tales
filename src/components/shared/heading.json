@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_headings",
+  "info": {
+    "displayName": "Heading",
+    "description": "Section headings for content"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 6,
+      "default": 2
+    }
+  }
+}

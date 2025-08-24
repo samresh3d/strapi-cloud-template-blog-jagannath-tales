@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_festival_calendar_seasons",
+  "info": {
+    "displayName": "Calendar Season",
+    "description": "Season/month for festival calendar"
+  },
+  "options": {},
+  "attributes": {
+    "month": {
+      "type": "string",
+      "required": true
+    },
+    "festivals": {
+      "type": "json"
+    }
+  }
+}

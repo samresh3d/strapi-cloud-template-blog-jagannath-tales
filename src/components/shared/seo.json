@@ -3,8 +3,8 @@
   "info": {
     "name": "Seo",
     "icon": "allergies",
-    "displayName": "Seo",
-    "description": ""
+    "displayName": "SEO",
+    "description": "SEO metadata for content"
   },
   "options": {},
   "attributes": {
@@ -16,11 +16,17 @@
       "type": "text",
       "required": true
     },
-    "shareImage": {
+    "metaImage": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "canonicalURL": {
+      "type": "string"
     }
   }
 }

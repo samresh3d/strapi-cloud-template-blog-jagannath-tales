@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "description": "Basic paragraph of text"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

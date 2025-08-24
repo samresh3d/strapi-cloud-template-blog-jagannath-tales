@@ -3,12 +3,13 @@
   "info": {
     "displayName": "Rich text",
     "icon": "align-justify",
-    "description": ""
+    "description": "Rich text content with formatting"
   },
   "options": {},
   "attributes": {
-    "body": {
-      "type": "richtext"
+    "content": {
+      "type": "richtext",
+      "required": true
     }
   }
 }

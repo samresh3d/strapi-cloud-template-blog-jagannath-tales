@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_author_socials",
+  "info": {
+    "displayName": "Social Links",
+    "description": "Author's social media links"
+  },
+  "options": {},
+  "attributes": {
+    "twitter": {
+      "type": "string",
+      "regex": "^(https?:\\/\\/)?(www\\.)?twitter\\.com\\/.*$"
+    },
+    "linkedin": {
+      "type": "string",
+      "regex": "^(https?:\\/\\/)?(www\\.)?linkedin\\.com\\/.*$"
+    }
+  }
+}

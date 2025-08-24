@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_site_subscription_forms",
+  "info": {
+    "displayName": "Subscription Form",
+    "description": "Newsletter subscription form configuration"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_lists",
+  "info": {
+    "displayName": "List",
+    "description": "Bulleted or numbered list"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "json",
+      "required": true
+    },
+    "listType": {
+      "type": "enumeration",
+      "enum": [
+        "bullet",
+        "number"
+      ],
+      "default": "bullet"
+    }
+  }
+}

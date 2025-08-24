@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_images",
+  "info": {
+    "displayName": "Image",
+    "description": "Image with caption for content"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_festival_upcoming_dates",
+  "info": {
+    "displayName": "Upcoming Date",
+    "description": "Upcoming dates for festivals"
+  },
+  "options": {},
+  "attributes": {
+    "year": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

@@ -1,53 +1,97 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
+export interface AuthorSocial extends Struct.ComponentSchema {
+  collectionName: 'components_author_socials';
   info: {
-    displayName: 'Slider';
-    icon: 'address-book';
-    description: '';
+    description: "Author's social media links";
+    displayName: 'Social Links';
   };
   attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    linkedin: Schema.Attribute.String;
+    twitter: Schema.Attribute.String;
   };
 }
 
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_seos';
+export interface FestivalCalendarSeason extends Struct.ComponentSchema {
+  collectionName: 'components_festival_calendar_seasons';
   info: {
-    name: 'Seo';
-    icon: 'allergies';
-    displayName: 'Seo';
-    description: '';
+    description: 'Season/month for festival calendar';
+    displayName: 'Calendar Season';
   };
   attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
+    festivals: Schema.Attribute.JSON;
+    month: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SharedRichText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_rich_texts';
+export interface FestivalRitual extends Struct.ComponentSchema {
+  collectionName: 'components_festival_rituals';
   info: {
-    displayName: 'Rich text';
-    icon: 'align-justify';
-    description: '';
+    description: 'Festival ritual details';
+    displayName: 'Ritual';
   };
   attributes: {
-    body: Schema.Attribute.RichText;
+    description: Schema.Attribute.Text;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
+export interface FestivalUpcomingDate extends Struct.ComponentSchema {
+  collectionName: 'components_festival_upcoming_dates';
   info: {
-    displayName: 'Quote';
-    icon: 'indent';
+    description: 'Upcoming dates for festivals';
+    displayName: 'Upcoming Date';
   };
   attributes: {
-    title: Schema.Attribute.String;
-    body: Schema.Attribute.Text;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    year: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedHeading extends Struct.ComponentSchema {
+  collectionName: 'components_shared_headings';
+  info: {
+    description: 'Section headings for content';
+    displayName: 'Heading';
+  };
+  attributes: {
+    level: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<2>;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedImage extends Struct.ComponentSchema {
+  collectionName: 'components_shared_images';
+  info: {
+    description: 'Image with caption for content';
+    displayName: 'Image';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_lists';
+  info: {
+    description: 'Bulleted or numbered list';
+    displayName: 'List';
+  };
+  attributes: {
+    items: Schema.Attribute.JSON & Schema.Attribute.Required;
+    listType: Schema.Attribute.Enumeration<['bullet', 'number']> &
+      Schema.Attribute.DefaultTo<'bullet'>;
   };
 }
 
@@ -62,14 +106,176 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedParagraph extends Struct.ComponentSchema {
+  collectionName: 'components_shared_paragraphs';
+  info: {
+    description: 'Basic paragraph of text';
+    displayName: 'Paragraph';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedQuote extends Struct.ComponentSchema {
+  collectionName: 'components_shared_quotes';
+  info: {
+    description: 'Blockquote for content';
+    displayName: 'Quote';
+    icon: 'indent';
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    source: Schema.Attribute.String;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedRichText extends Struct.ComponentSchema {
+  collectionName: 'components_shared_rich_texts';
+  info: {
+    description: 'Rich text content with formatting';
+    displayName: 'Rich text';
+    icon: 'align-justify';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
+  info: {
+    description: 'SEO metadata for content';
+    displayName: 'SEO';
+    icon: 'allergies';
+    name: 'Seo';
+  };
+  attributes: {
+    canonicalURL: Schema.Attribute.String;
+    keywords: Schema.Attribute.Text;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaImage: Schema.Attribute.Media<'images'>;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedSlider extends Struct.ComponentSchema {
+  collectionName: 'components_shared_sliders';
+  info: {
+    description: '';
+    displayName: 'Slider';
+    icon: 'address-book';
+  };
+  attributes: {
+    files: Schema.Attribute.Media<'images', true>;
+  };
+}
+
+export interface SiteLanguage extends Struct.ComponentSchema {
+  collectionName: 'components_site_languages';
+  info: {
+    description: 'Language option for the site';
+    displayName: 'Language';
+  };
+  attributes: {
+    code: Schema.Attribute.String & Schema.Attribute.Required;
+    flag: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SiteNavigationLink extends Struct.ComponentSchema {
+  collectionName: 'components_site_navigation_links';
+  info: {
+    description: 'Links for site navigation';
+    displayName: 'Navigation Link';
+  };
+  attributes: {
+    ariaLabel: Schema.Attribute.String;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SiteScripture extends Struct.ComponentSchema {
+  collectionName: 'components_site_scriptures';
+  info: {
+    description: 'Scripture of the day configuration';
+    displayName: 'Scripture';
+  };
+  attributes: {
+    reference: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+    translation: Schema.Attribute.String;
+  };
+}
+
+export interface SiteSiteInfo extends Struct.ComponentSchema {
+  collectionName: 'components_site_site_infos';
+  info: {
+    description: 'General site information';
+    displayName: 'Site Info';
+  };
+  attributes: {
+    contactEmail: Schema.Attribute.Email;
+    copyright: Schema.Attribute.String;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    tagline: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SiteSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_site_social_links';
+  info: {
+    description: 'Social media links for the site';
+    displayName: 'Social Link';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SiteSubscriptionForm extends Struct.ComponentSchema {
+  collectionName: 'components_site_subscription_forms';
+  info: {
+    description: 'Newsletter subscription form configuration';
+    displayName: 'Subscription Form';
+  };
+  attributes: {
+    buttonText: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    placeholder: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.slider': SharedSlider;
-      'shared.seo': SharedSeo;
-      'shared.rich-text': SharedRichText;
-      'shared.quote': SharedQuote;
+      'author.social': AuthorSocial;
+      'festival.calendar-season': FestivalCalendarSeason;
+      'festival.ritual': FestivalRitual;
+      'festival.upcoming-date': FestivalUpcomingDate;
+      'shared.heading': SharedHeading;
+      'shared.image': SharedImage;
+      'shared.list': SharedList;
       'shared.media': SharedMedia;
+      'shared.paragraph': SharedParagraph;
+      'shared.quote': SharedQuote;
+      'shared.rich-text': SharedRichText;
+      'shared.seo': SharedSeo;
+      'shared.slider': SharedSlider;
+      'site.language': SiteLanguage;
+      'site.navigation-link': SiteNavigationLink;
+      'site.scripture': SiteScripture;
+      'site.site-info': SiteSiteInfo;
+      'site.social-link': SiteSocialLink;
+      'site.subscription-form': SiteSubscriptionForm;
     }
   }
 }

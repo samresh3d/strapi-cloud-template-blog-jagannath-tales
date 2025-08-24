@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_site_scriptures",
+  "info": {
+    "displayName": "Scripture",
+    "description": "Scripture of the day configuration"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "reference": {
+      "type": "string",
+      "required": true
+    },
+    "translation": {
+      "type": "string"
+    }
+  }
+}

@@ -5,29 +5,58 @@
     "singularName": "author",
     "pluralName": "authors",
     "displayName": "Author",
-    "description": "Create authors for your content"
+    "description": "Authors who write content for the site"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "avatar": {
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "bio": {
+      "type": "text"
+    },
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "allowedTypes": ["images"]
     },
-    "email": {
-      "type": "string"
+    "social": {
+      "type": "component",
+      "repeatable": false,
+      "component": "author.social"
     },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article.article",
+      "mappedBy": "author"
+    },
+    "devotions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::devotion.devotion",
+      "mappedBy": "author"
+    },
+    "miracles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::miracle.miracle",
+      "mappedBy": "author"
+    },
+    "festivals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::festival.festival",
       "mappedBy": "author"
     }
   }

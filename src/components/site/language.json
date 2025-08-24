@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_site_languages",
+  "info": {
+    "displayName": "Language",
+    "description": "Language option for the site"
+  },
+  "options": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "flag": {
+      "type": "string"
+    }
+  }
+}

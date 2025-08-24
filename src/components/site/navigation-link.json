@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_site_navigation_links",
+  "info": {
+    "displayName": "Navigation Link",
+    "description": "Links for site navigation"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "ariaLabel": {
+      "type": "string"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
