@@ -5,8 +5,11 @@
   "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
+    "clean:dev": "rimraf .cache .strapi build data.db",
+    "clean": "rimraf .cache .strapi build",
     "deploy": "strapi deploy",
     "develop": "strapi develop",
+    "dev": "npm run clean && npm run develop",
     "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi"
@@ -23,7 +26,9 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
