@@ -436,40 +436,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactMessageContactMessage
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'contact_messages';
-  info: {
-    description: 'Messages submitted via the contact form';
-    displayName: 'Contact Message';
-    pluralName: 'contact-messages';
-    singularName: 'contact-message';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    isRead: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-message.contact-message'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    subject: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiContentContent extends Struct.CollectionTypeSchema {
   collectionName: 'contents';
   info: {
@@ -1351,7 +1317,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::author.author': ApiAuthorAuthor;
-      'api::contact-message.contact-message': ApiContactMessageContactMessage;
       'api::content.content': ApiContentContent;
       'api::devotion.devotion': ApiDevotionDevotion;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
