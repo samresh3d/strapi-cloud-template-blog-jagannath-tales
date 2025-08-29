@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_story_quotes",
+  "info": {
+    "displayName": "Quote",
+    "icon": "quote-left"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "type": "string"
+    }
+  }
+}

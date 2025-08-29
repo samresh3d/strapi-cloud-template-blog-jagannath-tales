@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_story_rich_texts",
+  "info": {
+    "displayName": "RichText",
+    "icon": "file-alt"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

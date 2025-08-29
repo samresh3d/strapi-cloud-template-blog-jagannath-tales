@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_story_headings",
+  "info": {
+    "displayName": "Heading",
+    "icon": "heading"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "1",
+        "2",
+        "3"
+      ],
+      "default": "2",
+      "required": true
+    }
+  }
+}

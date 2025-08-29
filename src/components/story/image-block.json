@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_story_image_blocks",
+  "info": {
+    "displayName": "ImageBlock",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "caption": {
+      "type": "text"
+    }
+  }
+}
