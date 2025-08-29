@@ -254,6 +254,66 @@ export interface SiteSubscriptionForm extends Struct.ComponentSchema {
   };
 }
 
+export interface StoryHeading extends Struct.ComponentSchema {
+  collectionName: 'components_story_headings';
+  info: {
+    displayName: 'Heading';
+    icon: 'heading';
+  };
+  attributes: {
+    level: Schema.Attribute.Enumeration<['1', '2', '3']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'2'>;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface StoryImageBlock extends Struct.ComponentSchema {
+  collectionName: 'components_story_image_blocks';
+  info: {
+    displayName: 'ImageBlock';
+    icon: 'image';
+  };
+  attributes: {
+    caption: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
+export interface StoryParagraph extends Struct.ComponentSchema {
+  collectionName: 'components_story_paragraphs';
+  info: {
+    displayName: 'Paragraph';
+    icon: 'align-justify';
+  };
+  attributes: {
+    text: Schema.Attribute.RichText;
+  };
+}
+
+export interface StoryQuote extends Struct.ComponentSchema {
+  collectionName: 'components_story_quotes';
+  info: {
+    displayName: 'Quote';
+    icon: 'quote-left';
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface StoryRichText extends Struct.ComponentSchema {
+  collectionName: 'components_story_rich_texts';
+  info: {
+    displayName: 'RichText';
+    icon: 'file-alt';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -276,6 +336,11 @@ declare module '@strapi/strapi' {
       'site.site-info': SiteSiteInfo;
       'site.social-link': SiteSocialLink;
       'site.subscription-form': SiteSubscriptionForm;
+      'story.heading': StoryHeading;
+      'story.image-block': StoryImageBlock;
+      'story.paragraph': StoryParagraph;
+      'story.quote': StoryQuote;
+      'story.rich-text': StoryRichText;
     }
   }
 }
