@@ -15,12 +15,14 @@
     "convert-data": "node ./scripts/convert-data.js",
     "convert-unified": "node ./scripts/convert-to-unified.js",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "seed": "node database/seeders/seedData.js"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.15.0",
     "@strapi/plugin-users-permissions": "5.15.0",
     "@strapi/strapi": "5.15.0",
+    "axios": "^1.11.0",
     "better-sqlite3": "11.3.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",

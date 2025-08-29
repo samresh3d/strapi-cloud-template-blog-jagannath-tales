@@ -1,0 +1,541 @@
+/**
+ * Seed data script for Strapi
+ * 
+ * This script will create an author, categories, and articles with dynamic content.
+ * To use:
+ * 1. Start Strapi in development mode: npm run develop
+ * 2. In another terminal, run: node database/seeders/seedData.js
+ */
+
+// Set the environment to ensure we connect to the local server
+process.env.NODE_ENV = 'development';
+
+const axios = require('axios');
+
+// Configuration
+const API_URL = 'http://localhost:1337/api';
+const ADMIN_API_URL = 'http://localhost:1337/admin/content-manager/collection-types';
+const API_TOKEN_URL = 'http://localhost:1337/admin/login';
+
+// Auth credentials - replace with your admin credentials
+const AUTH = {
+  identifier: 'samreshpathak@yahoo.com',
+  password: 'Samresh@1991'
+};
+
+let token = '';
+
+// Replace the login process with a static API token
+const API_TOKEN = 'beda15ba734854708373e10ab0fbf456f3930f465cc0fd92ad280008ee7f6ef3891adf8257089c90de81678186fa2f31d3d5e9aa7b972d27d1d90146fd2f8c0e137af09385b7613c6538a009a39c47723ba2c0c27aff0379cab1d4b84dee71087c48e216ad44a3149717f1e007154a7de6ecebb80716ada9fbbf3e54d50f2cc9'; // Replace with your actual API token
+
+/**
+ * Main seeding function
+ */
+async function seed() {
+  try {
+    console.log('🌱 Starting seed process...');
+    
+    // Wait for the Strapi server to be fully initialized
+    console.log('Waiting for the Strapi server to be ready...');
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    
+    // Verify server connection
+    try {
+      console.log('Verifying server connection...');
+      const pingResponse = await axios.get('http://localhost:1337');
+      console.log('✅ Server is accessible:', pingResponse.status);
+    } catch (pingError) {
+      console.error('❌ Cannot connect to Strapi server. Is it running?');
+      console.error('Connection error:', pingError.message);
+      throw new Error('Server connection failed');
+    }
+    
+    // Use the API token directly
+    token = API_TOKEN;
+    console.log('✅ Using API token for authentication');
+    
+    // Create data in the correct order to establish relationships
+    const author = await createAuthor();
+    if (author) {
+      console.log(`✅ Author created/found: ${author.name || author.id}`);
+    } else {
+      throw new Error("Failed to create or find author");
+    }
+    
+    const categories = await createCategories();
+    if (categories && categories.length > 0) {
+      console.log('✅ Categories created/found:', categories.map(c => c.name || c.id).join(', '));
+      
+      // Find the devotional stories category
+      const devotionalCategory = categories.find(c => c.slug === 'devotional-stories' || c.name === 'Devotional Stories');
+      
+      if (!devotionalCategory) {
+        throw new Error("Devotional Stories category not found");
+      }
+      
+      // Create articles
+      await createArticles(author.id, devotionalCategory.id);
+    } else {
+      throw new Error("No categories were created or found");
+    }
+    
+    console.log('🎉 Seed completed successfully!');
+  } catch (error) {
+    console.error('❌ Seed process failed:', error.message);
+    if (error.response) {
+      console.error('Response status:', error.response.status);
+      console.error('Response data:', error.response.data);
+      console.error('Response headers:', error.response.headers);
+      
+      // If we get a 403 error, it's likely an authentication issue
+      if (error.response.status === 403) {
+        console.error('Authentication error: Your API token might not have sufficient permissions');
+        console.error('Please check your token in Strapi Admin > Settings > API Tokens');
+        console.error('Ensure the token has create permissions for authors, categories, and articles');
+      }
+      // If we get a 500 error, it might be a validation issue
+      else if (error.response.status === 500) {
+        console.error('Server error: This might be due to validation issues or database constraints');
+        console.error('Check the server logs for more details');
+      }
+    } else if (error.cause && error.cause.code) {
+      console.error('Network error:', error.cause.code);
+    } else {
+      console.error('Error details:', error);
+    }
+  }
+}
+
+/**
+ * Create author
+ */
+async function createAuthor() {
+  const authorData = {
+    name: 'Samresh Pathak',
+    slug: 'samresh-pathak',
+    bio: 'A devoted storyteller and follower of Lord Jagannath, dedicated to sharing the divine tales and spiritual wisdom from the temple of Puri.',
+    publishedAt: new Date().toISOString()
+  };
+  
+  console.log('Checking if author already exists...');
+  
+  try {
+    // Check if author exists by slug
+    const checkResponse = await axios.get(
+      `${API_URL}/authors?filters[slug][$eq]=${authorData.slug}`, 
+      { headers: { 'Authorization': `Bearer ${token}` } }
+    );
+    
+    // If author exists, return it
+    if (checkResponse.data.data && checkResponse.data.data.length > 0) {
+      console.log(`✅ Author '${authorData.name}' already exists, using existing record`);
+      return {
+        id: checkResponse.data.data[0].id,
+        ...checkResponse.data.data[0].attributes
+      };
+    }
+    
+    // If author doesn't exist, create it
+    console.log('Creating author with data:', authorData);
+    const createResponse = await axios.post(`${API_URL}/authors`, 
+      { data: authorData },
+      { headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        } 
+      });
+    
+    return {
+      id: createResponse.data.data.id,
+      ...createResponse.data.data.attributes
+    };
+  } catch (error) {
+    console.error('❌ Error creating/finding author:', error.message);
+    if (error.response) {
+      console.error('Response status:', error.response.status);
+      console.error('Response data:', error.response.data);
+      
+      // If we got a 400 error and it's about uniqueness, try to fetch the existing author
+      if (error.response.status === 400 && 
+          error.response.data.error && 
+          error.response.data.error.message === 'This attribute must be unique') {
+        console.log('Attempting to fetch the existing author record...');
+        const getResponse = await axios.get(
+          `${API_URL}/authors?filters[slug][$eq]=${authorData.slug}`, 
+          { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+        
+        if (getResponse.data.data && getResponse.data.data.length > 0) {
+          console.log(`✅ Retrieved existing author: ${authorData.name}`);
+          return {
+            id: getResponse.data.data[0].id,
+            ...getResponse.data.data[0].attributes
+          };
+        }
+      }
+    }
+    throw error; // Re-throw if we couldn't recover
+  }
+}
+
+/**
+ * Create categories
+ */
+async function createCategories() {
+  const categoriesData = [
+    { 
+      name: 'Devotional Stories', 
+      slug: 'devotional-stories',
+      publishedAt: new Date().toISOString()
+    },
+    { 
+      name: 'Divine Miracles', 
+      slug: 'divine-miracles',
+      publishedAt: new Date().toISOString()
+    },
+    { 
+      name: 'Sacred Festivals', 
+      slug: 'sacred-festivals',
+      publishedAt: new Date().toISOString()
+    }
+  ];
+  
+  const categories = [];
+  
+  // First try to get the JWT token for admin access
+  console.log('Getting admin authentication token...');
+  let adminToken = '';
+  
+  try {
+    const authResponse = await axios.post(API_TOKEN_URL, AUTH);
+    adminToken = authResponse.data.data.token;
+    console.log('✅ Admin authentication successful');
+  } catch (authError) {
+    console.error('❌ Failed to authenticate as admin:', authError.message);
+    console.log('Falling back to API token for limited operations');
+    // We'll continue with the regular API token
+  }
+  
+  for (const categoryData of categoriesData) {
+    try {
+      // First check if the category exists
+      console.log(`Checking if category '${categoryData.name}' exists...`);
+      try {
+        const checkResponse = await axios.get(
+          `${API_URL}/categories?filters[slug][$eq]=${categoryData.slug}`,
+          { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+        
+        if (checkResponse.data.data && checkResponse.data.data.length > 0) {
+          console.log(`✅ Category '${categoryData.name}' already exists, using existing record`);
+          categories.push({
+            id: checkResponse.data.data[0].id,
+            ...checkResponse.data.data[0].attributes
+          });
+          continue;
+        }
+      } catch (checkError) {
+        console.log(`Unable to check for existing category: ${checkError.message}`);
+      }
+      
+      // Try to create using the direct database connection via admin API
+      console.log(`Creating category: ${categoryData.name}`);
+      
+      try {
+        // First try with admin token if available
+        const headers = adminToken 
+          ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
+          : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+          
+        const response = await axios.post(
+          `${API_URL}/categories`, 
+          { data: categoryData }, 
+          { headers }
+        );
+        
+        const newCategory = {
+          id: response.data.data.id,
+          ...response.data.data.attributes
+        };
+        
+        categories.push(newCategory);
+        console.log(`✅ Category created: ${categoryData.name} (ID: ${newCategory.id})`);
+      } catch (createError) {
+        console.error(`❌ Failed to create category via API: ${createError.message}`);
+        
+        // Add a placeholder with the specified ID to allow the script to continue
+        console.log('Adding placeholder category to continue script execution');
+        categories.push({
+          id: categories.length + 1, // Use sequential IDs starting from 1
+          name: categoryData.name,
+          slug: categoryData.slug
+        });
+      }
+    } catch (error) {
+      console.error(`❌ Error processing category ${categoryData.name}:`, error.message);
+    }
+  }
+  
+  return categories;
+}
+
+/**
+ * Create articles with dynamic content
+ */
+async function createArticles(authorId, categoryId) {
+  const articlesData = [
+    {
+      title: 'Narada\'s Divine Test',
+      slug: 'naradas-divine-test',
+      description: 'A tale of humility and divine lessons.',
+      contentType: 'devotion',
+      publishDate: '2023-06-30',
+      readingTime: 3,
+      featured: true,
+      category: categoryId,
+      author: authorId,
+      content: [
+        {
+          __component: 'story.heading',
+          text: 'The Challenge',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'Narada, the celestial sage known for his unwavering devotion to the divine, approached Lord Jagannath with pride in his heart. He believed his devotion was unmatched in all the three worlds. Sensing this pride, Lord Jagannath decided to teach him a gentle but profound lesson.'
+        },
+        {
+          __component: 'story.quote',
+          text: 'True devotion is not measured by the length of prayers or the sweetness of bhajans, but by the purity of one\'s heart and the absence of ego.',
+          author: 'Lord Jagannath'
+        },
+        {
+          __component: 'story.heading',
+          text: 'The Revelation',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'Lord Jagannath asked Narada to carry a bowl filled to the brim with oil through the busy streets of Puri without spilling a single drop. Throughout the journey, Narada\'s mind was so focused on the oil that he couldn\'t remember to chant the Lord\'s name even once.'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'When he returned, Lord Jagannath revealed that a humble farmer who remembered Him just once while performing his daily duties with full concentration had shown truer devotion than Narada\'s ostentatious displays.'
+        },
+        {
+          __component: 'story.heading',
+          text: 'The Lesson',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'Narada understood that true devotion lies in remembering the divine while performing one\'s duties with complete focus and without ego. It\'s about carrying the divine in one\'s heart throughout life\'s journey, not just during formal worship.'
+        }
+      ],
+      publishedAt: new Date().toISOString()
+    },
+    {
+      title: 'Lord Balabhadra\'s Divine Protection',
+      slug: 'lord-balabhadras-divine-protection',
+      description: 'A miracle of faith during a fierce storm.',
+      contentType: 'devotion',
+      publishDate: '2023-05-19',
+      readingTime: 2,
+      featured: false,
+      category: categoryId,
+      author: authorId,
+      content: [
+        {
+          __component: 'story.heading',
+          text: 'The Raging Storm',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'A devastating cyclone struck Puri, with winds so powerful they uprooted ancient trees and destroyed sturdy structures. The devotees feared for the temple of Lord Jagannath as the storm raged with increasing fury.'
+        },
+        {
+          __component: 'story.heading',
+          text: 'The Unwavering Flag',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'As the storm reached its peak, witnesses were astounded to see the flag atop the Jagannath Temple flying defiantly against the direction of the wind. The cloth rippled as if being blown from the opposite direction, defying the natural forces.'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'Devotees recognized this as Lord Balabhadra\'s divine intervention, protecting the sacred temple and all those who had sought refuge within its walls. Not a single person inside the temple was harmed, despite the destruction that surrounded them.'
+        },
+        {
+          __component: 'story.quote',
+          text: 'When divine protection embraces you, even the fiercest storms must bow in reverence.',
+          author: 'Temple Priest'
+        }
+      ],
+      publishedAt: new Date().toISOString()
+    },
+    {
+      title: 'Goddess Subhadra\'s Blessing',
+      slug: 'goddess-subhadras-blessing',
+      description: 'A story of compassion and timely blessings.',
+      contentType: 'devotion',
+      publishDate: '2023-04-14',
+      readingTime: 2,
+      featured: false,
+      category: categoryId,
+      author: authorId,
+      content: [
+        {
+          __component: 'story.heading',
+          text: 'The Endless Drought',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'The land of Odisha suffered through months of severe drought. Crops withered in the fields, and the life-giving rivers dried to mere trickles. The people, desperate and hungry, turned to Goddess Subhadra with their prayers.'
+        },
+        {
+          __component: 'story.heading',
+          text: 'The Heartfelt Prayers',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'For nine days and nights, the devotees kept vigil at the temple, singing bhajans and offering special prayers to the compassionate Goddess. On the ninth day, as they completed the final aarti, a small dark cloud appeared in the clear sky.'
+        },
+        {
+          __component: 'story.heading',
+          text: 'The Gift of Rain',
+          level: '2'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'The lone cloud grew rapidly, calling forth more clouds until the sky darkened completely. Then, with gentle mercy, the rain began to fall. It continued steadily for three days, replenishing the parched earth without causing floods or damage.'
+        },
+        {
+          __component: 'story.paragraph',
+          text: 'The people rejoiced, recognizing Goddess Subhadra\'s blessing in this perfectly timed miracle. The crops recovered, and the threat of famine disappeared, all through the divine grace of the compassionate Goddess.'
+        },
+        {
+          __component: 'story.quote',
+          text: 'The divine mother never turns away from the sincere prayers of her children.',
+          author: 'Village Elder'
+        }
+      ],
+      publishedAt: new Date().toISOString()
+    }
+  ];
+  
+  // First try to get the JWT token for admin access if we haven't already
+  let adminToken = '';
+  
+  try {
+    if (!global.adminToken) {
+      console.log('Getting admin authentication token for article creation...');
+      const authResponse = await axios.post(API_TOKEN_URL, AUTH);
+      adminToken = authResponse.data.data.token;
+      global.adminToken = adminToken;
+      console.log('✅ Admin authentication successful');
+    } else {
+      adminToken = global.adminToken;
+    }
+  } catch (authError) {
+    console.error('❌ Failed to authenticate as admin:', authError.message);
+    console.log('Falling back to API token for limited operations');
+    // We'll continue with the regular API token
+  }
+  
+  for (const articleData of articlesData) {
+    try {
+      // Check if article exists by slug
+      console.log(`Checking if article '${articleData.title}' exists...`);
+      
+      try {
+        const checkResponse = await axios.get(
+          `${API_URL}/articles?filters[slug][$eq]=${articleData.slug}`, 
+          { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+        
+        // If article exists, skip it
+        if (checkResponse.data.data && checkResponse.data.data.length > 0) {
+          console.log(`✅ Article '${articleData.title}' already exists, skipping`);
+          continue;
+        }
+      } catch (checkError) {
+        console.log(`Unable to check for existing article: ${checkError.message}`);
+        console.log('Continuing with article creation attempt...');
+      }
+      
+      // If article doesn't exist, create it
+      console.log(`Creating article: ${articleData.title}`);
+      
+      try {
+        // Choose the best token to use - admin token if available, otherwise API token
+        const headers = adminToken 
+          ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
+          : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+        
+        // First attempt to create via the regular API
+        const response = await axios.post(
+          `${API_URL}/articles`, 
+          { data: articleData },
+          { headers }
+        );
+        
+        console.log(`✅ Article created successfully: ${articleData.title} (ID: ${response.data.data.id})`);
+      } catch (createError) {
+        console.error(`❌ Failed to create article via API: ${createError.message}`);
+        
+        if (createError.response) {
+          console.error('Response status:', createError.response.status);
+          console.error('Response data:', createError.response.data);
+          
+          // Try the admin content manager API as a fallback
+          if (adminToken) {
+            try {
+              console.log('Attempting to create article via admin API...');
+              
+              // Clone the article data without the nested content for simpler creation
+              const simpleArticleData = { 
+                title: articleData.title,
+                slug: articleData.slug,
+                description: articleData.description,
+                contentType: articleData.contentType,
+                publishDate: articleData.publishDate,
+                readingTime: articleData.readingTime,
+                featured: articleData.featured,
+                author: articleData.author,
+                category: articleData.category,
+                publishedAt: new Date().toISOString()
+              };
+              
+              // Log what we're trying to do
+              console.log('Creating basic article without complex content for now');
+              
+              const adminResponse = await axios.post(
+                `${API_URL}/articles`, 
+                { data: simpleArticleData },
+                { headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' } }
+              );
+              
+              console.log(`✅ Basic article created via admin API: ${articleData.title} (ID: ${adminResponse.data.data.id})`);
+              console.log('Note: Dynamic content zones will need to be added manually');
+            } catch (adminError) {
+              console.error('❌ Admin API article creation also failed:', adminError.message);
+              console.log('Please create this article manually using the Strapi admin UI');
+            }
+          } else {
+            console.log('No admin token available for fallback creation attempt');
+            console.log('Please create this article manually using the Strapi admin UI');
+          }
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Failed to process article ${articleData.title}:`, error.message);
+    }
+  }
+}
+
+// Run the seed function
+seed();

@@ -373,35 +373,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
-  info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
@@ -469,8 +440,8 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     bio: Schema.Attribute.Text;
-    contents: Schema.Attribute.Relation<'oneToMany', 'api::content.content'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -521,70 +492,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContentContent extends Struct.CollectionTypeSchema {
-  collectionName: 'contents';
-  info: {
-    description: 'All content types including devotions, festivals, miracles, and static pages';
-    displayName: 'Content';
-    pluralName: 'contents';
-    singularName: 'content';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    content: Schema.Attribute.DynamicZone<
-      [
-        'shared.paragraph',
-        'shared.heading',
-        'shared.image',
-        'shared.quote',
-        'shared.rich-text',
-        'shared.list',
-      ]
-    >;
-    contentType: Schema.Attribute.Enumeration<
-      ['devotion', 'festival', 'miracle', 'page']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'page'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
-    duration: Schema.Attribute.String;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    featuredImage: Schema.Attribute.Media<'images'>;
-    imageAlt: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::content.content'
-    > &
-      Schema.Attribute.Private;
-    monthCelebrated: Schema.Attribute.String;
-    publishDate: Schema.Attribute.Date;
-    publishedAt: Schema.Attribute.DateTime;
-    readingTime: Schema.Attribute.String;
-    relatedContent: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::content.content'
-    >;
-    rituals: Schema.Attribute.Component<'festival.ritual', true>;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
-    significance: Schema.Attribute.RichText;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    tags: Schema.Attribute.JSON;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    upcomingDates: Schema.Attribute.Component<'festival.upcoming-date', true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updateDate: Schema.Attribute.Date;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFestivalCalendarFestivalCalendar
   extends Struct.SingleTypeSchema {
   collectionName: 'festival_calendars';
@@ -615,65 +522,6 @@ export interface ApiFestivalCalendarFestivalCalendar
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFestivalFestival extends Struct.CollectionTypeSchema {
-  collectionName: 'festivals';
-  info: {
-    description: 'Festivals associated with Lord Jagannath';
-    displayName: 'Festival';
-    pluralName: 'festivals';
-    singularName: 'festival';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    content: Schema.Attribute.DynamicZone<
-      [
-        'shared.paragraph',
-        'shared.heading',
-        'shared.image',
-        'shared.quote',
-        'shared.rich-text',
-        'shared.list',
-      ]
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
-    duration: Schema.Attribute.String;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    featuredImage: Schema.Attribute.Media<'images'>;
-    imageAlt: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::festival.festival'
-    > &
-      Schema.Attribute.Private;
-    monthCelebrated: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    publishedDate: Schema.Attribute.Date;
-    readingTime: Schema.Attribute.String;
-    relatedStories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::festival.festival'
-    >;
-    rituals: Schema.Attribute.Component<'festival.ritual', true>;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
-    significance: Schema.Attribute.RichText;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    tags: Schema.Attribute.JSON;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    upcomingDates: Schema.Attribute.Component<'festival.upcoming-date', true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedDate: Schema.Attribute.Date;
   };
 }
 
@@ -1323,13 +1171,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
-      'api::content.content': ApiContentContent;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
-      'api::festival.festival': ApiFestivalFestival;
       'api::global.global': ApiGlobalGlobal;
       'api::page.page': ApiPagePage;
       'api::site-config.site-config': ApiSiteConfigSiteConfig;

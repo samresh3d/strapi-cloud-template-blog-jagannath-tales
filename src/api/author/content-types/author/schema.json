@@ -35,10 +35,10 @@
       "repeatable": false,
       "component": "author.social"
     },
-    "contents": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::content.content",
+      "target": "api::article.article",
       "mappedBy": "author"
     }
   }
