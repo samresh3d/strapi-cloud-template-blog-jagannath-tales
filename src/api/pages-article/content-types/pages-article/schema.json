@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pages-article",
     "pluralName": "pages-articles",
-    "displayName": "Article",
+    "displayName": "Pages-Article",
     "description": "A blog post or other piece of content."
   },
   "options": {
