@@ -63,21 +63,20 @@
       "type": "richtext",
       "required": false
     },
-    "relatedFestival": {
+    "relatedPage": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::pages-festival.pages-festival",
-      "inversedBy": "eventInstances"
+      "target": "api::pages-page.pages-page"
     },
     "pages_articles": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::pages-article.pages-article"
     },
-    "pages_festivals": {
+    "pages_pages": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::pages-festival.pages-festival"
+      "target": "api::pages-page.pages-page"
     }
   }
 }

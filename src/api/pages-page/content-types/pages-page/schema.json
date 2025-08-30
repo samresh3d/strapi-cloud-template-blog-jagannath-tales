@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pages-page",
     "pluralName": "pages-pages",
-    "displayName": "Page",
+    "displayName": "Static Pages",
     "description": "Static pages like About, Contact, etc."
   },
   "options": {
@@ -42,7 +42,8 @@
     "quotes": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::data-quote.data-quote"
+      "target": "api::data-quote.data-quote",
+      "inversedBy": "pages_pages"
     },
     "featuredQuote": {
       "type": "relation",
@@ -52,12 +53,19 @@
     "festivalEvents": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::data-festival-event.data-festival-event"
+      "target": "api::data-festival-event.data-festival-event",
+      "inversedBy": "pages_pages"
     },
     "featuredEvent": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::data-festival-event.data-festival-event"
+    },
+    "relatedEvents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::data-festival-event.data-festival-event",
+      "mappedBy": "relatedPage"
     }
   }
 }

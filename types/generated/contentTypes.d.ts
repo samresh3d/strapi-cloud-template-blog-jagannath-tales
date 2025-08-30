@@ -691,7 +691,7 @@ export interface ApiPagesFestivalPagesFestival
   collectionName: 'pages_festivals';
   info: {
     description: 'Festival pages for Jagannath festivals and celebrations';
-    displayName: 'Festival';
+    displayName: 'Festival Page';
     pluralName: 'pages-festivals';
     singularName: 'pages-festival';
   };
@@ -758,7 +758,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
   collectionName: 'pages_pages';
   info: {
     description: 'Static pages like About, Contact, etc.';
-    displayName: 'Page';
+    displayName: 'Static Pages';
     pluralName: 'pages-pages';
     singularName: 'pages-page';
   };
