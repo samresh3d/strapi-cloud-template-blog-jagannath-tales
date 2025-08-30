@@ -11,9 +11,6 @@
     "develop": "strapi develop",
     "dev": "npm run clean && npm run develop",
     "seed:example": "node ./scripts/seed.js",
-    "seed:import": "node ./config/scripts/import-data.js",
-    "convert-data": "node ./scripts/convert-data.js",
-    "convert-unified": "node ./scripts/convert-to-unified.js",
     "start": "strapi start",
     "strapi": "strapi",
     "seed": "node database/seeders/seedData.js"

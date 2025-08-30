@@ -107,16 +107,19 @@ Dynamic zones require the `__component` field to specify which component type is
 
 ## Using the Data Conversion Tool
 
-We've provided a data conversion tool to help transform your existing JSON files into Strapi-compatible format:
+To import data into Strapi, you can use the seeding script:
 
-1. Run the conversion script:
+1. Start your Strapi server:
    ```
-   npm run convert-data
+   npm run develop
    ```
 
-2. This will process the files in `data/json-data` and create Strapi-compatible versions in `data/strapi-import`.
+2. In another terminal, run the seed script:
+   ```
+   npm run seed
+   ```
 
-3. Use the Import button in the Strapi admin to import these files into your content types.
+3. This will create sample content in your Strapi instance based on the configuration in the `database/seeders/seedData.js` file.
 
 ## Component Definitions
 
