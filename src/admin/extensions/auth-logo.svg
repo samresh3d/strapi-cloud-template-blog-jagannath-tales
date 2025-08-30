@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="250" viewBox="0 0 600 250">
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250">
   <!-- Background -->
-  <rect width="100%" height="100%" fill="white"></rect>
+  <rect width="100%" height="100%" fill="white" fill-opacity="0"></rect>
 
   <!-- Mandala Sun Border -->
   <g>
@@ -52,12 +52,4 @@
 
   <!-- Nose Dot -->
   <circle cx="120" cy="145" r="6" fill="red"></circle>
-
-  <!-- Text Branding -->
-  <text x="240" y="115" font-family="Playfair Display, serif" font-size="44" fill="#4B2E2E" font-weight="bold">
-    Jagannath Tales
-  </text>
-  <text x="240" y="155" font-family="Cormorant Garamond, serif" font-size="28" fill="#4B2E2E">
-    Devotional Stories &amp; Miracles
-  </text>
 </svg>
