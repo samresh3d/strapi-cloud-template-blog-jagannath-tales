@@ -4,7 +4,7 @@
   "info": {
     "singularName": "data-festival-event",
     "pluralName": "data-festival-events",
-    "displayName": "Data-Festival Event",
+    "displayName": "data-festival-event",
     "description": "Reusable upcoming festivals and celebrations"
   },
   "options": {

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "data-quote",
     "pluralName": "data-quotes",
-    "displayName": "Data: Quote",
+    "displayName": "data-quote",
     "description": "Reusable quotes that can be referenced across content types"
   },
   "options": {

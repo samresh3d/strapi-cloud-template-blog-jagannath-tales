@@ -4,7 +4,7 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "Data-Author",
+    "displayName": "data-author",
     "description": "Authors who write content for the site"
   },
   "options": {

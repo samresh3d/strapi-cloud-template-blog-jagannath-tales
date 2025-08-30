@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pages-page",
     "pluralName": "pages-pages",
-    "displayName": "Static Pages",
+    "displayName": "pages-page",
     "description": "Static pages like About, Contact, etc."
   },
   "options": {

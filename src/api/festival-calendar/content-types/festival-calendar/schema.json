@@ -4,7 +4,7 @@
   "info": {
     "singularName": "festival-calendar",
     "pluralName": "festival-calendars",
-    "displayName": "Festival Calendar",
+    "displayName": "festival-calendar",
     "description": "Annual calendar of festivals"
   },
   "options": {

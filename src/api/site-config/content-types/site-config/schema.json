@@ -4,7 +4,7 @@
   "info": {
     "singularName": "site-config",
     "pluralName": "site-configs",
-    "displayName": "Site Configuration",
+    "displayName": "site-config",
     "description": "Global site configuration"
   },
   "options": {

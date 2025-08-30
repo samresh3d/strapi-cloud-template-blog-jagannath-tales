@@ -377,7 +377,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
     description: 'Authors who write content for the site';
-    displayName: 'Data-Author';
+    displayName: 'data-author';
     pluralName: 'authors';
     singularName: 'author';
   };
@@ -406,45 +406,12 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
-  info: {
-    displayName: 'Category';
-    pluralName: 'categories';
-    singularName: 'category';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    pages_articles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::pages-article.pages-article'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiDataFestivalEventDataFestivalEvent
   extends Struct.CollectionTypeSchema {
   collectionName: 'data_festival_events';
   info: {
     description: 'Reusable upcoming festivals and celebrations';
-    displayName: 'Data-Festival Event';
+    displayName: 'data-festival-event';
     pluralName: 'data-festival-events';
     singularName: 'data-festival-event';
   };
@@ -500,7 +467,7 @@ export interface ApiDataQuoteDataQuote extends Struct.CollectionTypeSchema {
   collectionName: 'data_quotes';
   info: {
     description: 'Reusable quotes that can be referenced across content types';
-    displayName: 'Data: Quote';
+    displayName: 'data-quote';
     pluralName: 'data-quotes';
     singularName: 'data-quote';
   };
@@ -542,7 +509,7 @@ export interface ApiFestivalCalendarFestivalCalendar
   collectionName: 'festival_calendars';
   info: {
     description: 'Annual calendar of festivals';
-    displayName: 'Festival Calendar';
+    displayName: 'festival-calendar';
     pluralName: 'festival-calendars';
     singularName: 'festival-calendar';
   };
@@ -574,7 +541,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
     description: 'Define global settings';
-    displayName: 'Global';
+    displayName: 'global';
     pluralName: 'globals';
     singularName: 'global';
   };
@@ -615,7 +582,7 @@ export interface ApiPagesArticlePagesArticle
   collectionName: 'pages_articles';
   info: {
     description: 'A blog post or other piece of content.';
-    displayName: 'Pages-Article';
+    displayName: 'pages-article';
     pluralName: 'pages-articles';
     singularName: 'pages-article';
   };
@@ -624,10 +591,6 @@ export interface ApiPagesArticlePagesArticle
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
     content: Schema.Attribute.DynamicZone<
       [
         'story.paragraph',
@@ -690,7 +653,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
   collectionName: 'pages_pages';
   info: {
     description: 'Static pages like About, Contact, etc.';
-    displayName: 'Static Pages';
+    displayName: 'pages-page';
     pluralName: 'pages-pages';
     singularName: 'pages-page';
   };
@@ -753,7 +716,7 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
   collectionName: 'site_configs';
   info: {
     description: 'Global site configuration';
-    displayName: 'Site Configuration';
+    displayName: 'site-config';
     pluralName: 'site-configs';
     singularName: 'site-config';
   };
@@ -791,7 +754,7 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
 export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
-    displayName: 'Tag';
+    displayName: 'tag';
     pluralName: 'tags';
     singularName: 'tag';
   };
@@ -1328,7 +1291,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
-      'api::category.category': ApiCategoryCategory;
       'api::data-festival-event.data-festival-event': ApiDataFestivalEventDataFestivalEvent;
       'api::data-quote.data-quote': ApiDataQuoteDataQuote;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;

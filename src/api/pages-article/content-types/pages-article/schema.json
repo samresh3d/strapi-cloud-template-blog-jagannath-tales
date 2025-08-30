@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pages-article",
     "pluralName": "pages-articles",
-    "displayName": "Pages-Article",
+    "displayName": "pages-article",
     "description": "A blog post or other piece of content."
   },
   "options": {
@@ -63,12 +63,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "inversedBy": "pages_articles"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
       "inversedBy": "pages_articles"
     },
     "content": {
