@@ -48,6 +48,75 @@ export interface FestivalUpcomingDate extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFestivalEventReference extends Struct.ComponentSchema {
+  collectionName: 'components_shared_festival_event_references';
+  info: {
+    description: 'Reference to an upcoming festival or celebration';
+    displayName: 'Festival Event Reference';
+    icon: 'calendar-alt';
+  };
+  attributes: {
+    customTitle: Schema.Attribute.String;
+    displayMode: Schema.Attribute.Enumeration<
+      ['compact', 'detailed', 'card', 'countdown']
+    > &
+      Schema.Attribute.DefaultTo<'compact'>;
+    festivalEvent: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-festival-event.data-festival-event'
+    >;
+    showDescription: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showImage: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    showLocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+  };
+}
+
+export interface SharedFestivalEventsList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_festival_events_list';
+  info: {
+    description: 'Display a list or calendar of upcoming festival events';
+    displayName: 'Festival Events List';
+    icon: 'calendar-week';
+  };
+  attributes: {
+    daysToLookAhead: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 365;
+          min: 7;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<90>;
+    displayMode: Schema.Attribute.Enumeration<
+      ['list', 'grid', 'calendar', 'timeline']
+    > &
+      Schema.Attribute.DefaultTo<'list'>;
+    filterByImportance: Schema.Attribute.Enumeration<
+      ['all', 'major', 'major+regional', 'regional+local']
+    > &
+      Schema.Attribute.DefaultTo<'all'>;
+    maxItems: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 20;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>;
+    showPastEvents: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    specificEvents: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::data-festival-event.data-festival-event'
+    >;
+    title: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Upcoming Festivals & Celebrations'>;
+  };
+}
+
 export interface SharedGlobalQuoteReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_global_quote_references';
   info: {
@@ -153,6 +222,26 @@ export interface SharedQuote extends Struct.ComponentSchema {
     author: Schema.Attribute.String;
     source: Schema.Attribute.String;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedQuoteReference extends Struct.ComponentSchema {
+  collectionName: 'components_shared_quote_references';
+  info: {
+    description: 'Reference to a reusable quote';
+    displayName: 'Quote Reference';
+    icon: 'quote-right';
+  };
+  attributes: {
+    customStyle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'default'>;
+    quote: Schema.Attribute.Relation<'oneToOne', 'api::data-quote.data-quote'>;
+    showAuthor: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    showSource: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -346,6 +435,8 @@ declare module '@strapi/strapi' {
       'festival.calendar-season': FestivalCalendarSeason;
       'festival.ritual': FestivalRitual;
       'festival.upcoming-date': FestivalUpcomingDate;
+      'shared.festival-event-reference': SharedFestivalEventReference;
+      'shared.festival-events-list': SharedFestivalEventsList;
       'shared.global-quote-reference': SharedGlobalQuoteReference;
       'shared.heading': SharedHeading;
       'shared.image': SharedImage;
@@ -353,6 +444,7 @@ declare module '@strapi/strapi' {
       'shared.media': SharedMedia;
       'shared.paragraph': SharedParagraph;
       'shared.quote': SharedQuote;
+      'shared.quote-reference': SharedQuoteReference;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;

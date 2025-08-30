@@ -373,62 +373,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
-  collectionName: 'articles';
-  info: {
-    description: 'A blog post or other piece of content.';
-    displayName: 'Article';
-    pluralName: 'articles';
-    singularName: 'article';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
-    content: Schema.Attribute.DynamicZone<
-      [
-        'story.paragraph',
-        'story.heading',
-        'story.image-block',
-        'story.quote',
-        'story.rich-text',
-        'shared.global-quote-reference',
-      ]
-    >;
-    contentType: Schema.Attribute.Enumeration<
-      ['devotion', 'miracle', 'festival', 'page']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    featuredImage: Schema.Attribute.Media<'images'>;
-    imageAlt: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::article.article'
-    > &
-      Schema.Attribute.Private;
-    publishDate: Schema.Attribute.Date;
-    publishedAt: Schema.Attribute.DateTime;
-    readingTime: Schema.Attribute.Integer;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -441,12 +385,10 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     bio: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    festivals: Schema.Attribute.Relation<'oneToMany', 'api::festival.festival'>;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -475,7 +417,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -486,8 +427,110 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    pages_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-article.pages-article'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDataFestivalEventDataFestivalEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'data_festival_events';
+  info: {
+    description: 'Reusable upcoming festivals and celebrations';
+    displayName: 'Data: Festival Event';
+    pluralName: 'data-festival-events';
+    singularName: 'data-festival-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    endDate: Schema.Attribute.Date;
+    image: Schema.Attribute.Media<'images'>;
+    importance: Schema.Attribute.Enumeration<
+      ['major', 'minor', 'regional', 'local']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'major'>;
+    isAllDay: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::data-festival-event.data-festival-event'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    pages_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-article.pages-article'
+    >;
+    pages_festivals: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-festival.pages-festival'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    relatedFestival: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::pages-festival.pages-festival'
+    >;
+    rituals: Schema.Attribute.RichText;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDataQuoteDataQuote extends Struct.CollectionTypeSchema {
+  collectionName: 'data_quotes';
+  info: {
+    description: 'Reusable quotes that can be referenced across content types';
+    displayName: 'Data: Quote';
+    pluralName: 'data-quotes';
+    singularName: 'data-quote';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    category: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::data-quote.data-quote'
+    > &
+      Schema.Attribute.Private;
+    pages_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-article.pages-article'
+    >;
+    pages_festivals: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-festival.pages-festival'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'text'> & Schema.Attribute.Required;
+    source: Schema.Attribute.String;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -524,66 +567,6 @@ export interface ApiFestivalCalendarFestivalCalendar
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFestivalFestival extends Struct.CollectionTypeSchema {
-  collectionName: 'festivals';
-  info: {
-    description: 'Festivals associated with Lord Jagannath';
-    displayName: 'Festival';
-    pluralName: 'festivals';
-    singularName: 'festival';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    content: Schema.Attribute.DynamicZone<
-      [
-        'shared.paragraph',
-        'shared.heading',
-        'shared.image',
-        'shared.quote',
-        'shared.rich-text',
-        'shared.list',
-        'shared.global-quote-reference',
-      ]
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
-    duration: Schema.Attribute.String;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    featuredImage: Schema.Attribute.Media<'images'>;
-    imageAlt: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::festival.festival'
-    > &
-      Schema.Attribute.Private;
-    monthCelebrated: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    publishedDate: Schema.Attribute.Date;
-    readingTime: Schema.Attribute.String;
-    relatedStories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::festival.festival'
-    >;
-    rituals: Schema.Attribute.Component<'festival.ritual', true>;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
-    significance: Schema.Attribute.RichText;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    tags: Schema.Attribute.JSON;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    upcomingDates: Schema.Attribute.Component<'festival.upcoming-date', true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedDate: Schema.Attribute.Date;
   };
 }
 
@@ -627,13 +610,157 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiPagePage extends Struct.CollectionTypeSchema {
-  collectionName: 'pages';
+export interface ApiPagesArticlePagesArticle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pages_articles';
+  info: {
+    description: 'A blog post or other piece of content.';
+    displayName: 'Article';
+    pluralName: 'pages-articles';
+    singularName: 'pages-article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    content: Schema.Attribute.DynamicZone<
+      [
+        'story.paragraph',
+        'story.heading',
+        'story.image-block',
+        'story.quote',
+        'story.rich-text',
+        'shared.global-quote-reference',
+        'shared.quote-reference',
+        'shared.festival-event-reference',
+        'shared.festival-events-list',
+      ]
+    >;
+    contentType: Schema.Attribute.Enumeration<
+      ['devotion', 'miracle', 'festival', 'page']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    featuredEvent: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-festival-event.data-festival-event'
+    >;
+    featuredImage: Schema.Attribute.Media<'images'>;
+    featuredQuote: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-quote.data-quote'
+    >;
+    festivalEvents: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-festival-event.data-festival-event'
+    >;
+    imageAlt: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pages-article.pages-article'
+    > &
+      Schema.Attribute.Private;
+    publishDate: Schema.Attribute.Date;
+    publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-quote.data-quote'
+    >;
+    readingTime: Schema.Attribute.Integer;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPagesFestivalPagesFestival
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pages_festivals';
+  info: {
+    description: 'Festival pages for Jagannath festivals and celebrations';
+    displayName: 'Festival';
+    pluralName: 'pages-festivals';
+    singularName: 'pages-festival';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    content: Schema.Attribute.DynamicZone<
+      [
+        'story.paragraph',
+        'story.heading',
+        'story.image-block',
+        'story.quote',
+        'story.rich-text',
+        'shared.quote-reference',
+        'shared.festival-event-reference',
+        'shared.festival-events-list',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    eventInstances: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::data-festival-event.data-festival-event'
+    >;
+    featuredEvent: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-festival-event.data-festival-event'
+    >;
+    featuredImage: Schema.Attribute.Media<'images'>;
+    featuredQuote: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-quote.data-quote'
+    >;
+    festivalEvents: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-festival-event.data-festival-event'
+    >;
+    imageAlt: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pages-festival.pages-festival'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-quote.data-quote'
+    >;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
+  collectionName: 'pages_pages';
   info: {
     description: 'Static pages like About, Contact, etc.';
     displayName: 'Page';
-    pluralName: 'pages';
-    singularName: 'page';
+    pluralName: 'pages-pages';
+    singularName: 'pages-page';
   };
   options: {
     draftAndPublish: true;
@@ -641,23 +768,42 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   attributes: {
     content: Schema.Attribute.DynamicZone<
       [
-        'shared.paragraph',
-        'shared.heading',
-        'shared.image',
-        'shared.quote',
-        'shared.rich-text',
-        'shared.list',
-        'shared.global-quote-reference',
+        'story.paragraph',
+        'story.heading',
+        'story.image-block',
+        'story.quote',
+        'story.rich-text',
+        'shared.quote-reference',
+        'shared.festival-event-reference',
+        'shared.festival-events-list',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    featuredEvent: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-festival-event.data-festival-event'
+    >;
+    featuredQuote: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::data-quote.data-quote'
+    >;
+    festivalEvents: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-festival-event.data-festival-event'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pages-page.pages-page'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::data-quote.data-quote'
+    >;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -717,7 +863,6 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -725,6 +870,10 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    pages_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-article.pages-article'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1242,13 +1391,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::data-festival-event.data-festival-event': ApiDataFestivalEventDataFestivalEvent;
+      'api::data-quote.data-quote': ApiDataQuoteDataQuote;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
-      'api::festival.festival': ApiFestivalFestival;
       'api::global.global': ApiGlobalGlobal;
-      'api::page.page': ApiPagePage;
+      'api::pages-article.pages-article': ApiPagesArticlePagesArticle;
+      'api::pages-festival.pages-festival': ApiPagesFestivalPagesFestival;
+      'api::pages-page.pages-page': ApiPagesPagePagesPage;
       'api::site-config.site-config': ApiSiteConfigSiteConfig;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;

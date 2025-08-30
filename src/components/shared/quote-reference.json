@@ -10,7 +10,7 @@
     "quote": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::quote.quote"
+      "target": "api::data-quote.data-quote"
     },
     "showAuthor": {
       "type": "boolean",

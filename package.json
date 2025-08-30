@@ -12,8 +12,7 @@
     "dev": "npm run clean && npm run develop",
     "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
-    "strapi": "strapi",
-    "seed": "node database/seeders/seedData.js"
+    "strapi": "strapi"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.15.0",

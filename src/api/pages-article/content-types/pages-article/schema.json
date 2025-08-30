@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_articles",
+  "info": {
+    "singularName": "pages-article",
+    "pluralName": "pages-articles",
+    "displayName": "Article",
+    "description": "A blog post or other piece of content."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "contentType": {
+      "type": "enumeration",
+      "enum": [
+        "devotion",
+        "miracle",
+        "festival",
+        "page"
+      ]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author"
+    },
+    "publishDate": {
+      "type": "date"
+    },
+    "readingTime": {
+      "type": "integer"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "pages_articles"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "pages_articles"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "story.paragraph",
+        "story.heading",
+        "story.image-block",
+        "story.quote",
+        "story.rich-text",
+        "shared.global-quote-reference",
+        "shared.quote-reference",
+        "shared.festival-event-reference",
+        "shared.festival-events-list"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "quotes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::data-quote.data-quote",
+      "inversedBy": "pages_articles"
+    },
+    "featuredQuote": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::data-quote.data-quote"
+    },
+    "festivalEvents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::data-festival-event.data-festival-event",
+      "inversedBy": "pages_articles"
+    },
+    "featuredEvent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::data-festival-event.data-festival-event"
+    }
+  }
+}

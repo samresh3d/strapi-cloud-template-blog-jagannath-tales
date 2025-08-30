@@ -10,7 +10,7 @@
     "festivalEvent": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::festival-event.festival-event"
+      "target": "api::data-festival-event.data-festival-event"
     },
     "displayMode": {
       "type": "enumeration",

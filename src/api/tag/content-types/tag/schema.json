@@ -19,10 +19,11 @@
       "targetField": "name",
       "required": true
     },
-    "articles": {
+
+    "pages_articles": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::article.article",
+      "target": "api::pages-article.pages-article",
       "mappedBy": "tags"
     }
   }
