@@ -48,6 +48,31 @@ export interface FestivalUpcomingDate extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedGlobalQuoteReference extends Struct.ComponentSchema {
+  collectionName: 'components_shared_global_quote_references';
+  info: {
+    description: 'Reference to a quote from the global settings';
+    displayName: 'Global Quote Reference';
+    icon: 'quote-right';
+  };
+  attributes: {
+    quoteId: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    showAuthor: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    showSource: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+  };
+}
+
 export interface SharedHeading extends Struct.ComponentSchema {
   collectionName: 'components_shared_headings';
   info: {
@@ -321,6 +346,7 @@ declare module '@strapi/strapi' {
       'festival.calendar-season': FestivalCalendarSeason;
       'festival.ritual': FestivalRitual;
       'festival.upcoming-date': FestivalUpcomingDate;
+      'shared.global-quote-reference': SharedGlobalQuoteReference;
       'shared.heading': SharedHeading;
       'shared.image': SharedImage;
       'shared.list': SharedList;

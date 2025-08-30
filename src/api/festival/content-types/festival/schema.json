@@ -1,11 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "festivals",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article",
-    "description": "A blog post or other piece of content."
+    "singularName": "festival",
+    "pluralName": "festivals",
+    "displayName": "Festival",
+    "description": "Festivals associated with Lord Jagannath"
   },
   "options": {
     "draftAndPublish": true
@@ -22,27 +22,32 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
-    "contentType": {
-      "type": "enumeration",
-      "enum": [
-        "devotion",
-        "miracle",
-        "festival",
-        "page"
-      ]
+    "monthCelebrated": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "significance": {
+      "type": "richtext"
     },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::author.author"
+      "target": "api::author.author",
+      "inversedBy": "festivals"
     },
-    "publishDate": {
+    "publishedDate": {
+      "type": "date"
+    },
+    "updatedDate": {
       "type": "date"
     },
     "readingTime": {
-      "type": "integer"
+      "type": "string"
     },
     "featured": {
       "type": "boolean",
@@ -60,28 +65,36 @@
       "type": "string"
     },
     "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "articles"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "articles"
+      "type": "json"
     },
     "content": {
       "type": "dynamiczone",
       "components": [
-        "story.paragraph",
-        "story.heading",
-        "story.image-block",
-        "story.quote",
-        "story.rich-text",
+        "shared.paragraph",
+        "shared.heading",
+        "shared.image",
+        "shared.quote",
+        "shared.rich-text",
+        "shared.list",
         "shared.global-quote-reference",
         "shared.quote-reference"
       ]
+    },
+    "rituals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "festival.ritual"
+    },
+    "upcomingDates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "festival.upcoming-date"
+    },
+    "relatedStories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::festival.festival",
+      "mappedBy": "relatedStories"
     },
     "seo": {
       "type": "component",
@@ -92,7 +105,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::quote.quote",
-      "inversedBy": "articles"
+      "inversedBy": "festivals"
     },
     "featuredQuote": {
       "type": "relation",

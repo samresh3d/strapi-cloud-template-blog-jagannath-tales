@@ -397,6 +397,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'story.image-block',
         'story.quote',
         'story.rich-text',
+        'shared.global-quote-reference',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -445,6 +446,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    festivals: Schema.Attribute.Relation<'oneToMany', 'api::festival.festival'>;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -525,6 +527,66 @@ export interface ApiFestivalCalendarFestivalCalendar
   };
 }
 
+export interface ApiFestivalFestival extends Struct.CollectionTypeSchema {
+  collectionName: 'festivals';
+  info: {
+    description: 'Festivals associated with Lord Jagannath';
+    displayName: 'Festival';
+    pluralName: 'festivals';
+    singularName: 'festival';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    content: Schema.Attribute.DynamicZone<
+      [
+        'shared.paragraph',
+        'shared.heading',
+        'shared.image',
+        'shared.quote',
+        'shared.rich-text',
+        'shared.list',
+        'shared.global-quote-reference',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    duration: Schema.Attribute.String;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    featuredImage: Schema.Attribute.Media<'images'>;
+    imageAlt: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::festival.festival'
+    > &
+      Schema.Attribute.Private;
+    monthCelebrated: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    publishedDate: Schema.Attribute.Date;
+    readingTime: Schema.Attribute.String;
+    relatedStories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::festival.festival'
+    >;
+    rituals: Schema.Attribute.Component<'festival.ritual', true>;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    significance: Schema.Attribute.RichText;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    upcomingDates: Schema.Attribute.Component<'festival.upcoming-date', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedDate: Schema.Attribute.Date;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -542,6 +604,14 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
     favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    globalQuotes: Schema.Attribute.Component<'shared.quote', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 30;
+          min: 1;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -577,6 +647,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'shared.quote',
         'shared.rich-text',
         'shared.list',
+        'shared.global-quote-reference',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -1175,6 +1246,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
+      'api::festival.festival': ApiFestivalFestival;
       'api::global.global': ApiGlobalGlobal;
       'api::page.page': ApiPagePage;
       'api::site-config.site-config': ApiSiteConfigSiteConfig;

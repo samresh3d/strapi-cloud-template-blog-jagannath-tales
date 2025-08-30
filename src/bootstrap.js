@@ -187,6 +187,26 @@ async function importArticles() {
 async function importGlobal() {
   const favicon = await checkFileExistsBeforeUpload(['favicon.png']);
   const shareImage = await checkFileExistsBeforeUpload(['default-image.png']);
+  
+  // Add default global quotes
+  const defaultGlobalQuotes = [
+    {
+      text: "Faith is taking the first step even when you don't see the whole staircase.",
+      author: "Martin Luther King Jr.",
+      source: "Strength to Love"
+    },
+    {
+      text: "The best way to find yourself is to lose yourself in the service of others.",
+      author: "Mahatma Gandhi",
+      source: ""
+    },
+    {
+      text: "Devotion is the sublime path that leads to the Divine.",
+      author: "Sri Jagannath",
+      source: "Jagannath Wisdom"
+    }
+  ];
+  
   return createEntry({
     model: 'global',
     entry: {
@@ -194,6 +214,7 @@ async function importGlobal() {
       favicon,
       // Make sure it's not a draft
       publishedAt: Date.now(),
+      globalQuotes: defaultGlobalQuotes,
       defaultSeo: {
         ...global.defaultSeo,
         shareImage,

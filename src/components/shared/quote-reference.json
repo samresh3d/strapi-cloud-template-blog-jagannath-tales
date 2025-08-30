@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_quote_references",
+  "info": {
+    "displayName": "Quote Reference",
+    "icon": "quote-right",
+    "description": "Reference to a reusable quote"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::quote.quote"
+    },
+    "showAuthor": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "showSource": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "customStyle": {
+      "type": "string",
+      "enum": ["default", "large", "highlighted", "bordered"],
+      "default": "default"
+    }
+  }
+}

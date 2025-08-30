@@ -32,13 +32,26 @@
         "shared.image",
         "shared.quote",
         "shared.rich-text",
-        "shared.list"
+        "shared.list",
+        "shared.global-quote-reference",
+        "shared.quote-reference"
       ]
     },
     "seo": {
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "quotes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::quote.quote",
+      "inversedBy": "pages"
+    },
+    "featuredQuote": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::quote.quote"
     }
   }
 }

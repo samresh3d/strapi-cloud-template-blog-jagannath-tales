@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_global_quote_references",
+  "info": {
+    "displayName": "Global Quote Reference",
+    "icon": "quote-right",
+    "description": "Reference to a quote from the global settings"
+  },
+  "options": {},
+  "attributes": {
+    "quoteId": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "description": "The index of the quote from the global quotes collection (0-based)"
+    },
+    "showAuthor": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "showSource": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

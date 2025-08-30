@@ -66,6 +66,22 @@ async function seed() {
     if (categories && categories.length > 0) {
       console.log('✅ Categories created/found:', categories.map(c => c.name || c.id).join(', '));
       
+      // Update or create global settings with quotes
+      const globalSettings = await createOrUpdateGlobalSettings();
+      if (globalSettings) {
+        console.log('✅ Global settings updated with quotes');
+      } else {
+        console.warn('⚠️ Could not update global settings with quotes');
+      }
+      
+      // Create reusable quotes
+      const quotes = await createQuotes();
+      if (quotes && quotes.length > 0) {
+        console.log(`✅ Created/found ${quotes.length} reusable quotes`);
+      } else {
+        console.warn('⚠️ No quotes were created or found');
+      }
+      
       // Find the devotional stories category
       const devotionalCategory = categories.find(c => c.slug === 'devotional-stories' || c.name === 'Devotional Stories');
       
@@ -74,7 +90,7 @@ async function seed() {
       }
       
       // Create articles
-      await createArticles(author.id, devotionalCategory.id);
+      await createArticles(author.id, devotionalCategory.id, quotes);
     } else {
       throw new Error("No categories were created or found");
     }
@@ -280,9 +296,238 @@ async function createCategories() {
 }
 
 /**
+ * Create or update global settings with quotes
+ */
+async function createOrUpdateGlobalSettings() {
+  try {
+    console.log('Checking if global settings exist...');
+    let globalRecord = null;
+    
+    try {
+      const checkResponse = await axios.get(
+        `${API_URL}/global`,
+        { headers: { 'Authorization': `Bearer ${token}` } }
+      );
+      
+      if (checkResponse.data && checkResponse.data.data) {
+        console.log('✅ Global settings exist');
+        globalRecord = {
+          id: checkResponse.data.data.id,
+          ...checkResponse.data.data.attributes
+        };
+      }
+    } catch (checkError) {
+      console.log(`Unable to check for existing global settings: ${checkError.message}`);
+    }
+    
+    // Define default quotes
+    const defaultGlobalQuotes = [
+      {
+        text: "Faith is taking the first step even when you don't see the whole staircase.",
+        author: "Martin Luther King Jr.",
+        source: "Strength to Love"
+      },
+      {
+        text: "The best way to find yourself is to lose yourself in the service of others.",
+        author: "Mahatma Gandhi",
+        source: ""
+      },
+      {
+        text: "Devotion is the sublime path that leads to the Divine.",
+        author: "Sri Jagannath",
+        source: "Jagannath Wisdom"
+      }
+    ];
+    
+    if (globalRecord) {
+      // Update existing global settings
+      console.log('Updating global settings with quotes...');
+      
+      const updateData = {
+        data: {
+          globalQuotes: globalRecord.globalQuotes || defaultGlobalQuotes
+        }
+      };
+      
+      // If there are no existing quotes, add the default ones
+      if (!globalRecord.globalQuotes || globalRecord.globalQuotes.length === 0) {
+        updateData.data.globalQuotes = defaultGlobalQuotes;
+      }
+      
+      const updateResponse = await axios.put(
+        `${API_URL}/global`,
+        updateData,
+        { headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } }
+      );
+      
+      return {
+        id: updateResponse.data.data.id,
+        ...updateResponse.data.data.attributes
+      };
+    } else {
+      // Create new global settings
+      console.log('Creating new global settings with quotes...');
+      
+      const createData = {
+        data: {
+          siteName: "Jagannath Tales",
+          siteDescription: "Stories, legends, and wisdom from Lord Jagannath",
+          globalQuotes: defaultGlobalQuotes,
+          publishedAt: new Date().toISOString()
+        }
+      };
+      
+      const createResponse = await axios.post(
+        `${API_URL}/global`,
+        createData,
+        { headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } }
+      );
+      
+      return {
+        id: createResponse.data.data.id,
+        ...createResponse.data.data.attributes
+      };
+    }
+  } catch (error) {
+    console.error('❌ Error updating global settings:', error.message);
+    if (error.response) {
+      console.error('Response status:', error.response.status);
+      console.error('Response data:', error.response.data);
+    }
+    return null;
+  }
+}
+
+/**
+ * Create reusable quotes
+ */
+async function createQuotes() {
+  const quotesData = [
+    {
+      text: "Faith is taking the first step even when you don't see the whole staircase.",
+      author: "Martin Luther King Jr.",
+      source: "Strength to Love",
+      category: "Faith",
+      slug: "faith-first-step",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      text: "The best way to find yourself is to lose yourself in the service of others.",
+      author: "Mahatma Gandhi",
+      source: "",
+      category: "Service",
+      slug: "lose-yourself-service",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      text: "When you surrender to what is and so become fully present, the past ceases to have any power.",
+      author: "Eckhart Tolle",
+      source: "The Power of Now",
+      category: "Spirituality",
+      slug: "surrender-present-moment",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      text: "The divine mother never turns away from the sincere prayers of her children.",
+      author: "Village Elder",
+      source: "Oral Tradition",
+      category: "Devotion",
+      slug: "divine-mother-prayers",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      text: "The essence of all religions is love, compassion, and tolerance.",
+      author: "Dalai Lama",
+      source: "",
+      category: "Religion",
+      slug: "essence-all-religions",
+      publishedAt: new Date().toISOString()
+    }
+  ];
+  
+  const quotes = [];
+  
+  // First try to get the JWT token for admin access
+  console.log('Getting admin authentication token...');
+  let adminToken = '';
+  
+  try {
+    if (!global.adminToken) {
+      const authResponse = await axios.post(API_TOKEN_URL, AUTH);
+      adminToken = authResponse.data.data.token;
+      global.adminToken = adminToken;
+      console.log('✅ Admin authentication successful');
+    } else {
+      adminToken = global.adminToken;
+    }
+  } catch (authError) {
+    console.error('❌ Failed to authenticate as admin:', authError.message);
+    console.log('Falling back to API token for limited operations');
+  }
+  
+  for (const quoteData of quotesData) {
+    try {
+      // Check if quote exists
+      console.log(`Checking if quote '${quoteData.text.substring(0, 30)}...' exists...`);
+      
+      try {
+        const checkResponse = await axios.get(
+          `${API_URL}/quotes?filters[slug][$eq]=${quoteData.slug}`,
+          { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+        
+        if (checkResponse.data.data && checkResponse.data.data.length > 0) {
+          console.log(`✅ Quote already exists, using existing record`);
+          quotes.push({
+            id: checkResponse.data.data[0].id,
+            ...checkResponse.data.data[0].attributes
+          });
+          continue;
+        }
+      } catch (checkError) {
+        console.log(`Unable to check for existing quote: ${checkError.message}`);
+      }
+      
+      // Try to create the quote
+      console.log(`Creating quote: ${quoteData.text.substring(0, 30)}...`);
+      
+      try {
+        const headers = adminToken 
+          ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
+          : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+          
+        const response = await axios.post(
+          `${API_URL}/quotes`, 
+          { data: quoteData },
+          { headers }
+        );
+        
+        const quote = {
+          id: response.data.data.id,
+          ...response.data.data.attributes
+        };
+        
+        quotes.push(quote);
+        console.log(`✅ Quote created: ID ${quote.id}`);
+      } catch (createError) {
+        console.error('❌ Failed to create quote:', createError.message);
+        if (createError.response) {
+          console.error('Response status:', createError.response.status);
+          console.error('Response data:', createError.response.data);
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Error processing quote: ${error.message}`);
+    }
+  }
+  
+  return quotes;
+}
+
+/**
  * Create articles with dynamic content
  */
-async function createArticles(authorId, categoryId) {
+async function createArticles(authorId, categoryId, quotes = []) {
   const articlesData = [
     {
       title: 'Narada\'s Divine Test',
@@ -476,10 +721,44 @@ async function createArticles(authorId, categoryId) {
           ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
           : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
         
+        // Prepare article data with quote relations if available
+        const articleWithRelations = { 
+          ...articleData,
+          // Initialize with empty arrays/values for TypeScript
+          quotes: [],
+          featuredQuote: null 
+        };
+        
+        // Add quotes relation if we have quotes
+        if (quotes && quotes.length > 0) {
+          // Select 1-3 random quotes
+          const numQuotes = Math.floor(Math.random() * 3) + 1;
+          const selectedQuoteIds = [];
+          
+          for (let i = 0; i < numQuotes && i < quotes.length; i++) {
+            // Get a random quote
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quoteId = quotes[randomIndex].id;
+            
+            // Make sure we don't add duplicates
+            if (!selectedQuoteIds.includes(quoteId)) {
+              selectedQuoteIds.push(quoteId);
+            }
+          }
+          
+          // Add the quotes to the article data
+          if (selectedQuoteIds.length > 0) {
+            articleWithRelations.quotes = selectedQuoteIds;
+            
+            // Also set a featured quote (the first one)
+            articleWithRelations.featuredQuote = selectedQuoteIds[0];
+          }
+        }
+        
         // First attempt to create via the regular API
         const response = await axios.post(
           `${API_URL}/articles`, 
-          { data: articleData },
+          { data: articleWithRelations },
           { headers }
         );
         

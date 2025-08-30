@@ -7,7 +7,24 @@
       "shareImage": null
     },
     "siteDescription": "A Blog made with Strapi",
-    "favicon": null
+    "favicon": null,
+    "globalQuotes": [
+      {
+        "text": "Faith is taking the first step even when you don't see the whole staircase.",
+        "author": "Martin Luther King Jr.",
+        "source": "Strength to Love"
+      },
+      {
+        "text": "The best way to find yourself is to lose yourself in the service of others.",
+        "author": "Mahatma Gandhi",
+        "source": ""
+      },
+      {
+        "text": "Devotion is the sublime path that leads to the Divine.",
+        "author": "Sri Jagannath",
+        "source": "Jagannath Wisdom"
+      }
+    ]
   },
   "about": {
     "title": "About the strapi blog",
