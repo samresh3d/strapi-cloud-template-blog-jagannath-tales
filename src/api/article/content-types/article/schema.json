@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages_articles",
+  "collectionName": "articles",
   "info": {
-    "singularName": "pages-article",
-    "pluralName": "pages-articles",
-    "displayName": "pages-article",
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
     "description": "A blog post or other piece of content."
   },
   "options": {
@@ -63,7 +63,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "inversedBy": "pages_articles"
+      "inversedBy": "articles"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "articles"
     },
     "content": {
       "type": "dynamiczone",
@@ -88,24 +94,24 @@
     "quotes": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::data-quote.data-quote",
-      "inversedBy": "pages_articles"
+      "target": "api::quote.quote",
+      "inversedBy": "articles"
     },
     "featuredQuote": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::data-quote.data-quote"
+      "target": "api::quote.quote"
     },
     "festivalEvents": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::data-festival-event.data-festival-event",
-      "inversedBy": "pages_articles"
+      "target": "api::festival-event.festival-event",
+      "inversedBy": "articles"
     },
     "featuredEvent": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::data-festival-event.data-festival-event"
+      "target": "api::festival-event.festival-event"
     }
   }
 }

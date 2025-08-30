@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_shared_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "play",
+    "description": "Embed YouTube or other video content in articles"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Title of the video (for accessibility and reference)"
+    },
+    "youtube_url": {
+      "type": "string",
+      "required": true,
+      "description": "Full YouTube URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)"
+    },
+    "youtube_id": {
+      "type": "string",
+      "description": "YouTube video ID (optional, will be extracted from URL if not provided)"
+    },
+    "description": {
+      "type": "text",
+      "description": "Short description of the video content"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Short caption to display below the video"
+    },
+    "start_time": {
+      "type": "integer",
+      "description": "Start time in seconds (optional, to begin video at specific timestamp)",
+      "default": 0,
+      "min": 0
+    },
+    "autoplay": {
+      "type": "boolean",
+      "description": "Whether the video should autoplay (not recommended for accessibility)",
+      "default": false
+    },
+    "muted": {
+      "type": "boolean",
+      "description": "Whether the video should start muted",
+      "default": false
+    },
+    "width": {
+      "type": "integer",
+      "description": "Video player width in pixels (optional, defaults to responsive container)",
+      "default": 640
+    },
+    "height": {
+      "type": "integer",
+      "description": "Video player height in pixels (optional, defaults to responsive container)",
+      "default": 360
+    }
+  }
+}
