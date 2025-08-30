@@ -13,11 +13,11 @@
     "level": {
       "type": "enumeration",
       "enum": [
-        "1",
-        "2",
-        "3"
+        "h1",
+        "h2",
+        "h3"
       ],
-      "default": "2",
+      "default": "h2",
       "required": true
     }
   }

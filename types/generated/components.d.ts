@@ -375,9 +375,9 @@ export interface StoryHeading extends Struct.ComponentSchema {
     icon: 'heading';
   };
   attributes: {
-    level: Schema.Attribute.Enumeration<['1', '2', '3']> &
+    level: Schema.Attribute.Enumeration<['h1', 'h2', 'h3']> &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'2'>;
+      Schema.Attribute.DefaultTo<'h2'>;
     text: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
