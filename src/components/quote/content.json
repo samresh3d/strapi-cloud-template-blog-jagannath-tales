@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_quote_contents",
+  "info": {
+    "displayName": "Quote Content",
+    "icon": "feather",
+    "description": "Sanskrit quote and its English translation"
+  },
+  "options": {},
+  "attributes": {
+    "sanskrit_text": {
+      "type": "text",
+      "required": true,
+      "description": "Original quote text in Sanskrit",
+      "private": true
+    },
+    "english_translation": {
+      "type": "text",
+      "required": true,
+      "description": "English translation of the Sanskrit text",
+      "private": true
+    }
+  }
+}

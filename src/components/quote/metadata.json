@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_quote_metadata",
+  "info": {
+    "displayName": "Quote Metadata",
+    "icon": "information",
+    "description": "Source and attribution information for quotes"
+  },
+  "options": {},
+  "attributes": {
+    "author": {
+      "type": "string",
+      "description": "Author or speaker of the quote",
+      "private": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Source text or scripture",
+      "private": true
+    },
+    "context": {
+      "type": "text",
+      "description": "Additional context about the quote (optional)"
+    }
+  }
+}

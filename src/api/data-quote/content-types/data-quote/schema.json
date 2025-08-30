@@ -4,44 +4,103 @@
   "info": {
     "singularName": "data-quote",
     "pluralName": "data-quotes",
-    "displayName": "data-quote",
-    "description": "Reusable quotes that can be referenced across content types"
+    "displayName": "data-sanskrit-quotes",
+    "description": "Reusable quotes in Sanskrit with English translations that can be referenced across content types"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
+  "layouts": {
+    "edit": [
+      [
+        {
+          "name": "slug",
+          "size": 6
+        },
+        {
+          "name": "author",
+          "size": 6
+        }
+      ],
+      [
+        {
+          "name": "sanskrit_text",
+          "size": 12
+        }
+      ],
+      [
+        {
+          "name": "english_translation",
+          "size": 12
+        }
+      ],
+      [
+        {
+          "name": "source",
+          "size": 12
+        }
+      ],
+      [
+        {
+          "name": "pages_articles",
+          "size": 12
+        }
+      ],
+      [
+        {
+          "name": "pages_pages",
+          "size": 12
+        }
+      ]
+    ],
+    "list": [
+      "sanskrit_text",
+      "author",
+      "source",
+      "updatedAt"
+    ]
+  },
   "attributes": {
-    "text": {
+    "slug": {
+      "type": "uid",
+      "targetField": "sanskrit_text",
+      "required": true,
+      "description": "URL-friendly identifier for this quote"
+    },
+    "sanskrit_text": {
       "type": "text",
-      "required": true
+      "required": true,
+      "description": "Original quote text in Sanskrit"
+    },
+    "english_translation": {
+      "type": "text",
+      "required": true,
+      "description": "English translation of the Sanskrit text"
     },
     "author": {
       "type": "string",
-      "required": false
+      "required": false,
+      "description": "Author or source of the quote"
     },
     "source": {
       "type": "string",
-      "required": false
-    },
-    "category": {
-      "type": "string",
-      "required": false
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "text",
-      "required": true
+      "required": false,
+      "description": "Source text or scripture"
     },
     "pages_articles": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::pages-article.pages-article"
+      "target": "api::pages-article.pages-article",
+      "displayName": "Related Articles",
+      "description": "Articles that use this quote"
     },
     "pages_pages": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::pages-page.pages-page"
+      "target": "api::pages-page.pages-page",
+      "displayName": "Related Pages",
+      "description": "Pages that use this quote"
     }
   }
 }

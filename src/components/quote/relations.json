@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_quote_relations",
+  "info": {
+    "displayName": "Content Relations",
+    "icon": "link",
+    "description": "Related content that uses this quote"
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::pages-article.pages-article",
+      "private": true
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::pages-page.pages-page",
+      "private": true
+    }
+  }
+}
