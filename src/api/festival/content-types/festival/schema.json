@@ -77,7 +77,9 @@
         "shared.rich-text",
         "shared.list",
         "shared.global-quote-reference",
-        "shared.quote-reference"
+        "shared.quote-reference",
+        "shared.festival-event-reference",
+        "shared.festival-events-list"
       ]
     },
     "rituals": {
@@ -111,6 +113,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::quote.quote"
+    },
+    "eventInstances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::festival-event.festival-event",
+      "mappedBy": "relatedFestival"
+    },
+    "featuredEvent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::festival-event.festival-event"
     }
   }
 }

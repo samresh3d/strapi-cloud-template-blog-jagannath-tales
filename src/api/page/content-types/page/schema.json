@@ -34,7 +34,9 @@
         "shared.rich-text",
         "shared.list",
         "shared.global-quote-reference",
-        "shared.quote-reference"
+        "shared.quote-reference",
+        "shared.festival-event-reference",
+        "shared.festival-events-list"
       ]
     },
     "seo": {
@@ -52,6 +54,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::quote.quote"
+    },
+    "festivalEvents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::festival-event.festival-event",
+      "inversedBy": "pages"
+    },
+    "featuredEvent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::festival-event.festival-event"
     }
   }
 }

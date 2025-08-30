@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_shared_festival_events_list",
+  "info": {
+    "displayName": "Festival Events List",
+    "icon": "calendar-week",
+    "description": "Display a list or calendar of upcoming festival events"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Upcoming Festivals & Celebrations"
+    },
+    "displayMode": {
+      "type": "enumeration",
+      "enum": ["list", "grid", "calendar", "timeline"],
+      "default": "list"
+    },
+    "maxItems": {
+      "type": "integer",
+      "default": 5,
+      "min": 1,
+      "max": 20
+    },
+    "filterByImportance": {
+      "type": "enumeration",
+      "enum": ["all", "major", "major+regional", "regional+local"],
+      "default": "all"
+    },
+    "showPastEvents": {
+      "type": "boolean",
+      "default": false
+    },
+    "daysToLookAhead": {
+      "type": "integer",
+      "default": 90,
+      "min": 7,
+      "max": 365
+    },
+    "specificEvents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::festival-event.festival-event"
+    }
+  }
+}

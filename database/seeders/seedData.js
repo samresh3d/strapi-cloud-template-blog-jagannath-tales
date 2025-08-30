@@ -82,6 +82,14 @@ async function seed() {
         console.warn('⚠️ No quotes were created or found');
       }
       
+      // Create reusable festival events
+      const festivalEvents = await createFestivalEvents();
+      if (festivalEvents && festivalEvents.length > 0) {
+        console.log(`✅ Created/found ${festivalEvents.length} festival events`);
+      } else {
+        console.warn('⚠️ No festival events were created or found');
+      }
+      
       // Find the devotional stories category
       const devotionalCategory = categories.find(c => c.slug === 'devotional-stories' || c.name === 'Devotional Stories');
       
@@ -90,7 +98,7 @@ async function seed() {
       }
       
       // Create articles
-      await createArticles(author.id, devotionalCategory.id, quotes);
+      await createArticles(author.id, devotionalCategory.id, quotes, festivalEvents);
     } else {
       throw new Error("No categories were created or found");
     }
@@ -525,9 +533,154 @@ async function createQuotes() {
 }
 
 /**
+ * Create festival events
+ */
+async function createFestivalEvents() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  
+  const festivalEventsData = [
+    {
+      name: "Jagannath Rath Yatra",
+      slug: "jagannath-rath-yatra-" + currentYear,
+      description: "The famous chariot festival where Lord Jagannath, Lord Balabhadra, and Goddess Subhadra are taken in a procession on three magnificent chariots.",
+      startDate: new Date(currentYear, 6, 7).toISOString().split('T')[0], // July 7
+      endDate: new Date(currentYear, 6, 15).toISOString().split('T')[0], // July 15
+      isAllDay: true,
+      location: "Puri, Odisha",
+      importance: "major",
+      rituals: "The festival begins with 'Pahandi Bije' where the deities are carried to their chariots. The chariots are then pulled by devotees through the streets of Puri to the Gundicha Temple.",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      name: "Chandan Yatra",
+      slug: "chandan-yatra-" + currentYear,
+      description: "A 21-day water festival where the representative images of the deities are taken in a procession in beautifully decorated boats.",
+      startDate: new Date(currentYear, 4, 15).toISOString().split('T')[0], // May 15
+      endDate: new Date(currentYear, 5, 5).toISOString().split('T')[0], // June 5
+      isAllDay: true,
+      location: "Narendra Pond, Puri",
+      importance: "major",
+      rituals: "The festival involves daily boat rides of the deities in Narendra Pond. Sandalwood paste is applied to cool the deities during summer.",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      name: "Snana Purnima",
+      slug: "snana-purnima-" + currentYear,
+      description: "The bathing festival that marks the first public appearance of the deities after they remain in seclusion following the Devasnana Purnima.",
+      startDate: new Date(currentYear, 5, 22).toISOString().split('T')[0], // June 22
+      isAllDay: true,
+      location: "Jagannath Temple, Puri",
+      importance: "major",
+      rituals: "The deities are bathed with 108 pitchers of perfumed water and then dressed as elephants (Gajavesha).",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      name: "Diwali Celebration",
+      slug: "diwali-celebration-" + currentYear,
+      description: "Special celebration of Diwali at Jagannath Temple with thousands of lamps and lights.",
+      startDate: new Date(currentYear, 10, 12).toISOString().split('T')[0], // November 12
+      isAllDay: true,
+      location: "Jagannath Temple, Puri",
+      importance: "major",
+      rituals: "Special puja, lighting of lamps, fireworks, and distribution of sweets.",
+      publishedAt: new Date().toISOString()
+    },
+    {
+      name: "Chitalagi Amavasya",
+      slug: "chitalagi-amavasya-" + currentYear,
+      description: "A regional festival marking the beginning of the agricultural season.",
+      startDate: new Date(currentYear, 2, 10).toISOString().split('T')[0], // March 10
+      isAllDay: true,
+      location: "Various Jagannath Temples",
+      importance: "regional",
+      publishedAt: new Date().toISOString()
+    }
+  ];
+  
+  const festivalEvents = [];
+  
+  // First try to get the JWT token for admin access
+  console.log('Getting admin authentication token for festival events...');
+  let adminToken = '';
+  
+  try {
+    if (!global.adminToken) {
+      const authResponse = await axios.post(API_TOKEN_URL, AUTH);
+      adminToken = authResponse.data.data.token;
+      global.adminToken = adminToken;
+      console.log('✅ Admin authentication successful');
+    } else {
+      adminToken = global.adminToken;
+    }
+  } catch (authError) {
+    console.error('❌ Failed to authenticate as admin:', authError.message);
+    console.log('Falling back to API token for limited operations');
+  }
+  
+  for (const eventData of festivalEventsData) {
+    try {
+      // Check if event exists
+      console.log(`Checking if festival event '${eventData.name}' exists...`);
+      
+      try {
+        const checkResponse = await axios.get(
+          `${API_URL}/festival-events?filters[slug][$eq]=${eventData.slug}`,
+          { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+        
+        if (checkResponse.data.data && checkResponse.data.data.length > 0) {
+          console.log(`✅ Festival event already exists, using existing record`);
+          festivalEvents.push({
+            id: checkResponse.data.data[0].id,
+            ...checkResponse.data.data[0].attributes
+          });
+          continue;
+        }
+      } catch (checkError) {
+        console.log(`Unable to check for existing festival event: ${checkError.message}`);
+      }
+      
+      // Try to create the event
+      console.log(`Creating festival event: ${eventData.name}`);
+      
+      try {
+        const headers = adminToken 
+          ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
+          : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+          
+        const response = await axios.post(
+          `${API_URL}/festival-events`, 
+          { data: eventData },
+          { headers }
+        );
+        
+        const event = {
+          id: response.data.data.id,
+          ...response.data.data.attributes
+        };
+        
+        festivalEvents.push(event);
+        console.log(`✅ Festival event created: ID ${event.id}`);
+      } catch (createError) {
+        console.error('❌ Failed to create festival event:', createError.message);
+        if (createError.response) {
+          console.error('Response status:', createError.response.status);
+          console.error('Response data:', createError.response.data);
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Error processing festival event: ${error.message}`);
+    }
+  }
+  
+  return festivalEvents;
+}
+
+/**
  * Create articles with dynamic content
  */
-async function createArticles(authorId, categoryId, quotes = []) {
+async function createArticles(authorId, categoryId, quotes = [], festivalEvents = []) {
   const articlesData = [
     {
       title: 'Narada\'s Divine Test',
@@ -721,12 +874,14 @@ async function createArticles(authorId, categoryId, quotes = []) {
           ? { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }
           : { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
         
-        // Prepare article data with quote relations if available
+        // Prepare article data with relations if available
         const articleWithRelations = { 
           ...articleData,
           // Initialize with empty arrays/values for TypeScript
           quotes: [],
-          featuredQuote: null 
+          featuredQuote: null,
+          festivalEvents: [],
+          featuredEvent: null 
         };
         
         // Add quotes relation if we have quotes
@@ -752,6 +907,36 @@ async function createArticles(authorId, categoryId, quotes = []) {
             
             // Also set a featured quote (the first one)
             articleWithRelations.featuredQuote = selectedQuoteIds[0];
+          }
+        }
+        
+        // Add festival event relations if we have events
+        if (festivalEvents && festivalEvents.length > 0) {
+          // Select 0-2 random festival events (some articles might not have events)
+          const shouldAddEvents = Math.random() > 0.3; // 70% chance to add events
+          
+          if (shouldAddEvents) {
+            const numEvents = Math.floor(Math.random() * 2) + 1;
+            const selectedEventIds = [];
+            
+            for (let i = 0; i < numEvents && i < festivalEvents.length; i++) {
+              // Get a random event
+              const randomIndex = Math.floor(Math.random() * festivalEvents.length);
+              const eventId = festivalEvents[randomIndex].id;
+              
+              // Make sure we don't add duplicates
+              if (!selectedEventIds.includes(eventId)) {
+                selectedEventIds.push(eventId);
+              }
+            }
+            
+            // Add the events to the article data
+            if (selectedEventIds.length > 0) {
+              articleWithRelations.festivalEvents = selectedEventIds;
+              
+              // Also set a featured event (the first one)
+              articleWithRelations.featuredEvent = selectedEventIds[0];
+            }
           }
         }
         

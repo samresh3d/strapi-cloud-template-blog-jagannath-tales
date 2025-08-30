@@ -80,7 +80,9 @@
         "story.quote",
         "story.rich-text",
         "shared.global-quote-reference",
-        "shared.quote-reference"
+        "shared.quote-reference",
+        "shared.festival-event-reference",
+        "shared.festival-events-list"
       ]
     },
     "seo": {
@@ -98,6 +100,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::quote.quote"
+    },
+    "festivalEvents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::festival-event.festival-event",
+      "inversedBy": "articles"
+    },
+    "featuredEvent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::festival-event.festival-event"
     }
   }
 }

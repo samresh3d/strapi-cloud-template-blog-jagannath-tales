@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_shared_festival_event_references",
+  "info": {
+    "displayName": "Festival Event Reference",
+    "icon": "calendar-alt",
+    "description": "Reference to an upcoming festival or celebration"
+  },
+  "options": {},
+  "attributes": {
+    "festivalEvent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::festival-event.festival-event"
+    },
+    "displayMode": {
+      "type": "enumeration",
+      "enum": ["compact", "detailed", "card", "countdown"],
+      "default": "compact"
+    },
+    "showLocation": {
+      "type": "boolean",
+      "default": true
+    },
+    "showDescription": {
+      "type": "boolean",
+      "default": true
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": false
+    },
+    "customTitle": {
+      "type": "string"
+    }
+  }
+}
