@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_story_verse_of_the_day",
+  "info": {
+    "displayName": "Verse of the Day",
+    "icon": "book-open",
+    "description": "A special verse display with title, sanskrit text, and reference"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Verse of the Day",
+      "required": true
+    },
+    "sanskritText": {
+      "type": "text",
+      "required": true
+    },
+    "reference": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
