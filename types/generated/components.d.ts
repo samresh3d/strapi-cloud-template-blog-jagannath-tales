@@ -48,6 +48,58 @@ export interface FestivalUpcomingDate extends Struct.ComponentSchema {
   };
 }
 
+export interface QuoteContent extends Struct.ComponentSchema {
+  collectionName: 'components_quote_contents';
+  info: {
+    description: 'Sanskrit quote and its English translation';
+    displayName: 'Quote Content';
+    icon: 'feather';
+  };
+  attributes: {
+    english_translation: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    sanskrit_text: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface QuoteMetadata extends Struct.ComponentSchema {
+  collectionName: 'components_quote_metadata';
+  info: {
+    description: 'Source and attribution information for quotes';
+    displayName: 'Quote Metadata';
+    icon: 'information';
+  };
+  attributes: {
+    author: Schema.Attribute.String & Schema.Attribute.Private;
+    context: Schema.Attribute.Text;
+    source: Schema.Attribute.String & Schema.Attribute.Private;
+  };
+}
+
+export interface QuoteRelations extends Struct.ComponentSchema {
+  collectionName: 'components_quote_relations';
+  info: {
+    description: 'Related content that uses this quote';
+    displayName: 'Content Relations';
+    icon: 'link';
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-article.pages-article'
+    > &
+      Schema.Attribute.Private;
+    pages: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::pages-page.pages-page'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface SharedFestivalEventReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_festival_event_references';
   info: {
@@ -428,6 +480,22 @@ export interface StoryRichText extends Struct.ComponentSchema {
   };
 }
 
+export interface StoryVerseOfTheDay extends Struct.ComponentSchema {
+  collectionName: 'components_story_verse_of_the_day';
+  info: {
+    description: 'A special verse display with title, sanskrit text, and reference';
+    displayName: 'Verse of the Day';
+    icon: 'book-open';
+  };
+  attributes: {
+    reference: Schema.Attribute.String & Schema.Attribute.Required;
+    sanskritText: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Verse of the Day'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -435,6 +503,9 @@ declare module '@strapi/strapi' {
       'festival.calendar-season': FestivalCalendarSeason;
       'festival.ritual': FestivalRitual;
       'festival.upcoming-date': FestivalUpcomingDate;
+      'quote.content': QuoteContent;
+      'quote.metadata': QuoteMetadata;
+      'quote.relations': QuoteRelations;
       'shared.festival-event-reference': SharedFestivalEventReference;
       'shared.festival-events-list': SharedFestivalEventsList;
       'shared.global-quote-reference': SharedGlobalQuoteReference;
@@ -459,6 +530,7 @@ declare module '@strapi/strapi' {
       'story.paragraph': StoryParagraph;
       'story.quote': StoryQuote;
       'story.rich-text': StoryRichText;
+      'story.verse-of-the-day': StoryVerseOfTheDay;
     }
   }
 }
