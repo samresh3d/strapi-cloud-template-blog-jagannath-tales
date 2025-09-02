@@ -73,11 +73,11 @@
         "story.image-block",
         "story.quote",
         "story.rich-text",
-        "shared.global-quote-reference",
         "shared.quote-reference",
         "shared.festival-event-reference",
         "shared.festival-events-list",
-        "shared.youtube"
+        "shared.youtube",
+        "shared.newsletter"
       ]
     },
     "seo": {

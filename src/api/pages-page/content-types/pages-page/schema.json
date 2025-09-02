@@ -32,7 +32,8 @@
         "shared.quote-reference",
         "shared.festival-event-reference",
         "shared.festival-events-list",
-        "shared.youtube"
+        "shared.youtube",
+        "shared.newsletter"
       ]
     },
     "seo": {

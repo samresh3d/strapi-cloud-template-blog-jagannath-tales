@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_newsletters",
+  "info": {
+    "displayName": "Newsletter",
+    "description": "Reusable newsletter subscription section for any page"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Join Our Newsletter",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Receive updates on new stories, upcoming festivals, and exclusive content."
+    },
+    "form": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.subscription-form"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": ["light", "dark", "brand"],
+      "default": "light"
+    }
+  }
+}
+

@@ -252,6 +252,24 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedNewsletter extends Struct.ComponentSchema {
+  collectionName: 'components_shared_newsletters';
+  info: {
+    description: 'Reusable newsletter subscription section for any page';
+    displayName: 'Newsletter';
+  };
+  attributes: {
+    description: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Receive updates on new stories, upcoming festivals, and exclusive content.'>;
+    form: Schema.Attribute.Component<'site.subscription-form', false>;
+    heading: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Join Our Newsletter'>;
+    theme: Schema.Attribute.Enumeration<['light', 'dark', 'brand']> &
+      Schema.Attribute.DefaultTo<'light'>;
+  };
+}
+
 export interface SharedParagraph extends Struct.ComponentSchema {
   collectionName: 'components_shared_paragraphs';
   info: {
@@ -552,6 +570,7 @@ declare module '@strapi/strapi' {
       'shared.image': SharedImage;
       'shared.list': SharedList;
       'shared.media': SharedMedia;
+      'shared.newsletter': SharedNewsletter;
       'shared.paragraph': SharedParagraph;
       'shared.quote': SharedQuote;
       'shared.quote-reference': SharedQuoteReference;

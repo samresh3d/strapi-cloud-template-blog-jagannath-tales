@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-02T03:42:15.082Z"
+    "x-generation-date": "2025-09-02T03:55:18.966Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7148,6 +7148,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedYoutubeComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedNewsletterComponent"
                     }
                   ]
                 },
@@ -7162,7 +7165,8 @@
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                    "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                   }
                 }
               },
@@ -7600,29 +7604,6 @@
           },
           "content": {
             "type": "string"
-          }
-        }
-      },
-      "SharedGlobalQuoteReferenceComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.global-quote-reference"
-            ]
-          },
-          "quoteId": {
-            "type": "integer"
-          },
-          "showAuthor": {
-            "type": "boolean"
-          },
-          "showSource": {
-            "type": "boolean"
           }
         }
       },
@@ -8141,9 +8122,6 @@
                             "$ref": "#/components/schemas/StoryRichTextComponent"
                           },
                           {
-                            "$ref": "#/components/schemas/SharedGlobalQuoteReferenceComponent"
-                          },
-                          {
                             "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
                           },
                           {
@@ -8154,6 +8132,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedYoutubeComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedNewsletterComponent"
                           }
                         ]
                       },
@@ -8165,11 +8146,11 @@
                           "story.image-block": "#/components/schemas/StoryImageBlockComponent",
                           "story.quote": "#/components/schemas/StoryQuoteComponent",
                           "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                          "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                           "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                           "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                           "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                         }
                       }
                     },
@@ -8495,6 +8476,57 @@
               "RATIO_16_9",
               "RATIO_4_3",
               "RATIO_1_1"
+            ]
+          }
+        }
+      },
+      "SiteSubscriptionFormComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "buttonText": {
+            "type": "string"
+          },
+          "placeholder": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedNewsletterComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.newsletter"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "form": {
+            "$ref": "#/components/schemas/SiteSubscriptionFormComponent"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "dark",
+              "brand"
             ]
           }
         }
@@ -9738,9 +9770,6 @@
                         "$ref": "#/components/schemas/StoryRichTextComponent"
                       },
                       {
-                        "$ref": "#/components/schemas/SharedGlobalQuoteReferenceComponent"
-                      },
-                      {
                         "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
                       },
                       {
@@ -9751,6 +9780,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedYoutubeComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedNewsletterComponent"
                       }
                     ]
                   },
@@ -9762,11 +9794,11 @@
                       "story.image-block": "#/components/schemas/StoryImageBlockComponent",
                       "story.quote": "#/components/schemas/StoryQuoteComponent",
                       "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                      "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                       "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                       "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                       "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                      "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                      "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                      "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                     }
                   }
                 },
@@ -10751,26 +10783,6 @@
             "items": {
               "$ref": "#/components/schemas/SiteNavigationLinkComponent"
             }
-          }
-        }
-      },
-      "SiteSubscriptionFormComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "buttonText": {
-            "type": "string"
-          },
-          "placeholder": {
-            "type": "string"
           }
         }
       },
@@ -11888,9 +11900,6 @@
                       "$ref": "#/components/schemas/StoryRichTextComponent"
                     },
                     {
-                      "$ref": "#/components/schemas/SharedGlobalQuoteReferenceComponent"
-                    },
-                    {
                       "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
                     },
                     {
@@ -11901,6 +11910,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedYoutubeComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedNewsletterComponent"
                     }
                   ]
                 },
@@ -11912,11 +11924,11 @@
                     "story.image-block": "#/components/schemas/StoryImageBlockComponent",
                     "story.quote": "#/components/schemas/StoryQuoteComponent",
                     "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                    "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                    "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                   }
                 }
               },
@@ -13107,9 +13119,6 @@
                               "$ref": "#/components/schemas/StoryRichTextComponent"
                             },
                             {
-                              "$ref": "#/components/schemas/SharedGlobalQuoteReferenceComponent"
-                            },
-                            {
                               "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
                             },
                             {
@@ -13120,6 +13129,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedYoutubeComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedNewsletterComponent"
                             }
                           ]
                         },
@@ -13131,11 +13143,11 @@
                             "story.image-block": "#/components/schemas/StoryImageBlockComponent",
                             "story.quote": "#/components/schemas/StoryQuoteComponent",
                             "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                            "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                             "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                             "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                             "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                            "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                            "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                            "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                           }
                         }
                       },
@@ -13320,9 +13332,6 @@
                   "$ref": "#/components/schemas/StoryRichTextComponent"
                 },
                 {
-                  "$ref": "#/components/schemas/SharedGlobalQuoteReferenceComponent"
-                },
-                {
                   "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
                 },
                 {
@@ -13333,6 +13342,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedYoutubeComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedNewsletterComponent"
                 }
               ]
             },
@@ -13344,11 +13356,11 @@
                 "story.image-block": "#/components/schemas/StoryImageBlockComponent",
                 "story.quote": "#/components/schemas/StoryQuoteComponent",
                 "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                 "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                 "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                 "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
               }
             }
           },
@@ -13518,6 +13530,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedYoutubeComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedNewsletterComponent"
                     }
                   ]
                 },
@@ -13532,7 +13547,8 @@
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                    "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
                   }
                 }
               },
@@ -13708,6 +13724,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedYoutubeComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedNewsletterComponent"
                 }
               ]
             },
@@ -13722,7 +13741,8 @@
                 "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                 "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
                 "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
+                "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                "shared.newsletter": "#/components/schemas/SharedNewsletterComponent"
               }
             }
           },
