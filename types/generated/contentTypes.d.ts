@@ -537,6 +537,50 @@ export interface ApiFestivalCalendarFestivalCalendar
   };
 }
 
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    description: 'Footer configuration with simple link groups';
+    displayName: 'footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    connectDescription: Schema.Attribute.Text;
+    connectTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Connect'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'site.link-group', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    socialLinks: Schema.Attribute.Component<'site.social-link', true>;
+    subscriptionForm: Schema.Attribute.Component<
+      'site.subscription-form',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1334,6 +1378,7 @@ declare module '@strapi/strapi' {
       'api::data-festival-event.data-festival-event': ApiDataFestivalEventDataFestivalEvent;
       'api::data-quote.data-quote': ApiDataQuoteDataQuote;
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
+      'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
       'api::pages-article.pages-article': ApiPagesArticlePagesArticle;
       'api::pages-page.pages-page': ApiPagesPagePagesPage;

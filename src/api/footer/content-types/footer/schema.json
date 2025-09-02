@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "footer",
+    "description": "Footer configuration with simple link groups"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "site.link-group",
+      "required": true,
+      "min": 1
+    },
+    "connectTitle": {
+      "type": "string",
+      "default": "Connect"
+    },
+    "connectDescription": {
+      "type": "text"
+    },
+    "subscriptionForm": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.subscription-form"
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "site.social-link"
+    }
+  }
+}

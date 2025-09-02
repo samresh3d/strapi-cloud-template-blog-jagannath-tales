@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_site_link_groups",
+  "info": {
+    "displayName": "Link Group",
+    "description": "A titled group of navigation links for footers or menus"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "site.navigation-link",
+      "required": true,
+      "min": 1
+    }
+  }
+}
+

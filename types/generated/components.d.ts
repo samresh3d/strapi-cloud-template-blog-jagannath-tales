@@ -371,6 +371,25 @@ export interface SiteLanguage extends Struct.ComponentSchema {
   };
 }
 
+export interface SiteLinkGroup extends Struct.ComponentSchema {
+  collectionName: 'components_site_link_groups';
+  info: {
+    description: 'A titled group of navigation links for footers or menus';
+    displayName: 'Link Group';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'site.navigation-link', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SiteNavigationLink extends Struct.ComponentSchema {
   collectionName: 'components_site_navigation_links';
   info: {
@@ -541,6 +560,7 @@ declare module '@strapi/strapi' {
       'shared.slider': SharedSlider;
       'shared.youtube': SharedYoutube;
       'site.language': SiteLanguage;
+      'site.link-group': SiteLinkGroup;
       'site.navigation-link': SiteNavigationLink;
       'site.scripture': SiteScripture;
       'site.site-info': SiteSiteInfo;

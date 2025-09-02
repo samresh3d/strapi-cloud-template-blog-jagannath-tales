@@ -6,6 +6,12 @@ const mime = require('mime-types');
 const { categories, authors, articles, global, about } = require('../data/data.json');
 
 async function seedExampleApp() {
+  // Optional env guard so prod won't seed by default
+  const isProd = strapi?.config?.environment === 'production' || process.env.NODE_ENV === 'production';
+  if (isProd && process.env.SEED_ENABLED !== 'true') {
+    console.log('Seeding disabled in production. Set SEED_ENABLED=true to enable.');
+    return;
+  }
   const shouldImportSeedData = await isFirstRun();
 
   if (shouldImportSeedData) {
@@ -21,6 +27,13 @@ async function seedExampleApp() {
     console.log(
       'Seed data has already been imported. We cannot reimport unless you clear your database first.'
     );
+    // Ensure newly added single-types (like Footer) exist even after first run
+    try {
+      await importFooter();
+      console.log('Ensured footer exists.');
+    } catch (err) {
+      console.error('Failed to ensure footer:', err.message || err);
+    }
   }
 }
 
@@ -237,6 +250,85 @@ async function importAbout() {
   });
 }
 
+// Create or complete a default Footer single-type entry
+async function importFooter() {
+  try {
+    const existing = await strapi.db.query('api::footer.footer').findMany({ limit: 1 });
+
+    const defaultSections = [
+      {
+        title: 'Explore',
+        links: [
+          { label: 'Devotional Stories', url: '/devotional-stories', newTab: false, ariaLabel: 'Explore Devotional Stories' },
+          { label: 'Divine Miracles', url: '/divine-miracles', newTab: false, ariaLabel: 'Explore Divine Miracles' },
+          { label: 'Sacred Festivals', url: '/sacred-festivals', newTab: false, ariaLabel: 'Explore Sacred Festivals' }
+        ]
+      },
+      {
+        title: 'About',
+        links: [
+          { label: 'About', url: '/about', newTab: false, ariaLabel: 'About Jagannath Tales' },
+          { label: 'Contact', url: '/contact', newTab: false, ariaLabel: 'Contact us' },
+          { label: 'Privacy Policy', url: '/privacy-policy', newTab: false, ariaLabel: 'Privacy policy' },
+          { label: 'Terms of Use', url: '/terms-of-use', newTab: false, ariaLabel: 'Terms of use' },
+          { label: 'Sitemap', url: '/sitemap.xml', newTab: false, ariaLabel: 'Sitemap' }
+        ]
+      }
+    ];
+
+    const defaultConnect = {
+      connectTitle: 'Connect',
+      connectDescription:
+        'Receive updates on new stories, upcoming festivals, and exclusive content.',
+      subscriptionForm: {
+        title: 'Subscribe',
+        description: '',
+        buttonText: 'Subscribe',
+        placeholder: 'Your email address'
+      },
+      socialLinks: [
+        { label: 'Twitter', url: 'https://twitter.com/jagannathtales', icon: 'x' },
+        { label: 'Facebook', url: 'https://facebook.com/jagannathtales', icon: 'facebook' },
+        { label: 'Instagram', url: 'https://instagram.com/jagannathtales', icon: 'instagram' },
+        { label: 'YouTube', url: 'https://youtube.com/@jagannathtales', icon: 'youtube' }
+      ]
+    };
+
+    if (!existing || existing.length === 0) {
+      await createEntry({
+        model: 'footer',
+        entry: {
+          sections: defaultSections,
+          ...defaultConnect,
+          publishedAt: Date.now()
+        }
+      });
+      console.log('Seeded default footer');
+      return;
+    }
+
+    const footer = existing[0];
+    const patch = {};
+    if (!footer.sections || footer.sections.length === 0) patch.sections = defaultSections;
+    if (!footer.connectTitle) patch.connectTitle = defaultConnect.connectTitle;
+    if (!footer.connectDescription) patch.connectDescription = defaultConnect.connectDescription;
+    if (!footer.subscriptionForm) patch.subscriptionForm = defaultConnect.subscriptionForm;
+    if (!footer.socialLinks || footer.socialLinks.length === 0) patch.socialLinks = defaultConnect.socialLinks;
+
+    if (Object.keys(patch).length > 0) {
+      await strapi.documents('api::footer.footer').update({
+        documentId: footer.id,
+        data: patch
+      });
+      console.log('Updated footer with missing fields');
+    } else {
+      console.log('Footer already complete, no updates applied');
+    }
+  } catch (err) {
+    console.error('Failed to seed footer:', err.message || err);
+  }
+}
+
 async function importCategories() {
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
@@ -265,6 +357,7 @@ async function importSeedData() {
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    footer: ['find'],
   });
 
   // Create all entries
@@ -273,6 +366,7 @@ async function importSeedData() {
   await importArticles();
   await importGlobal();
   await importAbout();
+  await importFooter();
 }
 
 async function main() {
