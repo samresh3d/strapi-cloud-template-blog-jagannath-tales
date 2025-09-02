@@ -338,6 +338,26 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedYoutube extends Struct.ComponentSchema {
+  collectionName: 'components_shared_youtube_embeds';
+  info: {
+    description: 'Embed a YouTube video by URL or ID';
+    displayName: 'YouTube';
+    icon: 'play';
+  };
+  attributes: {
+    aspectRatio: Schema.Attribute.Enumeration<
+      ['RATIO_16_9', 'RATIO_4_3', 'RATIO_1_1']
+    > &
+      Schema.Attribute.DefaultTo<'RATIO_16_9'>;
+    autoplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    hideControls: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    startAt: Schema.Attribute.Integer;
+    title: Schema.Attribute.String;
+    youtubeUrl: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SiteLanguage extends Struct.ComponentSchema {
   collectionName: 'components_site_languages';
   info: {
@@ -519,6 +539,7 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.youtube': SharedYoutube;
       'site.language': SiteLanguage;
       'site.navigation-link': SiteNavigationLink;
       'site.scripture': SiteScripture;

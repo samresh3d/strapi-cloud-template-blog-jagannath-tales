@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_shared_youtube_embeds",
+  "info": {
+    "displayName": "YouTube",
+    "description": "Embed a YouTube video by URL or ID",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "youtubeUrl": {
+      "type": "string",
+      "required": true
+    },
+    "startAt": {
+      "type": "integer",
+      "required": false
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideControls": {
+      "type": "boolean",
+      "default": false
+    },
+    "aspectRatio": {
+      "type": "enumeration",
+      "enum": ["RATIO_16_9", "RATIO_4_3", "RATIO_1_1"],
+      "default": "RATIO_16_9"
+    }
+  }
+}

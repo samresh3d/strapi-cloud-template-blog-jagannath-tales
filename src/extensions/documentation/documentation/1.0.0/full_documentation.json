@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-31T16:43:59.590Z"
+    "x-generation-date": "2025-09-02T02:50:37.627Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6822,6 +6822,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedYoutubeComponent"
                     }
                   ]
                 },
@@ -6835,7 +6838,8 @@
                     "story.rich-text": "#/components/schemas/StoryRichTextComponent",
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                   }
                 }
               },
@@ -7824,6 +7828,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedYoutubeComponent"
                           }
                         ]
                       },
@@ -7838,7 +7845,8 @@
                           "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                           "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                           "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                         }
                       }
                     },
@@ -8128,6 +8136,43 @@
                 }
               }
             }
+          }
+        }
+      },
+      "SharedYoutubeComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.youtube"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "youtubeUrl": {
+            "type": "string"
+          },
+          "startAt": {
+            "type": "integer"
+          },
+          "autoplay": {
+            "type": "boolean"
+          },
+          "hideControls": {
+            "type": "boolean"
+          },
+          "aspectRatio": {
+            "type": "string",
+            "enum": [
+              "RATIO_16_9",
+              "RATIO_4_3",
+              "RATIO_1_1"
+            ]
           }
         }
       },
@@ -9380,6 +9425,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedYoutubeComponent"
                       }
                     ]
                   },
@@ -9394,7 +9442,8 @@
                       "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                       "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                       "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                      "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                      "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                      "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                     }
                   }
                 },
@@ -10942,6 +10991,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedYoutubeComponent"
                     }
                   ]
                 },
@@ -10956,7 +11008,8 @@
                     "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                   }
                 }
               },
@@ -12157,6 +12210,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedYoutubeComponent"
                             }
                           ]
                         },
@@ -12171,7 +12227,8 @@
                             "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                             "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                             "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                            "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                            "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                            "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                           }
                         }
                       },
@@ -12366,6 +12423,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedYoutubeComponent"
                 }
               ]
             },
@@ -12380,7 +12440,8 @@
                 "shared.global-quote-reference": "#/components/schemas/SharedGlobalQuoteReferenceComponent",
                 "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                 "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
               }
             }
           },
@@ -12547,6 +12608,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedYoutubeComponent"
                     }
                   ]
                 },
@@ -12560,7 +12624,8 @@
                     "story.rich-text": "#/components/schemas/StoryRichTextComponent",
                     "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                     "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
                   }
                 }
               },
@@ -12733,6 +12798,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedYoutubeComponent"
                 }
               ]
             },
@@ -12746,7 +12814,8 @@
                 "story.rich-text": "#/components/schemas/StoryRichTextComponent",
                 "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
                 "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent"
+                "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                "shared.youtube": "#/components/schemas/SharedYoutubeComponent"
               }
             }
           },

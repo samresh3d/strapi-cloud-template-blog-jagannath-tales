@@ -76,7 +76,8 @@
         "shared.global-quote-reference",
         "shared.quote-reference",
         "shared.festival-event-reference",
-        "shared.festival-events-list"
+        "shared.festival-events-list",
+        "shared.youtube"
       ]
     },
     "seo": {

@@ -602,6 +602,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.quote-reference',
         'shared.festival-event-reference',
         'shared.festival-events-list',
+        'shared.youtube',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -671,6 +672,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.quote-reference',
         'shared.festival-event-reference',
         'shared.festival-events-list',
+        'shared.youtube',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
