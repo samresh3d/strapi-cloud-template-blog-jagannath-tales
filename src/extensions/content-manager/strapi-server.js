@@ -17,9 +17,10 @@ module.exports = (plugin) => {
   ) {
     const originalFindExisting = plugin.controllers.relations.findExisting;
 
-    plugin.controllers.relations.findExisting = async (ctx) => {
+    plugin.controllers.relations.findExisting = async function findExistingPatched(ctx) {
       try {
-        return await originalFindExisting(ctx);
+        // Ensure the original controller keeps its `this` context
+        return await originalFindExisting.call(plugin.controllers.relations, ctx);
       } catch (err) {
         const message = (err && err.message) || '';
         const stack = (err && err.stack) || '';
@@ -52,4 +53,3 @@ module.exports = (plugin) => {
 
   return plugin;
 };
-
