@@ -471,9 +471,9 @@ export interface SiteSubscriptionForm extends Struct.ComponentSchema {
   };
   attributes: {
     buttonText: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
+    emailPattern: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'>;
     placeholder: Schema.Attribute.String;
-    title: Schema.Attribute.String;
   };
 }
 
