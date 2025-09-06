@@ -100,6 +100,40 @@ export interface QuoteRelations extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedAccordion extends Struct.ComponentSchema {
+  collectionName: 'components_shared_accordions';
+  info: {
+    description: 'Expandable section list (FAQ/accordion)';
+    displayName: 'Accordion';
+  };
+  attributes: {
+    allowMultipleOpen: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    expandFirst: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    heading: Schema.Attribute.String;
+    items: Schema.Attribute.Component<'shared.accordion-item', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface SharedAccordionItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_accordion_items';
+  info: {
+    description: 'An item within an accordion';
+    displayName: 'Accordion Item';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedFestivalEventReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_festival_event_references';
   info: {
@@ -563,6 +597,8 @@ declare module '@strapi/strapi' {
       'quote.content': QuoteContent;
       'quote.metadata': QuoteMetadata;
       'quote.relations': QuoteRelations;
+      'shared.accordion': SharedAccordion;
+      'shared.accordion-item': SharedAccordionItem;
       'shared.festival-event-reference': SharedFestivalEventReference;
       'shared.festival-events-list': SharedFestivalEventsList;
       'shared.global-quote-reference': SharedGlobalQuoteReference;

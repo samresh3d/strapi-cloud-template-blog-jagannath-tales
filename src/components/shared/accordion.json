@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_accordions",
+  "info": {
+    "displayName": "Accordion",
+    "description": "Expandable section list (FAQ/accordion)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.accordion-item",
+      "required": true,
+      "min": 1
+    },
+    "allowMultipleOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "expandFirst": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
+

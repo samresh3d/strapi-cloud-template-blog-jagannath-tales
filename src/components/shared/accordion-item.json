@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_accordion_items",
+  "info": {
+    "displayName": "Accordion Item",
+    "description": "An item within an accordion"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
+

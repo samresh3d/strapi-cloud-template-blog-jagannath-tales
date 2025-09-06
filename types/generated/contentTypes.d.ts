@@ -690,6 +690,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.festival-events-list',
         'shared.youtube',
         'shared.newsletter',
+        'shared.accordion',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -761,6 +762,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.festival-events-list',
         'shared.youtube',
         'shared.newsletter',
+        'shared.accordion',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

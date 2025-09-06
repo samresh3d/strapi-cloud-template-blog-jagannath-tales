@@ -77,7 +77,8 @@
         "shared.festival-event-reference",
         "shared.festival-events-list",
         "shared.youtube",
-        "shared.newsletter"
+        "shared.newsletter",
+        "shared.accordion"
       ]
     },
     "seo": {
