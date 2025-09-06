@@ -447,6 +447,26 @@ export interface SharedQuoteReference extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedRecentArticles extends Struct.ComponentSchema {
+  collectionName: 'components_shared_recent_articles';
+  info: {
+    description: 'Show latest articles by content type with a View All link';
+    displayName: 'Recent Articles';
+  };
+  attributes: {
+    contentType: Schema.Attribute.Enumeration<
+      ['devotion', 'miracle', 'festival']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'devotion'>;
+    heading: Schema.Attribute.String;
+    maxItems: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<3>;
+    showAuthor: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showDate: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    viewMore: Schema.Attribute.Component<'site.navigation-link', false>;
+  };
+}
+
 export interface SharedRichText extends Struct.ComponentSchema {
   collectionName: 'components_shared_rich_texts';
   info: {
@@ -713,6 +733,7 @@ declare module '@strapi/strapi' {
       'shared.paragraph': SharedParagraph;
       'shared.quote': SharedQuote;
       'shared.quote-reference': SharedQuoteReference;
+      'shared.recent-articles': SharedRecentArticles;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;

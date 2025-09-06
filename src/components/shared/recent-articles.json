@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_shared_recent_articles",
+  "info": {
+    "displayName": "Recent Articles",
+    "description": "Show latest articles by content type with a View All link"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": false
+    },
+    "contentType": {
+      "type": "enumeration",
+      "enum": ["devotion", "miracle", "festival"],
+      "default": "devotion",
+      "required": true
+    },
+    "maxItems": {
+      "type": "integer",
+      "default": 3
+    },
+    "viewMore": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.navigation-link"
+    },
+    "showAuthor": {
+      "type": "boolean",
+      "default": true
+    },
+    "showDate": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
+

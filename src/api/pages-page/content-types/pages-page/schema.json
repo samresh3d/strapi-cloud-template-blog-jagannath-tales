@@ -37,7 +37,8 @@
         "shared.accordion",
         "shared.benefits-grid",
         "shared.links-cloud",
-        "shared.features-list"
+        "shared.features-list",
+        "shared.recent-articles"
       ]
     },
     "seo": {

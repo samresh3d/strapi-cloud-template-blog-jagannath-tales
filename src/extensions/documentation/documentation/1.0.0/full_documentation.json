@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T09:16:44.928Z"
+    "x-generation-date": "2025-09-06T12:02:39.130Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7163,6 +7163,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                     }
                   ]
                 },
@@ -7182,7 +7185,8 @@
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                   }
                 }
               },
@@ -8163,6 +8167,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                           }
                         ]
                       },
@@ -8182,7 +8189,8 @@
                           "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                           "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                           "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                         }
                       }
                     },
@@ -9026,6 +9034,43 @@
             "items": {
               "$ref": "#/components/schemas/SharedFeatureItemComponent"
             }
+          }
+        }
+      },
+      "SharedRecentArticlesComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.recent-articles"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string",
+            "enum": [
+              "devotion",
+              "miracle",
+              "festival"
+            ]
+          },
+          "maxItems": {
+            "type": "integer"
+          },
+          "viewMore": {
+            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+          },
+          "showAuthor": {
+            "type": "boolean"
+          },
+          "showDate": {
+            "type": "boolean"
           }
         }
       },
@@ -10293,6 +10338,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                       }
                     ]
                   },
@@ -10312,7 +10360,8 @@
                       "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                       "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                       "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                      "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                      "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                      "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                     }
                   }
                 },
@@ -13390,6 +13439,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                     }
                   ]
                 },
@@ -13409,7 +13461,8 @@
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                   }
                 }
               },
@@ -14625,6 +14678,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                             }
                           ]
                         },
@@ -14644,7 +14700,8 @@
                             "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                             "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                             "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                            "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                            "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                            "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                           }
                         }
                       },
@@ -14854,6 +14911,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                 }
               ]
             },
@@ -14873,7 +14933,8 @@
                 "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                 "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                 "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
               }
             }
           },
@@ -15058,6 +15119,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                     }
                   ]
                 },
@@ -15077,7 +15141,8 @@
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
                   }
                 }
               },
@@ -15268,6 +15333,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedRecentArticlesComponent"
                 }
               ]
             },
@@ -15287,7 +15355,8 @@
                 "shared.accordion": "#/components/schemas/SharedAccordionComponent",
                 "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                 "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                "shared.features-list": "#/components/schemas/SharedFeaturesListComponent"
+                "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
               }
             }
           },
