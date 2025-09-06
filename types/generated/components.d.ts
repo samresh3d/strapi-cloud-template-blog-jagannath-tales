@@ -280,6 +280,20 @@ export interface SharedFestivalEventsList extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFestivalEventsPreview extends Struct.ComponentSchema {
+  collectionName: 'components_shared_festival_events_preview';
+  info: {
+    description: 'Compact upcoming festivals section with a View All link';
+    displayName: 'Festival Events Preview';
+    icon: 'calendar';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'site.navigation-link', false>;
+    heading: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Upcoming Festivals & Celebrations'>;
+  };
+}
+
 export interface SharedGlobalQuoteReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_global_quote_references';
   info: {
@@ -723,6 +737,7 @@ declare module '@strapi/strapi' {
       'shared.features-list': SharedFeaturesList;
       'shared.festival-event-reference': SharedFestivalEventReference;
       'shared.festival-events-list': SharedFestivalEventsList;
+      'shared.festival-events-preview': SharedFestivalEventsPreview;
       'shared.global-quote-reference': SharedGlobalQuoteReference;
       'shared.heading': SharedHeading;
       'shared.image': SharedImage;

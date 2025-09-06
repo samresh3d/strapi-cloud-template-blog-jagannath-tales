@@ -82,7 +82,8 @@
         "shared.benefits-grid",
         "shared.links-cloud",
         "shared.features-list",
-        "shared.recent-articles"
+        "shared.recent-articles",
+        "shared.festival-events-preview"
       ]
     },
     "seo": {

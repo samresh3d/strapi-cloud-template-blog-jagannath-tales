@@ -695,6 +695,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.links-cloud',
         'shared.features-list',
         'shared.recent-articles',
+        'shared.festival-events-preview',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -771,6 +772,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.links-cloud',
         'shared.features-list',
         'shared.recent-articles',
+        'shared.festival-events-preview',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

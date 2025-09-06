@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_festival_events_preview",
+  "info": {
+    "displayName": "Festival Events Preview",
+    "icon": "calendar",
+    "description": "Compact upcoming festivals section with a View All link"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Upcoming Festivals & Celebrations"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.navigation-link"
+    }
+  }
+}

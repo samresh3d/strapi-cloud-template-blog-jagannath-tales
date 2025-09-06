@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T12:07:21.340Z"
+    "x-generation-date": "2025-09-06T12:16:43.278Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7166,6 +7166,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                     }
                   ]
                 },
@@ -7186,7 +7189,8 @@
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                     "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                    "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                   }
                 }
               },
@@ -8170,6 +8174,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                           }
                         ]
                       },
@@ -8190,7 +8197,8 @@
                           "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                           "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                           "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                         }
                       }
                     },
@@ -9072,6 +9080,26 @@
           },
           "showDate": {
             "type": "boolean"
+          }
+        }
+      },
+      "SharedFestivalEventsPreviewComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.festival-events-preview"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "cta": {
+            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
           }
         }
       },
@@ -10342,6 +10370,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                       }
                     ]
                   },
@@ -10362,7 +10393,8 @@
                       "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                       "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                       "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                      "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                      "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                      "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                     }
                   }
                 },
@@ -13443,6 +13475,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                     }
                   ]
                 },
@@ -13463,7 +13498,8 @@
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                     "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                    "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                   }
                 }
               },
@@ -14682,6 +14718,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                             }
                           ]
                         },
@@ -14702,7 +14741,8 @@
                             "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                             "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                             "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                            "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                            "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                            "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                           }
                         }
                       },
@@ -14915,6 +14955,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                 }
               ]
             },
@@ -14935,7 +14978,8 @@
                 "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                 "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                 "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
               }
             }
           },
@@ -15123,6 +15167,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                     }
                   ]
                 },
@@ -15143,7 +15190,8 @@
                     "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                     "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                     "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                    "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                   }
                 }
               },
@@ -15337,6 +15385,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
                 }
               ]
             },
@@ -15357,7 +15408,8 @@
                 "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
                 "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
                 "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent"
+                "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent"
               }
             }
           },
