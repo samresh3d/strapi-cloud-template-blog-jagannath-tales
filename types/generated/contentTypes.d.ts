@@ -696,6 +696,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.features-list',
         'shared.recent-articles',
         'shared.festival-events-preview',
+        'shared.story-highlight',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -773,6 +774,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.features-list',
         'shared.recent-articles',
         'shared.festival-events-preview',
+        'shared.story-highlight',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

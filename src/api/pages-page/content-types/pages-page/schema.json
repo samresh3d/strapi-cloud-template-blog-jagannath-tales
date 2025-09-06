@@ -39,7 +39,8 @@
         "shared.links-cloud",
         "shared.features-list",
         "shared.recent-articles",
-        "shared.festival-events-preview"
+        "shared.festival-events-preview",
+        "shared.story-highlight"
       ]
     },
     "seo": {

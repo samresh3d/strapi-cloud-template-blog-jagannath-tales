@@ -289,6 +289,10 @@ export interface SharedFestivalEventsPreview extends Struct.ComponentSchema {
   };
   attributes: {
     cta: Schema.Attribute.Component<'site.navigation-link', false>;
+    festivalCalendar: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::festival-calendar.festival-calendar'
+    >;
     heading: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Upcoming Festivals & Celebrations'>;
   };
@@ -522,6 +526,24 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedStoryHighlight extends Struct.ComponentSchema {
+  collectionName: 'components_shared_story_highlights';
+  info: {
+    description: 'Image + heading + rich text callout';
+    displayName: 'Story Highlight';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'>;
+    imageAlt: Schema.Attribute.String;
+    layout: Schema.Attribute.Enumeration<['image-left', 'image-right']> &
+      Schema.Attribute.DefaultTo<'image-left'>;
+    theme: Schema.Attribute.Enumeration<['light', 'brand', 'neutral']> &
+      Schema.Attribute.DefaultTo<'light'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedYoutube extends Struct.ComponentSchema {
   collectionName: 'components_shared_youtube_embeds';
   info: {
@@ -752,6 +774,7 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.story-highlight': SharedStoryHighlight;
       'shared.youtube': SharedYoutube;
       'site.language': SiteLanguage;
       'site.link-group': SiteLinkGroup;

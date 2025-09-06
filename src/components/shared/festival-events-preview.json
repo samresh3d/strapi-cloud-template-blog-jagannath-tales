@@ -11,6 +11,11 @@
       "type": "string",
       "default": "Upcoming Festivals & Celebrations"
     },
+    "festivalCalendar": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::festival-calendar.festival-calendar"
+    },
     "cta": {
       "type": "component",
       "repeatable": false,
