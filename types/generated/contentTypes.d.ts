@@ -759,45 +759,6 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
-  collectionName: 'site_configs';
-  info: {
-    description: 'Global site configuration';
-    displayName: 'site-config';
-    pluralName: 'site-configs';
-    singularName: 'site-config';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    footerLinks: Schema.Attribute.Component<'site.navigation-link', true>;
-    languages: Schema.Attribute.Component<'site.language', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::site-config.site-config'
-    > &
-      Schema.Attribute.Private;
-    navigation: Schema.Attribute.Component<'site.navigation-link', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    scriptureOfDay: Schema.Attribute.Component<'site.scripture', false>;
-    siteInfo: Schema.Attribute.Component<'site.site-info', false> &
-      Schema.Attribute.Required;
-    socialLinks: Schema.Attribute.Component<'site.social-link', true>;
-    subscriptionForm: Schema.Attribute.Component<
-      'site.subscription-form',
-      false
-    >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
@@ -1383,7 +1344,6 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::pages-article.pages-article': ApiPagesArticlePagesArticle;
       'api::pages-page.pages-page': ApiPagesPagePagesPage;
-      'api::site-config.site-config': ApiSiteConfigSiteConfig;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
