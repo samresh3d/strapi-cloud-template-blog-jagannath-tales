@@ -78,7 +78,8 @@
         "shared.festival-events-list",
         "shared.youtube",
         "shared.newsletter",
-        "shared.accordion"
+        "shared.accordion",
+        "shared.benefits-grid"
       ]
     },
     "seo": {

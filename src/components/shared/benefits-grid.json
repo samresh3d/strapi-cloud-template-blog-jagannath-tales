@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_benefits_grids",
+  "info": {
+    "displayName": "Benefits Grid",
+    "description": "Section with heading and grid of benefit items"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string", "required": true },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.benefit-item",
+      "min": 1,
+      "required": true
+    },
+    "columns": {
+      "type": "enumeration",
+      "enum": ["two", "three"],
+      "default": "three"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": ["light", "brand", "neutral"],
+      "default": "light"
+    }
+  }
+}

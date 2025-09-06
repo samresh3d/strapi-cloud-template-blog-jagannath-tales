@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_benefit_items",
+  "info": {
+    "displayName": "Benefit Item",
+    "description": "A single benefit/metric card with icon, title and description"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "metric": {
+      "type": "string",
+      "required": false
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "footnote": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
+

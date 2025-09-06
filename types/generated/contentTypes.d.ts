@@ -691,6 +691,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.youtube',
         'shared.newsletter',
         'shared.accordion',
+        'shared.benefits-grid',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -763,6 +764,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.youtube',
         'shared.newsletter',
         'shared.accordion',
+        'shared.benefits-grid',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

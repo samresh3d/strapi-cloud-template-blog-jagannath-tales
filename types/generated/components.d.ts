@@ -134,6 +134,45 @@ export interface SharedAccordionItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedBenefitItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_benefit_items';
+  info: {
+    description: 'A single benefit/metric card with icon, title and description';
+    displayName: 'Benefit Item';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    footnote: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<'images'>;
+    metric: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedBenefitsGrid extends Struct.ComponentSchema {
+  collectionName: 'components_shared_benefits_grids';
+  info: {
+    description: 'Section with heading and grid of benefit items';
+    displayName: 'Benefits Grid';
+  };
+  attributes: {
+    columns: Schema.Attribute.Enumeration<['two', 'three']> &
+      Schema.Attribute.DefaultTo<'three'>;
+    eyebrow: Schema.Attribute.String;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'shared.benefit-item', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    theme: Schema.Attribute.Enumeration<['light', 'brand', 'neutral']> &
+      Schema.Attribute.DefaultTo<'light'>;
+  };
+}
+
 export interface SharedFestivalEventReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_festival_event_references';
   info: {
@@ -599,6 +638,8 @@ declare module '@strapi/strapi' {
       'quote.relations': QuoteRelations;
       'shared.accordion': SharedAccordion;
       'shared.accordion-item': SharedAccordionItem;
+      'shared.benefit-item': SharedBenefitItem;
+      'shared.benefits-grid': SharedBenefitsGrid;
       'shared.festival-event-reference': SharedFestivalEventReference;
       'shared.festival-events-list': SharedFestivalEventsList;
       'shared.global-quote-reference': SharedGlobalQuoteReference;

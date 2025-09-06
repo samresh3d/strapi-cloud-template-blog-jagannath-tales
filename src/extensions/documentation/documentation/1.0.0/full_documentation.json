@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T08:55:00.490Z"
+    "x-generation-date": "2025-09-06T09:02:37.737Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7154,6 +7154,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedAccordionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                     }
                   ]
                 },
@@ -7170,7 +7173,8 @@
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                    "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                    "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                   }
                 }
               },
@@ -8142,6 +8146,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedAccordionComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                           }
                         ]
                       },
@@ -8158,7 +8165,8 @@
                           "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                           "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                           "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                          "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                         }
                       }
                     },
@@ -8576,6 +8584,196 @@
           },
           "expandFirst": {
             "type": "boolean"
+          }
+        }
+      },
+      "SharedBenefitItemComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "metric": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "footnote": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedBenefitsGridComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.benefits-grid"
+            ]
+          },
+          "eyebrow": {
+            "type": "string"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedBenefitItemComponent"
+            }
+          },
+          "columns": {
+            "type": "string",
+            "enum": [
+              "two",
+              "three"
+            ]
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "brand",
+              "neutral"
+            ]
           }
         }
       },
@@ -9834,6 +10032,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedAccordionComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                       }
                     ]
                   },
@@ -9850,7 +10051,8 @@
                       "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                       "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                       "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                      "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                      "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                      "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                     }
                   }
                 },
@@ -12939,6 +13141,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedAccordionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                     }
                   ]
                 },
@@ -12955,7 +13160,8 @@
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                    "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                    "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                   }
                 }
               },
@@ -14162,6 +14368,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedAccordionComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                             }
                           ]
                         },
@@ -14178,7 +14387,8 @@
                             "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                             "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                             "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                            "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                            "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                            "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                           }
                         }
                       },
@@ -14379,6 +14589,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedAccordionComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                 }
               ]
             },
@@ -14395,7 +14608,8 @@
                 "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                 "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                 "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
               }
             }
           },
@@ -14571,6 +14785,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedAccordionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                     }
                   ]
                 },
@@ -14587,7 +14804,8 @@
                     "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                    "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                    "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
                   }
                 }
               },
@@ -14769,6 +14987,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedAccordionComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedBenefitsGridComponent"
                 }
               ]
             },
@@ -14785,7 +15006,8 @@
                 "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
                 "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                 "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                "shared.accordion": "#/components/schemas/SharedAccordionComponent"
+                "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
               }
             }
           },
