@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_features_lists",
+  "info": {
+    "displayName": "Features List",
+    "description": "Section with large feature cards (grid or carousel)"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["grid", "carousel"],
+      "default": "grid"
+    },
+    "columns": {
+      "type": "enumeration",
+      "enum": ["two", "three"],
+      "default": "three"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item",
+      "required": true,
+      "min": 1
+    }
+  }
+}
+

@@ -693,6 +693,7 @@ export interface ApiPagesArticlePagesArticle
         'shared.accordion',
         'shared.benefits-grid',
         'shared.links-cloud',
+        'shared.features-list',
       ]
     >;
     contentType: Schema.Attribute.Enumeration<
@@ -767,6 +768,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
         'shared.accordion',
         'shared.benefits-grid',
         'shared.links-cloud',
+        'shared.features-list',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

@@ -173,6 +173,44 @@ export interface SharedBenefitsGrid extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFeatureItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_feature_items';
+  info: {
+    description: 'Icon + title + rich description + optional link';
+    displayName: 'Feature Item';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    icon: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'site.navigation-link', false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedFeaturesList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_features_lists';
+  info: {
+    description: 'Section with large feature cards (grid or carousel)';
+    displayName: 'Features List';
+  };
+  attributes: {
+    columns: Schema.Attribute.Enumeration<['two', 'three']> &
+      Schema.Attribute.DefaultTo<'three'>;
+    eyebrow: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    items: Schema.Attribute.Component<'shared.feature-item', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    layout: Schema.Attribute.Enumeration<['grid', 'carousel']> &
+      Schema.Attribute.DefaultTo<'grid'>;
+  };
+}
+
 export interface SharedFestivalEventReference extends Struct.ComponentSchema {
   collectionName: 'components_shared_festival_event_references';
   info: {
@@ -661,6 +699,8 @@ declare module '@strapi/strapi' {
       'shared.accordion-item': SharedAccordionItem;
       'shared.benefit-item': SharedBenefitItem;
       'shared.benefits-grid': SharedBenefitsGrid;
+      'shared.feature-item': SharedFeatureItem;
+      'shared.features-list': SharedFeaturesList;
       'shared.festival-event-reference': SharedFestivalEventReference;
       'shared.festival-events-list': SharedFestivalEventsList;
       'shared.global-quote-reference': SharedGlobalQuoteReference;
