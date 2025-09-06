@@ -35,7 +35,8 @@
         "shared.youtube",
         "shared.newsletter",
         "shared.accordion",
-        "shared.benefits-grid"
+        "shared.benefits-grid",
+        "shared.links-cloud"
       ]
     },
     "seo": {

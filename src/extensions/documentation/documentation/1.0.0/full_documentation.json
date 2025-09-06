@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T09:02:37.737Z"
+    "x-generation-date": "2025-09-06T09:09:44.348Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7157,6 +7157,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedLinksCloudComponent"
                     }
                   ]
                 },
@@ -7174,7 +7177,8 @@
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                    "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                   }
                 }
               },
@@ -8149,6 +8153,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
                           }
                         ]
                       },
@@ -8166,7 +8173,8 @@
                           "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                           "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                           "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                         }
                       }
                     },
@@ -8773,6 +8781,56 @@
               "light",
               "brand",
               "neutral"
+            ]
+          }
+        }
+      },
+      "SiteNavigationLinkComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "ariaLabel": {
+            "type": "string"
+          },
+          "newTab": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SharedLinksCloudComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.links-cloud"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+            }
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "pill",
+              "list"
             ]
           }
         }
@@ -10035,6 +10093,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedLinksCloudComponent"
                       }
                     ]
                   },
@@ -10052,7 +10113,8 @@
                       "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                       "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                       "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                      "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                      "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                      "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                     }
                   }
                 },
@@ -11000,26 +11062,6 @@
           },
           "meta": {
             "type": "object"
-          }
-        }
-      },
-      "SiteNavigationLinkComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "label": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          },
-          "ariaLabel": {
-            "type": "string"
-          },
-          "newTab": {
-            "type": "boolean"
           }
         }
       },
@@ -13144,6 +13186,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedLinksCloudComponent"
                     }
                   ]
                 },
@@ -13161,7 +13206,8 @@
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                    "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                   }
                 }
               },
@@ -14371,6 +14417,9 @@
                             },
                             {
                               "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                            },
+                            {
+                              "$ref": "#/components/schemas/SharedLinksCloudComponent"
                             }
                           ]
                         },
@@ -14388,7 +14437,8 @@
                             "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                             "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                             "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                            "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                            "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                            "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                           }
                         }
                       },
@@ -14592,6 +14642,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedLinksCloudComponent"
                 }
               ]
             },
@@ -14609,7 +14662,8 @@
                 "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                 "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                 "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
               }
             }
           },
@@ -14788,6 +14842,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SharedLinksCloudComponent"
                     }
                   ]
                 },
@@ -14805,7 +14862,8 @@
                     "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                     "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                     "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                    "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
                   }
                 }
               },
@@ -14990,6 +15048,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/SharedLinksCloudComponent"
                 }
               ]
             },
@@ -15007,7 +15068,8 @@
                 "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
                 "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
                 "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent"
+                "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent"
               }
             }
           },

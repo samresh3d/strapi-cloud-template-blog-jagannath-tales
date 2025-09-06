@@ -301,6 +301,27 @@ export interface SharedImage extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedLinksCloud extends Struct.ComponentSchema {
+  collectionName: 'components_shared_links_clouds';
+  info: {
+    description: 'Popular searches / pill-style links';
+    displayName: 'Links Cloud';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    links: Schema.Attribute.Component<'site.navigation-link', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    variant: Schema.Attribute.Enumeration<['pill', 'list']> &
+      Schema.Attribute.DefaultTo<'pill'>;
+  };
+}
+
 export interface SharedList extends Struct.ComponentSchema {
   collectionName: 'components_shared_lists';
   info: {
@@ -645,6 +666,7 @@ declare module '@strapi/strapi' {
       'shared.global-quote-reference': SharedGlobalQuoteReference;
       'shared.heading': SharedHeading;
       'shared.image': SharedImage;
+      'shared.links-cloud': SharedLinksCloud;
       'shared.list': SharedList;
       'shared.media': SharedMedia;
       'shared.newsletter': SharedNewsletter;

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_links_clouds",
+  "info": {
+    "displayName": "Links Cloud",
+    "description": "Popular searches / pill-style links"
+  },
+  "options": {},
+  "attributes": {
+    "heading": { "type": "string" },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "site.navigation-link",
+      "required": true,
+      "min": 1
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["pill", "list"],
+      "default": "pill"
+    }
+  }
+}
+
