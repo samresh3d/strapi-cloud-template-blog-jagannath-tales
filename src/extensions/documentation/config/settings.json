@@ -1,0 +1,26 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.1",
+    "title": "DOCUMENTATION",
+    "description": "Auto-generated OpenAPI for all APIs"
+  },
+  "x-strapi-config": {
+    "showGeneratedFiles": true
+  },
+  "servers": [
+    { "url": "http://localhost:1337/api", "description": "Development server" }
+  ],
+  "externalDocs": {
+    "description": "Strapi docs",
+    "url": "https://docs.strapi.io"
+  },
+  "security": [{ "bearerAuth": [] }],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+    }
+  },
+  "paths": {},
+  "tags": []
+}
