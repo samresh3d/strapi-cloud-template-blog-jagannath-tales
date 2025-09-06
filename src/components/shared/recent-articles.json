@@ -12,7 +12,7 @@
     },
     "contentType": {
       "type": "enumeration",
-      "enum": ["devotion", "miracle", "festival"],
+      "enum": ["all", "devotion", "miracle", "festival"],
       "default": "devotion",
       "required": true
     },
@@ -35,4 +35,3 @@
     }
   }
 }
-

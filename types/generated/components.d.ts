@@ -455,7 +455,7 @@ export interface SharedRecentArticles extends Struct.ComponentSchema {
   };
   attributes: {
     contentType: Schema.Attribute.Enumeration<
-      ['devotion', 'miracle', 'festival']
+      ['all', 'devotion', 'miracle', 'festival']
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'devotion'>;
