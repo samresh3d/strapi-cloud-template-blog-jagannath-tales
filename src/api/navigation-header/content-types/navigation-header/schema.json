@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation_headers",
+  "info": {
+    "singularName": "navigation-header",
+    "pluralName": "navigation-headers",
+    "displayName": "navigation-header",
+    "description": "Top navigation header with logo, title, and links"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "siteTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Jagannath Tales"
+    },
+    "siteTagline": {
+      "type": "string",
+      "default": "Divine Stories of Lord Jagannath"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "site.navigation-link",
+      "required": true,
+      "min": 1
+    }
+  }
+}
+

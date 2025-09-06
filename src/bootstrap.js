@@ -27,12 +27,14 @@ async function seedExampleApp() {
     console.log(
       'Seed data has already been imported. We cannot reimport unless you clear your database first.'
     );
-    // Ensure newly added single-types (like Footer) exist even after first run
+    // Ensure newly added single-types (like Footer, Navigation Header) exist even after first run
     try {
       await importFooter();
       console.log('Ensured footer exists.');
+      await importNavigationHeader();
+      console.log('Ensured navigation header exists.');
     } catch (err) {
-      console.error('Failed to ensure footer:', err.message || err);
+      console.error('Failed to ensure single-types:', err.message || err);
     }
   }
 }
@@ -281,8 +283,7 @@ async function importFooter() {
       connectDescription:
         'Receive updates on new stories, upcoming festivals, and exclusive content.',
       subscriptionForm: {
-        title: 'Subscribe',
-        description: '',
+        emailPattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$',
         buttonText: 'Subscribe',
         placeholder: 'Your email address'
       },
@@ -329,6 +330,55 @@ async function importFooter() {
   }
 }
 
+// Create or complete a default Navigation Header single-type entry
+async function importNavigationHeader() {
+  try {
+    const existing = await strapi.db.query('api::navigation-header.navigation-header').findMany({ limit: 1 });
+
+    const defaultLinks = [
+      { label: 'Home', url: '/', newTab: false, ariaLabel: 'Home' },
+      { label: 'Devotional Stories', url: '/devotional-stories', newTab: false, ariaLabel: 'Devotional Stories' },
+      { label: 'Divine Miracles', url: '/divine-miracles', newTab: false, ariaLabel: 'Divine Miracles' },
+      { label: 'Sacred Festivals', url: '/sacred-festivals', newTab: false, ariaLabel: 'Sacred Festivals' },
+      { label: 'About', url: '/about', newTab: false, ariaLabel: 'About' },
+      { label: 'Contact', url: '/contact', newTab: false, ariaLabel: 'Contact' },
+    ];
+
+    const defaults = {
+      siteTitle: 'Jagannath Tales',
+      siteTagline: 'Divine Stories of Lord Jagannath',
+      links: defaultLinks,
+    };
+
+    if (!existing || existing.length === 0) {
+      await createEntry({
+        model: 'navigation-header',
+        entry: { ...defaults, publishedAt: Date.now() },
+      });
+      console.log('Seeded default navigation header');
+      return;
+    }
+
+    const header = existing[0];
+    const patch = {};
+    if (!header.siteTitle) patch.siteTitle = defaults.siteTitle;
+    if (!header.siteTagline) patch.siteTagline = defaults.siteTagline;
+    if (!header.links || header.links.length === 0) patch.links = defaults.links;
+
+    if (Object.keys(patch).length > 0) {
+      await strapi.documents('api::navigation-header.navigation-header').update({
+        documentId: header.id,
+        data: patch,
+      });
+      console.log('Updated navigation header with missing fields');
+    } else {
+      console.log('Navigation header already complete, no updates applied');
+    }
+  } catch (err) {
+    console.error('Failed to seed navigation header:', err.message || err);
+  }
+}
+
 async function importCategories() {
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
@@ -358,6 +408,7 @@ async function importSeedData() {
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
     footer: ['find'],
+    'navigation-header': ['find'],
   });
 
   // Create all entries
@@ -367,6 +418,7 @@ async function importSeedData() {
   await importGlobal();
   await importAbout();
   await importFooter();
+  await importNavigationHeader();
 }
 
 async function main() {

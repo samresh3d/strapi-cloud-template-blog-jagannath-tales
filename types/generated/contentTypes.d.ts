@@ -621,6 +621,49 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiNavigationHeaderNavigationHeader
+  extends Struct.SingleTypeSchema {
+  collectionName: 'navigation_headers';
+  info: {
+    description: 'Top navigation header with logo, title, and links';
+    displayName: 'navigation-header';
+    pluralName: 'navigation-headers';
+    singularName: 'navigation-header';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    links: Schema.Attribute.Component<'site.navigation-link', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::navigation-header.navigation-header'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
+    publishedAt: Schema.Attribute.DateTime;
+    siteTagline: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Divine Stories of Lord Jagannath'>;
+    siteTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Jagannath Tales'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagesArticlePagesArticle
   extends Struct.CollectionTypeSchema {
   collectionName: 'pages_articles';
@@ -1342,6 +1385,7 @@ declare module '@strapi/strapi' {
       'api::festival-calendar.festival-calendar': ApiFestivalCalendarFestivalCalendar;
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
+      'api::navigation-header.navigation-header': ApiNavigationHeaderNavigationHeader;
       'api::pages-article.pages-article': ApiPagesArticlePagesArticle;
       'api::pages-page.pages-page': ApiPagesPagePagesPage;
       'api::tag.tag': ApiTagTag;
