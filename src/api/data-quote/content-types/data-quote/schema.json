@@ -11,56 +11,6 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "layouts": {
-    "edit": [
-      [
-        {
-          "name": "slug",
-          "size": 6
-        },
-        {
-          "name": "author",
-          "size": 6
-        }
-      ],
-      [
-        {
-          "name": "sanskrit_text",
-          "size": 12
-        }
-      ],
-      [
-        {
-          "name": "english_translation",
-          "size": 12
-        }
-      ],
-      [
-        {
-          "name": "source",
-          "size": 12
-        }
-      ],
-      [
-        {
-          "name": "pages_articles",
-          "size": 12
-        }
-      ],
-      [
-        {
-          "name": "pages_pages",
-          "size": 12
-        }
-      ]
-    ],
-    "list": [
-      "sanskrit_text",
-      "author",
-      "source",
-      "updatedAt"
-    ]
-  },
   "attributes": {
     "slug": {
       "type": "uid",
@@ -92,15 +42,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::pages-article.pages-article",
-      "displayName": "Related Articles",
-      "description": "Articles that use this quote"
+      "mappedBy": "quotes"
     },
     "pages_pages": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::pages-page.pages-page",
-      "displayName": "Related Pages",
-      "description": "Pages that use this quote"
+      "mappedBy": "quotes"
     }
   }
 }

@@ -19,7 +19,6 @@
       "targetField": "name",
       "required": true
     },
-
     "pages_articles": {
       "type": "relation",
       "relation": "manyToMany",

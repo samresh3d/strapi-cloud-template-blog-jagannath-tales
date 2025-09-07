@@ -35,8 +35,8 @@
     },
     "isAllDay": {
       "type": "boolean",
-      "default": true,
-      "required": true
+      "required": true,
+      "default": true
     },
     "location": {
       "type": "string",
@@ -44,39 +44,26 @@
     },
     "importance": {
       "type": "enumeration",
+      "required": true,
+      "default": "major",
       "enum": [
         "major",
         "minor",
         "regional",
         "local"
-      ],
-      "default": "major",
-      "required": true
+      ]
     },
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "rituals": {
       "type": "richtext",
       "required": false
-    },
-    "relatedPage": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::pages-page.pages-page"
-    },
-    "pages_articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::pages-article.pages-article"
-    },
-    "pages_pages": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::pages-page.pages-page"
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T19:23:54.358Z"
+    "x-generation-date": "2025-09-07T05:10:25.045Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6359,45 +6359,6 @@
               "rituals": {
                 "type": "string"
               },
-              "relatedPage": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
-              "pages_articles": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
-              "pages_pages": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
               "locale": {
                 "type": "string"
               },
@@ -7103,249 +7064,6 @@
           "rituals": {
             "type": "string"
           },
-          "relatedPage": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "slug": {
-                "type": "string"
-              },
-              "content": {
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/StoryParagraphComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/StoryHeadingComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/StoryImageBlockComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/StoryQuoteComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/StoryRichTextComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedYoutubeComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedNewsletterComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedAccordionComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedBenefitsGridComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedLinksCloudComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedFeaturesListComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedRecentArticlesComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedStoryHighlightComponent"
-                    }
-                  ]
-                },
-                "discriminator": {
-                  "propertyName": "__component",
-                  "mapping": {
-                    "story.paragraph": "#/components/schemas/StoryParagraphComponent",
-                    "story.heading": "#/components/schemas/StoryHeadingComponent",
-                    "story.image-block": "#/components/schemas/StoryImageBlockComponent",
-                    "story.quote": "#/components/schemas/StoryQuoteComponent",
-                    "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                    "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
-                    "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                    "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                    "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
-                    "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                    "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                    "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
-                    "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                    "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                    "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
-                    "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
-                    "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
-                  }
-                }
-              },
-              "seo": {
-                "$ref": "#/components/schemas/SharedSeoComponent"
-              },
-              "quotes": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "featuredQuote": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "festivalEvents": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "featuredEvent": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "relatedEvents": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "pages_articles": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "pages_pages": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -7393,287 +7111,40 @@
                 },
                 "documentId": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "DataFestivalEventResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/DataFestivalEvent"
-          },
-          "meta": {
-            "type": "object"
-          }
-        }
-      },
-      "StoryParagraphComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "story.paragraph"
-            ]
-          },
-          "text": {
-            "type": "string"
-          }
-        }
-      },
-      "StoryHeadingComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "story.heading"
-            ]
-          },
-          "text": {
-            "type": "string"
-          },
-          "level": {
-            "type": "string",
-            "enum": [
-              "h1",
-              "h2",
-              "h3"
-            ]
-          }
-        }
-      },
-      "StoryImageBlockComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "story.image-block"
-            ]
-          },
-          "image": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {},
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number",
-                "format": "float"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {},
-              "related": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "folder": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "folderPath": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "caption": {
-            "type": "string"
-          }
-        }
-      },
-      "StoryQuoteComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "story.quote"
-            ]
-          },
-          "text": {
-            "type": "string"
-          },
-          "author": {
-            "type": "string"
-          }
-        }
-      },
-      "StoryRichTextComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "story.rich-text"
-            ]
-          },
-          "content": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedQuoteReferenceComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.quote-reference"
-            ]
-          },
-          "quote": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "slug": {
-                "type": "string"
-              },
-              "sanskrit_text": {
-                "type": "string"
-              },
-              "english_translation": {
-                "type": "string"
-              },
-              "author": {
-                "type": "string"
-              },
-              "source": {
-                "type": "string"
-              },
-              "pages_articles": {
-                "type": "array",
-                "items": {
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "endDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "isAllDay": {
+                  "type": "boolean"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "importance": {
+                  "type": "string",
+                  "enum": [
+                    "major",
+                    "minor",
+                    "regional",
+                    "local"
+                  ]
+                },
+                "image": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -7682,538 +7153,46 @@
                     "documentId": {
                       "type": "string"
                     },
-                    "title": {
+                    "name": {
                       "type": "string"
                     },
-                    "slug": {
+                    "alternativeText": {
                       "type": "string"
                     },
-                    "description": {
+                    "caption": {
                       "type": "string"
                     },
-                    "contentType": {
-                      "type": "string",
-                      "enum": [
-                        "devotion",
-                        "miracle",
-                        "festival",
-                        "page"
-                      ]
-                    },
-                    "author": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "slug": {
-                          "type": "string"
-                        },
-                        "bio": {
-                          "type": "string"
-                        },
-                        "image": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "alternativeText": {
-                              "type": "string"
-                            },
-                            "caption": {
-                              "type": "string"
-                            },
-                            "width": {
-                              "type": "integer"
-                            },
-                            "height": {
-                              "type": "integer"
-                            },
-                            "formats": {},
-                            "hash": {
-                              "type": "string"
-                            },
-                            "ext": {
-                              "type": "string"
-                            },
-                            "mime": {
-                              "type": "string"
-                            },
-                            "size": {
-                              "type": "number",
-                              "format": "float"
-                            },
-                            "url": {
-                              "type": "string"
-                            },
-                            "previewUrl": {
-                              "type": "string"
-                            },
-                            "provider": {
-                              "type": "string"
-                            },
-                            "provider_metadata": {},
-                            "related": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "documentId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            },
-                            "folder": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "folderPath": {
-                              "type": "string"
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "locale": {
-                              "type": "string"
-                            },
-                            "localizations": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "documentId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "social": {
-                          "$ref": "#/components/schemas/AuthorSocialComponent"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updatedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "publishedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "createdBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "updatedBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "locale": {
-                          "type": "string"
-                        },
-                        "localizations": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "publishDate": {
-                      "type": "string",
-                      "format": "date"
-                    },
-                    "readingTime": {
+                    "width": {
                       "type": "integer"
                     },
-                    "featured": {
-                      "type": "boolean"
+                    "height": {
+                      "type": "integer"
                     },
-                    "featuredImage": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {},
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number",
-                          "format": "float"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {},
-                        "related": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "folder": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "folderPath": {
-                          "type": "string"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updatedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "publishedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "createdBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "updatedBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "locale": {
-                          "type": "string"
-                        },
-                        "localizations": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "imageAlt": {
+                    "formats": {},
+                    "hash": {
                       "type": "string"
                     },
-                    "tags": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "slug": {
-                            "type": "string"
-                          },
-                          "pages_articles": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "locale": {
-                            "type": "string"
-                          },
-                          "localizations": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
+                    "ext": {
+                      "type": "string"
                     },
-                    "content": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/StoryParagraphComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryHeadingComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryImageBlockComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryQuoteComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryRichTextComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedYoutubeComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedNewsletterComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedAccordionComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFeaturesListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedStoryHighlightComponent"
-                          }
-                        ]
-                      },
-                      "discriminator": {
-                        "propertyName": "__component",
-                        "mapping": {
-                          "story.paragraph": "#/components/schemas/StoryParagraphComponent",
-                          "story.heading": "#/components/schemas/StoryHeadingComponent",
-                          "story.image-block": "#/components/schemas/StoryImageBlockComponent",
-                          "story.quote": "#/components/schemas/StoryQuoteComponent",
-                          "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                          "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
-                          "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
-                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
-                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
-                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
-                          "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
-                        }
-                      }
+                    "mime": {
+                      "type": "string"
                     },
-                    "seo": {
-                      "$ref": "#/components/schemas/SharedSeoComponent"
+                    "size": {
+                      "type": "number",
+                      "format": "float"
                     },
-                    "quotes": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {},
+                    "related": {
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -8227,7 +7206,7 @@
                         }
                       }
                     },
-                    "featuredQuote": {
+                    "folder": {
                       "type": "object",
                       "properties": {
                         "id": {
@@ -8238,30 +7217,8 @@
                         }
                       }
                     },
-                    "festivalEvents": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "featuredEvent": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
+                    "folderPath": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -8315,375 +7272,23 @@
                       }
                     }
                   }
-                }
-              },
-              "pages_pages": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "showAuthor": {
-            "type": "boolean"
-          },
-          "showSource": {
-            "type": "boolean"
-          },
-          "customStyle": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedFestivalEventReferenceComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.festival-event-reference"
-            ]
-          },
-          "festivalEvent": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "displayMode": {
-            "type": "string",
-            "enum": [
-              "compact",
-              "detailed",
-              "card",
-              "countdown"
-            ]
-          },
-          "showLocation": {
-            "type": "boolean"
-          },
-          "showDescription": {
-            "type": "boolean"
-          },
-          "showImage": {
-            "type": "boolean"
-          },
-          "customTitle": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedFestivalEventsListComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.festival-events-list"
-            ]
-          },
-          "title": {
-            "type": "string"
-          },
-          "displayMode": {
-            "type": "string",
-            "enum": [
-              "list",
-              "grid",
-              "calendar",
-              "timeline"
-            ]
-          },
-          "maxItems": {
-            "type": "integer"
-          },
-          "filterByImportance": {
-            "type": "string",
-            "enum": [
-              "all",
-              "major",
-              "major+regional",
-              "regional+local"
-            ]
-          },
-          "showPastEvents": {
-            "type": "boolean"
-          },
-          "daysToLookAhead": {
-            "type": "integer"
-          },
-          "specificEvents": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
                 },
-                "documentId": {
+                "rituals": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "SharedYoutubeComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.youtube"
-            ]
-          },
-          "title": {
-            "type": "string"
-          },
-          "youtubeUrl": {
-            "type": "string"
-          },
-          "startAt": {
-            "type": "integer"
-          },
-          "autoplay": {
-            "type": "boolean"
-          },
-          "hideControls": {
-            "type": "boolean"
-          },
-          "aspectRatio": {
-            "type": "string",
-            "enum": [
-              "RATIO_16_9",
-              "RATIO_4_3",
-              "RATIO_1_1"
-            ]
-          }
-        }
-      },
-      "SiteSubscriptionFormComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "emailPattern": {
-            "type": "string"
-          },
-          "buttonText": {
-            "type": "string"
-          },
-          "placeholder": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedNewsletterComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.newsletter"
-            ]
-          },
-          "heading": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "form": {
-            "$ref": "#/components/schemas/SiteSubscriptionFormComponent"
-          },
-          "theme": {
-            "type": "string",
-            "enum": [
-              "light",
-              "dark",
-              "brand"
-            ]
-          }
-        }
-      },
-      "SharedAccordionItemComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedAccordionComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.accordion"
-            ]
-          },
-          "heading": {
-            "type": "string"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SharedAccordionItemComponent"
-            }
-          },
-          "allowMultipleOpen": {
-            "type": "boolean"
-          },
-          "expandFirst": {
-            "type": "boolean"
-          }
-        }
-      },
-      "SharedBenefitItemComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "icon": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {},
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number",
-                "format": "float"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {},
-              "related": {
-                "type": "array",
-                "items": {
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "publishedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createdBy": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -8693,62 +7298,8 @@
                       "type": "string"
                     }
                   }
-                }
-              },
-              "folder": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "folderPath": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
+                },
+                "updatedBy": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -8756,697 +7307,39 @@
                     },
                     "documentId": {
                       "type": "string"
+                    }
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
                     }
                   }
                 }
               }
             }
-          },
-          "metric": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "footnote": {
-            "type": "string"
           }
         }
       },
-      "SharedBenefitsGridComponent": {
+      "DataFestivalEventResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "number"
+          "data": {
+            "$ref": "#/components/schemas/DataFestivalEvent"
           },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.benefits-grid"
-            ]
-          },
-          "eyebrow": {
-            "type": "string"
-          },
-          "heading": {
-            "type": "string"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SharedBenefitItemComponent"
-            }
-          },
-          "columns": {
-            "type": "string",
-            "enum": [
-              "two",
-              "three"
-            ]
-          },
-          "theme": {
-            "type": "string",
-            "enum": [
-              "light",
-              "brand",
-              "neutral"
-            ]
-          }
-        }
-      },
-      "SiteNavigationLinkComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "label": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          },
-          "ariaLabel": {
-            "type": "string"
-          },
-          "newTab": {
-            "type": "boolean"
-          }
-        }
-      },
-      "SharedLinksCloudComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.links-cloud"
-            ]
-          },
-          "heading": {
-            "type": "string"
-          },
-          "links": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SiteNavigationLinkComponent"
-            }
-          },
-          "variant": {
-            "type": "string",
-            "enum": [
-              "pill",
-              "list"
-            ]
-          }
-        }
-      },
-      "SharedFeatureItemComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "icon": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {},
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number",
-                "format": "float"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {},
-              "related": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "folder": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "folderPath": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "link": {
-            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
-          }
-        }
-      },
-      "SharedFeaturesListComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.features-list"
-            ]
-          },
-          "eyebrow": {
-            "type": "string"
-          },
-          "heading": {
-            "type": "string"
-          },
-          "layout": {
-            "type": "string",
-            "enum": [
-              "grid",
-              "carousel"
-            ]
-          },
-          "columns": {
-            "type": "string",
-            "enum": [
-              "two",
-              "three"
-            ]
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SharedFeatureItemComponent"
-            }
-          }
-        }
-      },
-      "SharedRecentArticlesComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.recent-articles"
-            ]
-          },
-          "heading": {
-            "type": "string"
-          },
-          "contentType": {
-            "type": "string",
-            "enum": [
-              "all",
-              "devotion",
-              "miracle",
-              "festival"
-            ]
-          },
-          "maxItems": {
-            "type": "integer"
-          },
-          "viewMore": {
-            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
-          },
-          "showAuthor": {
-            "type": "boolean"
-          },
-          "showDate": {
-            "type": "boolean"
-          }
-        }
-      },
-      "FestivalCalendarSeasonComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "month": {
-            "type": "string"
-          },
-          "festivals": {}
-        }
-      },
-      "SharedSeoComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "metaTitle": {
-            "type": "string"
-          },
-          "metaDescription": {
-            "type": "string"
-          },
-          "metaImage": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {},
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number",
-                "format": "float"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {},
-              "related": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "folder": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "folderPath": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "keywords": {
-            "type": "string"
-          },
-          "canonicalURL": {
-            "type": "string"
-          }
-        }
-      },
-      "SharedFestivalEventsPreviewComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.festival-events-preview"
-            ]
-          },
-          "heading": {
-            "type": "string"
-          },
-          "festivalCalendar": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "cta": {
-            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
-          }
-        }
-      },
-      "SharedStoryHighlightComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "shared.story-highlight"
-            ]
-          },
-          "image": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {},
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number",
-                "format": "float"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {},
-              "related": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "folder": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "folderPath": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "imageAlt": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "layout": {
-            "type": "string",
-            "enum": [
-              "image-left",
-              "image-right"
-            ]
-          },
-          "theme": {
-            "type": "string",
-            "enum": [
-              "light",
-              "brand",
-              "neutral"
-            ]
+          "meta": {
+            "type": "object"
           }
         }
       },
@@ -10617,42 +8510,6 @@
                     }
                   }
                 },
-                "featuredQuote": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "festivalEvents": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "documentId": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "featuredEvent": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -10782,6 +8639,2035 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "StoryParagraphComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "story.paragraph"
+            ]
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "StoryHeadingComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "story.heading"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "h1",
+              "h2",
+              "h3"
+            ]
+          }
+        }
+      },
+      "StoryImageBlockComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "story.image-block"
+            ]
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "caption": {
+            "type": "string"
+          }
+        }
+      },
+      "StoryQuoteComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "story.quote"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          }
+        }
+      },
+      "StoryRichTextComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "story.rich-text"
+            ]
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedQuoteReferenceComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.quote-reference"
+            ]
+          },
+          "quote": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "sanskrit_text": {
+                "type": "string"
+              },
+              "english_translation": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "pages_articles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "contentType": {
+                      "type": "string",
+                      "enum": [
+                        "devotion",
+                        "miracle",
+                        "festival",
+                        "page"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "bio": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "alternativeText": {
+                              "type": "string"
+                            },
+                            "caption": {
+                              "type": "string"
+                            },
+                            "width": {
+                              "type": "integer"
+                            },
+                            "height": {
+                              "type": "integer"
+                            },
+                            "formats": {},
+                            "hash": {
+                              "type": "string"
+                            },
+                            "ext": {
+                              "type": "string"
+                            },
+                            "mime": {
+                              "type": "string"
+                            },
+                            "size": {
+                              "type": "number",
+                              "format": "float"
+                            },
+                            "url": {
+                              "type": "string"
+                            },
+                            "previewUrl": {
+                              "type": "string"
+                            },
+                            "provider": {
+                              "type": "string"
+                            },
+                            "provider_metadata": {},
+                            "related": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "documentId": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "folder": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "folderPath": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdBy": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "updatedBy": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "locale": {
+                              "type": "string"
+                            },
+                            "localizations": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "documentId": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "social": {
+                          "$ref": "#/components/schemas/AuthorSocialComponent"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "createdBy": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "updatedBy": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "publishDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "readingTime": {
+                      "type": "integer"
+                    },
+                    "featured": {
+                      "type": "boolean"
+                    },
+                    "featuredImage": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {},
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number",
+                          "format": "float"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {},
+                        "related": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "folder": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "folderPath": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "createdBy": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "updatedBy": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "documentId": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "imageAlt": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "pages_articles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "localizations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/StoryParagraphComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryHeadingComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryImageBlockComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryQuoteComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryRichTextComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedYoutubeComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedNewsletterComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedAccordionComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedStoryHighlightComponent"
+                          }
+                        ]
+                      },
+                      "discriminator": {
+                        "propertyName": "__component",
+                        "mapping": {
+                          "story.paragraph": "#/components/schemas/StoryParagraphComponent",
+                          "story.heading": "#/components/schemas/StoryHeadingComponent",
+                          "story.image-block": "#/components/schemas/StoryImageBlockComponent",
+                          "story.quote": "#/components/schemas/StoryQuoteComponent",
+                          "story.rich-text": "#/components/schemas/StoryRichTextComponent",
+                          "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
+                          "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
+                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
+                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
+                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
+                          "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
+                        }
+                      }
+                    },
+                    "seo": {
+                      "$ref": "#/components/schemas/SharedSeoComponent"
+                    },
+                    "quotes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "localizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "pages_pages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/StoryParagraphComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryHeadingComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryImageBlockComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryQuoteComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StoryRichTextComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedYoutubeComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedNewsletterComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedAccordionComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SharedStoryHighlightComponent"
+                          }
+                        ]
+                      },
+                      "discriminator": {
+                        "propertyName": "__component",
+                        "mapping": {
+                          "story.paragraph": "#/components/schemas/StoryParagraphComponent",
+                          "story.heading": "#/components/schemas/StoryHeadingComponent",
+                          "story.image-block": "#/components/schemas/StoryImageBlockComponent",
+                          "story.quote": "#/components/schemas/StoryQuoteComponent",
+                          "story.rich-text": "#/components/schemas/StoryRichTextComponent",
+                          "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
+                          "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
+                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
+                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
+                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
+                          "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
+                        }
+                      }
+                    },
+                    "seo": {
+                      "$ref": "#/components/schemas/SharedSeoComponent"
+                    },
+                    "quotes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "localizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "showAuthor": {
+            "type": "boolean"
+          },
+          "showSource": {
+            "type": "boolean"
+          },
+          "customStyle": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedFestivalEventReferenceComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.festival-event-reference"
+            ]
+          },
+          "festivalEvent": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              }
+            }
+          },
+          "displayMode": {
+            "type": "string",
+            "enum": [
+              "compact",
+              "detailed",
+              "card",
+              "countdown"
+            ]
+          },
+          "showLocation": {
+            "type": "boolean"
+          },
+          "showDescription": {
+            "type": "boolean"
+          },
+          "showImage": {
+            "type": "boolean"
+          },
+          "customTitle": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedFestivalEventsListComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.festival-events-list"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "displayMode": {
+            "type": "string",
+            "enum": [
+              "list",
+              "grid",
+              "calendar",
+              "timeline"
+            ]
+          },
+          "maxItems": {
+            "type": "integer"
+          },
+          "filterByImportance": {
+            "type": "string",
+            "enum": [
+              "all",
+              "major",
+              "major+regional",
+              "regional+local"
+            ]
+          },
+          "showPastEvents": {
+            "type": "boolean"
+          },
+          "daysToLookAhead": {
+            "type": "integer"
+          },
+          "specificEvents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SharedYoutubeComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.youtube"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "youtubeUrl": {
+            "type": "string"
+          },
+          "startAt": {
+            "type": "integer"
+          },
+          "autoplay": {
+            "type": "boolean"
+          },
+          "hideControls": {
+            "type": "boolean"
+          },
+          "aspectRatio": {
+            "type": "string",
+            "enum": [
+              "RATIO_16_9",
+              "RATIO_4_3",
+              "RATIO_1_1"
+            ]
+          }
+        }
+      },
+      "SiteSubscriptionFormComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "emailPattern": {
+            "type": "string"
+          },
+          "buttonText": {
+            "type": "string"
+          },
+          "placeholder": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedNewsletterComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.newsletter"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "form": {
+            "$ref": "#/components/schemas/SiteSubscriptionFormComponent"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "dark",
+              "brand"
+            ]
+          }
+        }
+      },
+      "SharedAccordionItemComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedAccordionComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.accordion"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedAccordionItemComponent"
+            }
+          },
+          "allowMultipleOpen": {
+            "type": "boolean"
+          },
+          "expandFirst": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SharedBenefitItemComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "metric": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "footnote": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedBenefitsGridComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.benefits-grid"
+            ]
+          },
+          "eyebrow": {
+            "type": "string"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedBenefitItemComponent"
+            }
+          },
+          "columns": {
+            "type": "string",
+            "enum": [
+              "two",
+              "three"
+            ]
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "brand",
+              "neutral"
+            ]
+          }
+        }
+      },
+      "SiteNavigationLinkComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "ariaLabel": {
+            "type": "string"
+          },
+          "newTab": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SharedLinksCloudComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.links-cloud"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+            }
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "pill",
+              "list"
+            ]
+          }
+        }
+      },
+      "SharedFeatureItemComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "link": {
+            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+          }
+        }
+      },
+      "SharedFeaturesListComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.features-list"
+            ]
+          },
+          "eyebrow": {
+            "type": "string"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string",
+            "enum": [
+              "grid",
+              "carousel"
+            ]
+          },
+          "columns": {
+            "type": "string",
+            "enum": [
+              "two",
+              "three"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedFeatureItemComponent"
+            }
+          }
+        }
+      },
+      "SharedRecentArticlesComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.recent-articles"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string",
+            "enum": [
+              "all",
+              "devotion",
+              "miracle",
+              "festival"
+            ]
+          },
+          "maxItems": {
+            "type": "integer"
+          },
+          "viewMore": {
+            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+          },
+          "showAuthor": {
+            "type": "boolean"
+          },
+          "showDate": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FestivalCalendarSeasonComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "month": {
+            "type": "string"
+          },
+          "festivals": {}
+        }
+      },
+      "SharedSeoComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "metaTitle": {
+            "type": "string"
+          },
+          "metaDescription": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "string"
+          },
+          "canonicalURL": {
+            "type": "string"
+          }
+        }
+      },
+      "SharedFestivalEventsPreviewComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.festival-events-preview"
+            ]
+          },
+          "heading": {
+            "type": "string"
+          },
+          "festivalCalendar": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              }
+            }
+          },
+          "cta": {
+            "$ref": "#/components/schemas/SiteNavigationLinkComponent"
+          }
+        }
+      },
+      "SharedStoryHighlightComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "shared.story-highlight"
+            ]
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "imageAlt": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string",
+            "enum": [
+              "image-left",
+              "image-right"
+            ]
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "light",
+              "brand",
+              "neutral"
+            ]
           }
         }
       },
@@ -10915,6 +10801,258 @@
               },
               "documentId": {
                 "type": "string"
+              },
+              "firstname": {
+                "type": "string"
+              },
+              "lastname": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "registrationToken": {
+                "type": "string"
+              },
+              "isActive": {
+                "type": "boolean"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "permissions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "actionParameters": {},
+                          "subject": {
+                            "type": "string"
+                          },
+                          "properties": {},
+                          "conditions": {},
+                          "role": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "localizations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "localizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "preferedLanguage": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
             }
           },
@@ -13714,42 +13852,6 @@
                   "example": "string or id"
                 }
               },
-              "featuredQuote": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
-              "festivalEvents": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
-              "featuredEvent": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
               "locale": {
                 "type": "string"
               },
@@ -14961,42 +15063,6 @@
                           }
                         }
                       },
-                      "featuredQuote": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "festivalEvents": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        }
-                      },
-                      "featuredEvent": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -15202,42 +15268,6 @@
               }
             }
           },
-          "featuredQuote": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "festivalEvents": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "featuredEvent": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -15418,56 +15448,6 @@
                   "example": "string or id"
                 }
               },
-              "featuredQuote": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
-              "festivalEvents": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
-              "featuredEvent": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
-              "relatedEvents": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
               "locale": {
                 "type": "string"
               },
@@ -15627,56 +15607,6 @@
             "$ref": "#/components/schemas/SharedSeoComponent"
           },
           "quotes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "featuredQuote": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "festivalEvents": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "featuredEvent": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "relatedEvents": {
             "type": "array",
             "items": {
               "type": "object",

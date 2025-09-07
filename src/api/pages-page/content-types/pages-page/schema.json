@@ -45,36 +45,14 @@
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     },
     "quotes": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::data-quote.data-quote",
       "inversedBy": "pages_pages"
-    },
-    "featuredQuote": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::data-quote.data-quote"
-    },
-    "festivalEvents": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::data-festival-event.data-festival-event",
-      "inversedBy": "pages_pages"
-    },
-    "featuredEvent": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::data-festival-event.data-festival-event"
-    },
-    "relatedEvents": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::data-festival-event.data-festival-event",
-      "mappedBy": "relatedPage"
     }
   }
 }

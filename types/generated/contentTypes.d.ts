@@ -441,19 +441,7 @@ export interface ApiDataFestivalEventDataFestivalEvent
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    pages_articles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::pages-article.pages-article'
-    >;
-    pages_pages: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::pages-page.pages-page'
-    >;
     publishedAt: Schema.Attribute.DateTime;
-    relatedPage: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::pages-page.pages-page'
-    >;
     rituals: Schema.Attribute.RichText;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
@@ -707,19 +695,7 @@ export interface ApiPagesArticlePagesArticle
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    featuredEvent: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::data-festival-event.data-festival-event'
-    >;
     featuredImage: Schema.Attribute.Media<'images'>;
-    featuredQuote: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::data-quote.data-quote'
-    >;
-    festivalEvents: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::data-festival-event.data-festival-event'
-    >;
     imageAlt: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -780,18 +756,6 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    featuredEvent: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::data-festival-event.data-festival-event'
-    >;
-    featuredQuote: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::data-quote.data-quote'
-    >;
-    festivalEvents: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::data-festival-event.data-festival-event'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -802,10 +766,6 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
     quotes: Schema.Attribute.Relation<
       'manyToMany',
       'api::data-quote.data-quote'
-    >;
-    relatedEvents: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::data-festival-event.data-festival-event'
     >;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
