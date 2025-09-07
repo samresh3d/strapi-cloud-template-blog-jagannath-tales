@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "data_quotes",
   "info": {
     "singularName": "data-quote",
@@ -14,40 +14,28 @@
   "attributes": {
     "slug": {
       "type": "uid",
-      "targetField": "sanskrit_text",
-      "required": true,
-      "description": "URL-friendly identifier for this quote"
+      "targetField": "sanskrit_text"
     },
     "sanskrit_text": {
       "type": "text",
-      "required": true,
-      "description": "Original quote text in Sanskrit"
+      "required": true
     },
     "english_translation": {
       "type": "text",
-      "required": true,
-      "description": "English translation of the Sanskrit text"
+      "required": true
     },
     "author": {
       "type": "string",
-      "required": false,
-      "description": "Author or source of the quote"
+      "required": false
     },
     "source": {
       "type": "string",
-      "required": false,
-      "description": "Source text or scripture"
+      "required": false
     },
     "pages_articles": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::pages-article.pages-article",
-      "mappedBy": "quotes"
-    },
-    "pages_pages": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::pages-page.pages-page",
       "mappedBy": "quotes"
     }
   }

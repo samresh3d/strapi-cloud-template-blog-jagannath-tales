@@ -455,7 +455,7 @@ export interface SharedQuoteReference extends Struct.ComponentSchema {
   attributes: {
     customStyle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'default'>;
-    quote: Schema.Attribute.Relation<'oneToOne', 'api::data-quote.data-quote'>;
+    quote: Schema.Attribute.Relation<'manyToOne', 'api::data-quote.data-quote'>;
     showAuthor: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;

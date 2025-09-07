@@ -27,6 +27,16 @@ async function seedExampleApp() {
     console.log(
       'Seed data has already been imported. We cannot reimport unless you clear your database first.'
     );
+    // Ensure public permissions for pages and data-quote so relations populate
+    try {
+      await setPublicPermissions({
+        'pages-page': ['find', 'findOne'],
+        'data-quote': ['find', 'findOne'],
+      });
+      console.log('Ensured public permissions for pages-page and data-quote.');
+    } catch (err) {
+      console.error('Failed to ensure public permissions:', err.message || err);
+    }
     // Ensure newly added single-types (like Footer, Navigation Header) exist even after first run
     try {
       await importFooter();
@@ -409,6 +419,9 @@ async function importSeedData() {
     about: ['find', 'findOne'],
     footer: ['find'],
     'navigation-header': ['find'],
+    // Ensure pages and quotes are publicly readable for population
+    'pages-page': ['find', 'findOne'],
+    'data-quote': ['find', 'findOne'],
   });
 
   // Create all entries

@@ -451,7 +451,7 @@ export interface ApiDataFestivalEventDataFestivalEvent
   };
 }
 
-export interface ApiDataQuoteDataQuote extends Struct.CollectionTypeSchema {
+export interface ApiDataQuoteDataQuote extends Struct.SingleTypeSchema {
   collectionName: 'data_quotes';
   info: {
     description: 'Reusable quotes in Sanskrit with English translations that can be referenced across content types';
@@ -478,13 +478,9 @@ export interface ApiDataQuoteDataQuote extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::pages-article.pages-article'
     >;
-    pages_pages: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::pages-page.pages-page'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     sanskrit_text: Schema.Attribute.Text & Schema.Attribute.Required;
-    slug: Schema.Attribute.UID<'sanskrit_text'> & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'sanskrit_text'>;
     source: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -763,10 +759,7 @@ export interface ApiPagesPagePagesPage extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    quotes: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::data-quote.data-quote'
-    >;
+    quote: Schema.Attribute.Relation<'manyToOne', 'api::data-quote.data-quote'>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;

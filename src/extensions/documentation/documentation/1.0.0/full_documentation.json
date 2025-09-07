@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-07T05:10:25.045Z"
+    "x-generation-date": "2025-09-07T12:44:03.059Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -1050,7 +1050,7 @@
         "operationId": "delete/data-festival-events/{id}"
       }
     },
-    "/data-quotes": {
+    "/data-quote": {
       "get": {
         "responses": {
           "200": {
@@ -1058,7 +1058,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataQuoteListResponse"
+                  "$ref": "#/components/schemas/DataQuoteResponse"
                 }
               }
             }
@@ -1221,168 +1221,7 @@
             }
           }
         ],
-        "operationId": "get/data-quotes"
-      },
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataQuoteResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Data-quote"
-        ],
-        "parameters": [],
-        "operationId": "post/data-quotes",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DataQuoteRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/data-quotes/{id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataQuoteResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Data-quote"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "get/data-quotes/{id}"
+        "operationId": "get/data-quote"
       },
       "put": {
         "responses": {
@@ -1450,19 +1289,8 @@
         "tags": [
           "Data-quote"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "put/data-quotes/{id}",
+        "parameters": [],
+        "operationId": "put/data-quote",
         "requestBody": {
           "required": true,
           "content": {
@@ -1541,19 +1369,8 @@
         "tags": [
           "Data-quote"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "delete/data-quotes/{id}"
+        "parameters": [],
+        "operationId": "delete/data-quote"
       }
     },
     "/festival-calendar": {
@@ -7351,7 +7168,6 @@
         "properties": {
           "data": {
             "required": [
-              "slug",
               "sanskrit_text",
               "english_translation"
             ],
@@ -7373,20 +7189,6 @@
                 "type": "string"
               },
               "pages_articles": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
-              "pages_pages": {
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -7459,7 +7261,6 @@
       "DataQuote": {
         "type": "object",
         "required": [
-          "slug",
           "sanskrit_text",
           "english_translation"
         ],
@@ -8564,20 +8365,6 @@
               }
             }
           },
-          "pages_pages": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -8887,850 +8674,6 @@
               },
               "documentId": {
                 "type": "string"
-              },
-              "slug": {
-                "type": "string"
-              },
-              "sanskrit_text": {
-                "type": "string"
-              },
-              "english_translation": {
-                "type": "string"
-              },
-              "author": {
-                "type": "string"
-              },
-              "source": {
-                "type": "string"
-              },
-              "pages_articles": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "slug": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "contentType": {
-                      "type": "string",
-                      "enum": [
-                        "devotion",
-                        "miracle",
-                        "festival",
-                        "page"
-                      ]
-                    },
-                    "author": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "slug": {
-                          "type": "string"
-                        },
-                        "bio": {
-                          "type": "string"
-                        },
-                        "image": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "alternativeText": {
-                              "type": "string"
-                            },
-                            "caption": {
-                              "type": "string"
-                            },
-                            "width": {
-                              "type": "integer"
-                            },
-                            "height": {
-                              "type": "integer"
-                            },
-                            "formats": {},
-                            "hash": {
-                              "type": "string"
-                            },
-                            "ext": {
-                              "type": "string"
-                            },
-                            "mime": {
-                              "type": "string"
-                            },
-                            "size": {
-                              "type": "number",
-                              "format": "float"
-                            },
-                            "url": {
-                              "type": "string"
-                            },
-                            "previewUrl": {
-                              "type": "string"
-                            },
-                            "provider": {
-                              "type": "string"
-                            },
-                            "provider_metadata": {},
-                            "related": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "documentId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            },
-                            "folder": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "folderPath": {
-                              "type": "string"
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "locale": {
-                              "type": "string"
-                            },
-                            "localizations": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "documentId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "social": {
-                          "$ref": "#/components/schemas/AuthorSocialComponent"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updatedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "publishedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "createdBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "updatedBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "locale": {
-                          "type": "string"
-                        },
-                        "localizations": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "publishDate": {
-                      "type": "string",
-                      "format": "date"
-                    },
-                    "readingTime": {
-                      "type": "integer"
-                    },
-                    "featured": {
-                      "type": "boolean"
-                    },
-                    "featuredImage": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {},
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number",
-                          "format": "float"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {},
-                        "related": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "folder": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "folderPath": {
-                          "type": "string"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "updatedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "publishedAt": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "createdBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "updatedBy": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "documentId": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "locale": {
-                          "type": "string"
-                        },
-                        "localizations": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "imageAlt": {
-                      "type": "string"
-                    },
-                    "tags": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "slug": {
-                            "type": "string"
-                          },
-                          "pages_articles": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "locale": {
-                            "type": "string"
-                          },
-                          "localizations": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "content": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/StoryParagraphComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryHeadingComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryImageBlockComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryQuoteComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryRichTextComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedYoutubeComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedNewsletterComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedAccordionComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFeaturesListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedStoryHighlightComponent"
-                          }
-                        ]
-                      },
-                      "discriminator": {
-                        "propertyName": "__component",
-                        "mapping": {
-                          "story.paragraph": "#/components/schemas/StoryParagraphComponent",
-                          "story.heading": "#/components/schemas/StoryHeadingComponent",
-                          "story.image-block": "#/components/schemas/StoryImageBlockComponent",
-                          "story.quote": "#/components/schemas/StoryQuoteComponent",
-                          "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                          "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
-                          "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
-                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
-                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
-                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
-                          "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
-                        }
-                      }
-                    },
-                    "seo": {
-                      "$ref": "#/components/schemas/SharedSeoComponent"
-                    },
-                    "quotes": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "updatedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "publishedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "createdBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "updatedBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "locale": {
-                      "type": "string"
-                    },
-                    "localizations": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "pages_pages": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "slug": {
-                      "type": "string"
-                    },
-                    "content": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/StoryParagraphComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryHeadingComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryImageBlockComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryQuoteComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/StoryRichTextComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedYoutubeComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedNewsletterComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedAccordionComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedBenefitsGridComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedLinksCloudComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFeaturesListComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedRecentArticlesComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
-                          },
-                          {
-                            "$ref": "#/components/schemas/SharedStoryHighlightComponent"
-                          }
-                        ]
-                      },
-                      "discriminator": {
-                        "propertyName": "__component",
-                        "mapping": {
-                          "story.paragraph": "#/components/schemas/StoryParagraphComponent",
-                          "story.heading": "#/components/schemas/StoryHeadingComponent",
-                          "story.image-block": "#/components/schemas/StoryImageBlockComponent",
-                          "story.quote": "#/components/schemas/StoryQuoteComponent",
-                          "story.rich-text": "#/components/schemas/StoryRichTextComponent",
-                          "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
-                          "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
-                          "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
-                          "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
-                          "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
-                          "shared.accordion": "#/components/schemas/SharedAccordionComponent",
-                          "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
-                          "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
-                          "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
-                          "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
-                          "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
-                          "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
-                        }
-                      }
-                    },
-                    "seo": {
-                      "$ref": "#/components/schemas/SharedSeoComponent"
-                    },
-                    "quotes": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "updatedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "publishedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "createdBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "updatedBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "locale": {
-                      "type": "string"
-                    },
-                    "localizations": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "publishedAt": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "createdBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "updatedBy": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number"
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                }
               }
             }
           },
@@ -15434,19 +14377,16 @@
               "seo": {
                 "$ref": "#/components/schemas/SharedSeoComponent"
               },
-              "quotes": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
+              "quote": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
               },
               "locale": {
                 "type": "string"
@@ -15606,17 +14546,14 @@
           "seo": {
             "$ref": "#/components/schemas/SharedSeoComponent"
           },
-          "quotes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "documentId": {
-                  "type": "string"
-                }
+          "quote": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
               }
             }
           },
@@ -15667,6 +14604,157 @@
                 },
                 "documentId": {
                   "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/StoryParagraphComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/StoryHeadingComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/StoryImageBlockComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/StoryQuoteComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/StoryRichTextComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedQuoteReferenceComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedFestivalEventReferenceComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedFestivalEventsListComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedYoutubeComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedNewsletterComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedAccordionComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedBenefitsGridComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedLinksCloudComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedFeaturesListComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedRecentArticlesComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedFestivalEventsPreviewComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/SharedStoryHighlightComponent"
+                      }
+                    ]
+                  },
+                  "discriminator": {
+                    "propertyName": "__component",
+                    "mapping": {
+                      "story.paragraph": "#/components/schemas/StoryParagraphComponent",
+                      "story.heading": "#/components/schemas/StoryHeadingComponent",
+                      "story.image-block": "#/components/schemas/StoryImageBlockComponent",
+                      "story.quote": "#/components/schemas/StoryQuoteComponent",
+                      "story.rich-text": "#/components/schemas/StoryRichTextComponent",
+                      "shared.quote-reference": "#/components/schemas/SharedQuoteReferenceComponent",
+                      "shared.festival-event-reference": "#/components/schemas/SharedFestivalEventReferenceComponent",
+                      "shared.festival-events-list": "#/components/schemas/SharedFestivalEventsListComponent",
+                      "shared.youtube": "#/components/schemas/SharedYoutubeComponent",
+                      "shared.newsletter": "#/components/schemas/SharedNewsletterComponent",
+                      "shared.accordion": "#/components/schemas/SharedAccordionComponent",
+                      "shared.benefits-grid": "#/components/schemas/SharedBenefitsGridComponent",
+                      "shared.links-cloud": "#/components/schemas/SharedLinksCloudComponent",
+                      "shared.features-list": "#/components/schemas/SharedFeaturesListComponent",
+                      "shared.recent-articles": "#/components/schemas/SharedRecentArticlesComponent",
+                      "shared.festival-events-preview": "#/components/schemas/SharedFestivalEventsPreviewComponent",
+                      "shared.story-highlight": "#/components/schemas/SharedStoryHighlightComponent"
+                    }
+                  }
+                },
+                "seo": {
+                  "$ref": "#/components/schemas/SharedSeoComponent"
+                },
+                "quote": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "publishedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createdBy": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "updatedBy": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 }
               }
             }

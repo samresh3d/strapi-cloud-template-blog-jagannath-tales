@@ -48,11 +48,10 @@
       "component": "shared.seo",
       "repeatable": false
     },
-    "quotes": {
+    "quote": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::data-quote.data-quote",
-      "inversedBy": "pages_pages"
+      "relation": "manyToOne",
+      "target": "api::data-quote.data-quote"
     }
   }
 }

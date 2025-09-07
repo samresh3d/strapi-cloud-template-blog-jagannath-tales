@@ -9,7 +9,7 @@
   "attributes": {
     "quote": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::data-quote.data-quote"
     },
     "showAuthor": {
